@@ -18,13 +18,15 @@ const usuarioSchema = new Schema ({
         type: String
     },
     role: {
-        type: {enum:['User','Admin']} 
-    },
-    comunidad_id:[{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'comunidad'
-    }]
+        type: String,
+        enum:["Admin", "User"]
+    }
+    //,
+    //comunidad_id:[{
+    //    type: mongoose.Schema.Types.ObjectId,
+    //    ref: 'comunidad'
+    //}]
 })
 
-const Usuario = mongoose.model('usuario', roleSchema)
+const Usuario = mongoose.model('usuario', usuarioSchema)
 module.exports = Usuario

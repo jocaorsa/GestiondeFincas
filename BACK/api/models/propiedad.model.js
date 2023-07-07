@@ -20,5 +20,5 @@ const propiedadSchema = new Schema ({
     }]
 })
 
-const Propiedad = mongoose.model('propiedad', roleSchema)
+const Propiedad = mongoose.model('propiedad', propiedadSchema)
 module.exports = Propiedad

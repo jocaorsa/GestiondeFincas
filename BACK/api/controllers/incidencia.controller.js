@@ -1,98 +1,55 @@
 const Incidencia = require("../models/incidencia.model");
+const mongoose = require('mongoose');
 
-async function getIncidencia(req, res) {
+async function getOneIncidencia (req, res){
     try {
-        const incidencia = await Incidencia.findById(req.params.id)
-        if (incidencia) {
-            return res.status(200).json(incidencia)
-        } else {
-            return res.status(404).send('incidencia not found')
-        }
-    } catch (error) {
-        return res.status(500).send(error.message)
+        const incidencia = await Incidencia.findById(req.params.incidenciaId, {__v:0})
+        res.json(incidencia)
+    } catch (error){
+        console.log(error)
     }
 }
 
-
-async function getAllIncidencia(req, res) {
-    try {
-        if (!Object.values(req.query).length) {
-            const incidencia = await Incidencia.findAll({ paranoid: false })
-            if (incidencia) {
-                return res.status(200).json(incidencia)
-            } else {
-                return res.status(404).send('No incidencia found')
-            }
-        } else {
-            const incidencia = await incidencia.findAll({
-                where: {
-                    [Op.and]: [
-                        req.query
-                    ]
-                }
-            })
-            if (incidencia.length !== 0) {
-                return res.status(200).json(incidencia)
-            } else {
-                return res.status(404).send('No matches found')
-            }
-        }
-    } catch (error) {
-        return res.status(500).send(error.message)
+async function getAllIncidencia (req, res){
+    try{
+        const incidencia = await Incidencia.find({__v:0})
+        res.json(incidencia)
+    } catch (error){
+        console.log(error)
     }
 }
 
-async function createIncidencia(req, res) {
-    try {
-        const incidencia = await Incidencia.create({
-            firstName: req.body.firstName,
-        })
-        return res.status(200).json({ message: 'Incidencia created', incidencia: incidencia })
-    } catch (error) {
-        return res.status(500).send(error.message)
+async function createIncidencia (req, res){
+    try{
+        const incidencia = await Incidencia.create(req.body)
+        res.json(incidencia)
+    }catch (error){
+        console.log(error)
     }
 }
 
-async function updateIncidencia(req, res) {
-    try {
-        const [incidenciaExist, incidencia] = await Incidencia.update(req.body, {
-            returning: true,
-            where: {
-                id: req.params.id,
-            },
-        })
-        if (incidenciaExist !== 0) {
-            return res.status(200).json({ message: 'Incidencia updated', incidencia: incidencia })
-        } else {
-            return res.status(404).send('Incidencia not found')
-        }
-    } catch (error) {
-        return res.status(500).send(error.message)
+async function updateIncidencia (req, res){
+    try{
+        const updateincidencia = await Incidencia.findByIdAndUpdate (req.params.incidenciaId, req.body, {new: true})
+        res.json(updateincidencia)
+    }catch (error){
+        console.log(error)
     }
 }
 
-async function deleteIncidencia(req, res) {
-    try {
-        const incidencia = await Incidencia.destroy({
-            where: {
-                id: req.params.id,
-            },
-        })
-        if (incidencia) {
-            return res.status(200).json('Incidencia deleted')
-        } else {
-            return res.status(404).send('Incidencia not found')
-        }
-    } catch (error) {
-        return res.status(500).send(error.message)
+async function deleteIncidencia (req, res) {
+    try{
+        const delincidencia = await Incidencia.findByIdAndDelete(req.params.incidenciaId)
+        res.json(delincidencia)
+    } catch(error){
+        console.log(error)
     }
 }
 
 
 module.exports = {
-                getIncidencia,
+                getOneIncidencia,
                 getAllIncidencia,
                 createIncidencia,
                 updateIncidencia,
-                deleteIncidencia
-            } 
+                deleteIncidencia} 

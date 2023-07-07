@@ -17,7 +17,8 @@ const incidenciaSchema = new Schema ({
         type: Date
     },
     seguro: {
-        type: {enum:['Si','No']}
+        type: String,
+        enum:['Si','No']
     },
     estado: {
         type: String
@@ -34,5 +35,5 @@ const incidenciaSchema = new Schema ({
     }]
 })
 
-const Incidencia = mongoose.model('incidencia', roleSchema)
+const Incidencia = mongoose.model('incidencia', incidenciaSchema)
 module.exports = Incidencia

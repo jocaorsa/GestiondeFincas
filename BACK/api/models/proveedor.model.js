@@ -24,15 +24,16 @@ const proveedorSchema = new Schema ({
         type: String
     },
     servicio: {
-        type: {enum:[
+        type: String,
+        enum:[
             'Fontaneria',
             'Carpinteria',
             'Electricidad',
             'Limpieza',
-            'Obra']} 
+            'Obra'] 
     }
 })
 
 
-const Proveedor = mongoose.model('proveedorProveedor', roleSchema)
+const Proveedor = mongoose.model('proveedorProveedor', proveedorSchema)
 module.exports = Proveedor

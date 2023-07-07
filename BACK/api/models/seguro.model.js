@@ -23,5 +23,5 @@ const seguroSchema = new Schema ({
     }]
 })
 
-const Seguro = mongoose.model('seguro', roleSchema)
+const Seguro = mongoose.model('seguro', seguroSchema)
 module.exports = Seguro

@@ -10,5 +10,5 @@ const mediadorSchema = new Schema ({
     }
 })
 
-const Mediador = mongoose.model('mediador', roleSchema)
+const Mediador = mongoose.model('mediador', mediadorSchema)
 module.exports = Mediador

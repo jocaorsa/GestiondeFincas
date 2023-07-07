@@ -32,5 +32,5 @@ const comunidadSchema = new Schema ({
     }]
 })
 
-const Comunidad = mongoose.model('comunidad', roleSchema)
+const Comunidad = mongoose.model('comunidad', comunidadSchema)
 module.exports = Comunidad
