@@ -1,7 +1,8 @@
 import Card from "@mui/material/Card";
 
-function Home() {
+function AccesoAdmin() {
   return (
+    <>
     <Card
       sx={{
         display: "flex",
@@ -15,8 +16,10 @@ function Home() {
       }}
     >
       Hola Admin
+  
     </Card>
+    </>
   );
 }
 
-export default Home;
+export default AccesoAdmin;

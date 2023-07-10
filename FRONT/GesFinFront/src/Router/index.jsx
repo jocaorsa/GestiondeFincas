@@ -1,10 +1,10 @@
 import { createBrowserRouter, redirect } from "react-router-dom";
-import Login from "../Pages/login/login";
 import AccesoAdmin from "../Pages/AccesoAdmin/AccesoAdmin";
 import AccesoUsuario from "../Pages/AccesoUsuario/AccesoUsuario";
 import Home from "../Pages/Home/Home";
 import Root from "../../Layout/index";
 import NotFound from "../Pages/NotFound/NotFound";
+import SignInSide from "../Pages/login/login";
 
 
 
@@ -34,16 +34,18 @@ const checkUsuario = () => {
   }
 };
 
-export const router = createBrowserRouter([
+const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <SignInSide />,
     errorElement: <NotFound />,
     children: [
-      { path: "/", element: <Home /> },
-      { path: "/login", element: <Login /> },
-      { path: "/login/admin", element: <AccesoAdmin />, loader: checkAdmin },
-      { path: "/login/usuario", element: <AccesoUsuario />, loader: checkUsuario },
+      { path: "/", element: <SignInSide /> },
+      { path: "/admin", element: <AccesoAdmin />, loader: checkAdmin },
+      { path: "/usuario", element: <AccesoUsuario />, loader: checkUsuario},
     ],
   },
 ]);
+
+
+export default router

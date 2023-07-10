@@ -3,9 +3,9 @@ const mongoose = require ('mongoose')
 const morgan = require ('morgan')
 const bodyParser = require ('body-parser')
 const router = require ('./api/routes/index')
-
-
+const cors = require ('cors')
 require('dotenv').config()
+
 const uri = process.env.DB_URI;
 
 //mongoose.connect(uri,{dbName: process.env.DB_NAME})
@@ -20,6 +20,7 @@ const uri = process.env.DB_URI;
   }
 
   try {
+
     // ADDING MIDDLEWARES & ROUTER
     const app = express()
       //.use(cors())
@@ -28,8 +29,10 @@ const uri = process.env.DB_URI;
       .use('/api', require('./api/routes'))
 
     // Init server
+
     const PORT = process.env.PORT || 3000
     app.listen(PORT, (err) => {
+      
       if (err) {
         throw new Error(err)
       }

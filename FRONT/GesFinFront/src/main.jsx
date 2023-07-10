@@ -4,8 +4,9 @@ import App from './App.jsx'
 import SignIn from './Pages/login/login.jsx'
 import './index.css'
 
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <SignIn />
+   <App />
   </React.StrictMode>
 );

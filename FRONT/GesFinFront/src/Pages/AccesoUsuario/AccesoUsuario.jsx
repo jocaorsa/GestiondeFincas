@@ -1,6 +1,6 @@
 import Card from "@mui/material/Card";
 
-function Home() {
+function AccesoUsuario() {
   return (
     <Card
       sx={{
@@ -19,4 +19,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default AccesoUsuario;
