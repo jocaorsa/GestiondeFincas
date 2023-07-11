@@ -5,7 +5,7 @@ import { getAllUsers } from "../../../services/usuario.service";
 import { Link } from "react-router-dom";
 import ModalCrearUsuario from "../../../components/Modal/NuevoUsuarioModal";
 import Search from "../../../components/Search/search";
-import SpringModal from "../../../components/Modal/SpringModal";
+import SpringUserModal from "../../../components/Modal/SpringUserModal";
 
 export default function DataTableUsuarios({ data }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -67,7 +67,7 @@ export default function DataTableUsuarios({ data }) {
               {ele.password}
             </TableCell> */}
             <TableCell>
-              <SpringModal user={ele} hadleUpdate={handleUpdate} />
+              <SpringUserModal user={ele} hadleUpdate={handleUpdate} />
             </TableCell>
           </TableRow>
         );
@@ -101,7 +101,7 @@ export default function DataTableUsuarios({ data }) {
               {ele.password}
             </TableCell> */}
             <TableCell>
-              <SpringModal user={ele} hadleUpdate={handleUpdate} />
+              <SpringUserModal user={ele} hadleUpdate={handleUpdate} />
             </TableCell>
           </TableRow>
         );

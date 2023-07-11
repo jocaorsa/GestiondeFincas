@@ -163,6 +163,36 @@ function AccesoAdmin() {
               </Link>
             </Card>
           </Grid>
+          <Grid item>
+            <Card
+              sx={{
+                display: "flex",
+                justifyItems: "center",
+                alignContent: "center",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "5vw",
+              }}
+            >
+              <Link
+                style={{ color: "inherit", textDecoration: "none" }}
+                to="/"
+              >
+                <Button
+                  style={{ color: "inherit", textDecoration: "none" }}
+                  variant="contained"
+                  DisableElevation
+                  onClick={() => {
+                    localStorage.removeItem("token");
+                    localStorage.removeItem("id");
+                    localStorage.removeItem("role");
+                  }}
+                >
+                  Cerrar sesión
+                </Button>
+              </Link>
+            </Card>
+          </Grid>
         </Grid>
       </Card>
     </Box>
@@ -170,3 +200,5 @@ function AccesoAdmin() {
 }
 
 export default AccesoAdmin;
+
+

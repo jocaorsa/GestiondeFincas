@@ -66,16 +66,16 @@ function AccesoUsuario() {
                 alignContent: "center",
                 alignItems: "center",
                 justifyContent: "center",
-                height: "15vw",
+                height: "10vw",
               }}
-            > 
-            <Link
+            >
+              <Link
                 style={{ color: "inherit", textDecoration: "none" }}
                 to="/login/user/crear"
               >
-              <Button variant="contained" DisableElevation>
-                Crear Incidencia
-              </Button>
+                <Button variant="contained" DisableElevation>
+                  Crear Incidencia
+                </Button>
               </Link>
             </Card>
           </Grid>
@@ -87,7 +87,7 @@ function AccesoUsuario() {
                 alignContent: "center",
                 alignItems: "center",
                 justifyContent: "center",
-                height: "15vw",
+                height: "10vw",
               }}
             >
               <Link
@@ -108,7 +108,7 @@ function AccesoUsuario() {
                 alignContent: "center",
                 alignItems: "center",
                 justifyContent: "center",
-                height: "15vw",
+                height: "10vw",
               }}
             >
               <Link
@@ -117,6 +117,36 @@ function AccesoUsuario() {
               >
                 <Button variant="contained" DisableElevation>
                   Historico
+                </Button>
+              </Link>
+            </Card>
+          </Grid>
+          <Grid item>
+            <Card
+              sx={{
+                display: "flex",
+                justifyItems: "center",
+                alignContent: "center",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "10vw",
+              }}
+            >
+              <Link
+                style={{ color: "inherit", textDecoration: "none" }}
+                to="/"
+              >
+                <Button
+                  style={{ color: "inherit", textDecoration: "none" }}
+                  variant="contained"
+                  DisableElevation
+                  onClick={() => {
+                    localStorage.removeItem("token");
+                    localStorage.removeItem("id");
+                    localStorage.removeItem("role");
+                  }}
+                >
+                  Cerrar sesión
                 </Button>
               </Link>
             </Card>

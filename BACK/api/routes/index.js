@@ -9,7 +9,7 @@ router.use('/usuario', require('./usuario.router'))
 //router.use('/propiedad', require('./propiedad.router'))
 //router.use('/propietarios', require('./propietarios.router'))
 //router.use('/mediador', require('./mediador.router'))
-//router.use('/incidencia', require('./incidencia.router'))
+router.use('/incidencia', require('./incidencia.router'))
 //router.use('/comunidad', require('./comunidad.router'))
 
  module.exports =  router

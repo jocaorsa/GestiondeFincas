@@ -5,14 +5,14 @@ const incidenciaSchema = new Schema ({
     num_incidencia: {
         type: Date
     },
-    comunidad_id: [{
+    /* comunidad_id: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'comunidad'
     }],
     propiedad_id: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'propiedad'
-    }],
+    }], */
     fecha_creacion: {
         type: Date
     },
@@ -29,10 +29,10 @@ const incidenciaSchema = new Schema ({
     img: {
         type: String
     },
-    proveedor_id:[{
+    /* proveedor_id:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'proveedor'
-    }]
+    }] */
 })
 
 const Incidencia = mongoose.model('incidencia', incidenciaSchema)
