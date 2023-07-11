@@ -52,28 +52,12 @@ function Usuarios() {
           alignContent: "center",
           alignItems: "center",
           justifyContent: "center",
-          width: "50vw",
+          width: "90vw",
           height: "100%",
         }}
       >
-        Pequeño listado de incidencias
         <DataTableUsuarios data={data} />
-        <Link
-          style={{ color: "inherit", textDecoration: "none" }}
-          to="/login/admin/"
-        >
-          <Button variant="contained" DisableElevation>
-            volver
-          </Button>
-        </Link>
-        <Link
-          style={{ color: "inherit", textDecoration: "none" }}
-          to="/login/admin/usuarios"
-        >
-          <Button variant="contained" DisableElevation>
-            editar
-          </Button>
-        </Link>
+       
       </Card>
     </Box>
   );

@@ -4,7 +4,7 @@ import { TextField } from "@material-ui/core";
 const TableSearch = ({ searchQuery, handleSearchChange }) => {
   return (
     <TextField
-      label="Search"
+      label="Buscar"
       value={searchQuery}
       onChange={handleSearchChange}
     />

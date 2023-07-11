@@ -20,10 +20,11 @@ export const createUser = async (newUser) => {
             '/auth/singup',
             {
                 name:newUser.name,
-                apellido: newUser.apellido,
-                tle_usu: newUser.tlf_usu,
+                apellidos: newUser.apellidos,
+                tlf_usu: newUser.tlf_usu,
                 email: newUser.email,                             
                 password: newUser.password,
+                role: newUser.role,
             },
             {
                 headers: { token: localStorage.getItem('token') },
@@ -38,14 +39,51 @@ export const createUser = async (newUser) => {
     }
 }
 
-export const deleteUser = async () => {
+export const deleteUser = async (id) => {
     try {
         const user = await api.delete(
-            `usuario/${localStorage.id}`,
-            {headers: { token: localStorage.getItem('token')}}
+            `/usuario/${id}`,
+            /* {headers: { token: localStorage.getItem('token')}} */
         )
-        console.log('Usuario eliminado')
+        console.log('Usuario eliminado', user)
     } catch (error) {
         console.error('Error eliminando usuario')
     }
+}
+
+export const updateOneUsuario = async (id, name, apellidos, tlf_usu, email, password, role, userData) => {
+    console.log(userData)
+      if (name.length === 0) {
+        name=userData.name
+    }
+    if (apellidos.length === 0) {
+        apellidos=userData.apellidos
+    }
+    if (tlf_usu.length === 0) {
+        tlf_usu=userData.tlf_usu
+    }
+    if (email.length === 0) {
+        email=userData.email
+    }
+    if (password.length === 0) {
+        password=userData.password
+    }
+    if (role.length === 0) {
+        role=userData.role
+    }
+    console.log(id, name, apellidos, tlf_usu, email, password, role)
+    const { data } = await api.put(`user/${id}`,
+        {   "name":name,
+            "apellidos":apellidos,
+            "tlf_usu": tlf_usu,
+            "email": email,
+            "password": password,
+            "role": role
+        }, 
+        {
+        headers: { token: localStorage.getItem('token') }  
+        }
+    )
+    console.log(data)
+    return data
 }

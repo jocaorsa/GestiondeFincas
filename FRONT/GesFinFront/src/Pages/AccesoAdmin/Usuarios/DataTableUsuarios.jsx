@@ -1,20 +1,11 @@
 import * as React from "react";
-import {
-  Button,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from "@mui/material";
+import {Button,Paper,Table,TableBody,TableCell,TableContainer,TableHead,TableRow,} from "@mui/material";
 import { useState, useEffect } from "react";
 import { getAllUsers } from "../../../services/usuario.service";
 import { Link } from "react-router-dom";
-//import SpringModal from "../../Modal/Modal";
-//import ModalCrearUsuario from "../../Modal/NuevoUsuarioModal";
-import TableSearch from "../../../components/Search";
+import ModalCrearUsuario from "../../../components/Modal/NuevoUsuarioModal";
+import Search from "../../../components/Search/search";
+import SpringModal from "../../../components/Modal/SpringModal";
 
 export default function DataTableUsuarios({ data }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -54,17 +45,27 @@ export default function DataTableUsuarios({ data }) {
             key={ele.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
-            <TableCell component="th" scope="ele">
+            <TableCell size="small" component="th" scope="ele">
               {ele.name}
             </TableCell>
-            <TableCell align="right">{ele.lastname}</TableCell>
-            <TableCell align="right">{ele.phone}</TableCell>
-            <TableCell align="right">{ele.fecha_nacimiento}</TableCell>
-            <TableCell align="right">{ele.email}</TableCell>
-            <TableCell align="right">{ele.role}</TableCell>
-            <TableCell align="right">{ele.hemogrupoId}</TableCell>
-            <TableCell align="right">{ele.hemorhId}</TableCell>
-            <TableCell align="right">{ele.password}</TableCell>
+            <TableCell size="small" align="right">
+              {ele.apellidos}
+            </TableCell>
+            <TableCell size="small" align="right">
+              {ele.tlf_usu}
+            </TableCell>
+            <TableCell size="small" align="right">
+              {ele.email}
+            </TableCell>
+            <TableCell size="small" align="right">
+              {ele.role}
+            </TableCell>
+            <TableCell size="small" align="right">
+              {ele.comunidad_id}
+            </TableCell>
+            {/* <TableCell size="small" align="right">
+              {ele.password}
+            </TableCell> */}
             <TableCell>
               <SpringModal user={ele} hadleUpdate={handleUpdate} />
             </TableCell>
@@ -78,17 +79,27 @@ export default function DataTableUsuarios({ data }) {
             key={ele.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
-            <TableCell component="th" scope="ele">
+            <TableCell component="th" scope="ele" size="small">
               {ele.name}
             </TableCell>
-            <TableCell align="right">{ele.lastname}</TableCell>
-            <TableCell align="right">{ele.phone}</TableCell>
-            <TableCell align="right">{ele.fecha_nacimiento}</TableCell>
-            <TableCell align="right">{ele.email}</TableCell>
-            <TableCell align="right">{ele.role}</TableCell>
-            <TableCell align="right">{ele.hemogrupoId}</TableCell>
-            <TableCell align="right">{ele.hemorhId}</TableCell>
-            <TableCell align="right">{ele.password}</TableCell>
+            <TableCell size="small" align="right">
+              {ele.apellidos}
+            </TableCell>
+            <TableCell size="small" align="right">
+              {ele.tlf_usu}
+            </TableCell>
+            <TableCell size="small" align="right">
+              {ele.email}
+            </TableCell>
+            <TableCell size="small" align="right">
+              {ele.role}
+            </TableCell>
+            <TableCell size="small" align="right">
+              {ele.comunidad_id}
+            </TableCell>
+            {/* <TableCell size="small" align="right">
+              {ele.password}
+            </TableCell> */}
             <TableCell>
               <SpringModal user={ele} hadleUpdate={handleUpdate} />
             </TableCell>
@@ -101,23 +112,33 @@ export default function DataTableUsuarios({ data }) {
   return (
     <>
       <div>
-        <TableSearch
+        <Search
           searchQuery={searchQuery}
           handleSearchChange={handleSearchChange}
         />
         <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <Table size="small">
             <TableHead>
               <TableRow>
-                <TableCell>Nombre</TableCell>
-                <TableCell align="right">Apellidos</TableCell>
-                <TableCell align="right">Telefono</TableCell>
-                <TableCell align="right">Fecha de nacimiento</TableCell>
-                <TableCell align="right">Email</TableCell>
-                <TableCell align="right">Role</TableCell>
-                <TableCell align="right">Hemo Grupo</TableCell>
-                <TableCell align="right">Hemo Rh</TableCell>
-                <TableCell align="right">Contraseña</TableCell>
+                <TableCell size="small">Nombre</TableCell>
+                <TableCell size="small" align="right">
+                  Apellidos
+                </TableCell>
+                <TableCell size="small" align="right">
+                  Telefono
+                </TableCell>
+                <TableCell size="small" align="right">
+                  Email
+                </TableCell>
+                <TableCell size="small" align="right">
+                  Role
+                </TableCell>
+                <TableCell size="small" align="right">
+                  Comunidad
+                </TableCell>
+                {/* <TableCell size="small" align="right">
+                  Contraseña
+                </TableCell> */}
               </TableRow>
             </TableHead>
             <TableBody>{filteredData()}</TableBody>
@@ -127,16 +148,8 @@ export default function DataTableUsuarios({ data }) {
           to={"/login/admin"}
           style={{ color: "inherit", textDecoration: "none" }}
         >
-          <Button
-            sx={{
-              alignContent: "end",
-              backgroundColor: "#BF0021",
-              marginLeft: "8px",
-            }}
-            variant="contained"
-            color="error"
-          >
-            Volver
+          <Button variant="contained" DisableElevation>
+            volver
           </Button>
         </Link>
 

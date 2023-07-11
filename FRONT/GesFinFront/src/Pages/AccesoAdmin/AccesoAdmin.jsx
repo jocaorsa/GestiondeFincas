@@ -69,14 +69,14 @@ function AccesoAdmin() {
                 height: "5vw",
               }}
             >
-                <Link
-                  style={{ color: "inherit", textDecoration: "none" }}
-                  to="/login/admin/incidencias"
-                >
-                  <Button variant="contained" DisableElevation>
-                    Incidencias
-                  </Button>
-                </Link>
+              <Link
+                style={{ color: "inherit", textDecoration: "none" }}
+                to="/login/admin/incidencias"
+              >
+                <Button variant="contained" DisableElevation>
+                  Incidencias
+                </Button>
+              </Link>
             </Card>
           </Grid>
           <Grid item>
