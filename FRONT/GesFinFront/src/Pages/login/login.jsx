@@ -13,7 +13,8 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { login } from "../../services/auth.service";
-
+import { useState } from "react";
+import {useNavigate} from "react-router-dom"
 
 
 function Copyright(props) {
@@ -40,15 +41,39 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignInSide() {
+    const navigate = useNavigate();  
+    
+    const logIn = async (event) => {
+      event.preventDefault();
+      const email = event.target.email.value;
+      const password = event.target.password.value;
+      //console.log(password);
+      const data = await login(email, password);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-  };
+      if (!localStorage.getItem("token")) {
+        alert("Error: Usuario o contraseña inválidos");
+      } else {
+        switch (localStorage.role) {
+          case "Admin":
+            navigate("/login/admin");
+            break;
+          case "User":
+            navigate("/login/user");
+            break;
+          default:
+            alert("Error: Rol de usuario desconocido");
+        }
+      }
+    }
+  //const handleSubmit = (event) => {
+  //  event.preventDefault();
+  //  const data = new FormData(event.currentTarget);
+  //  console.log({
+  //    email: data.get("email"),
+  //    password: data.get("password"),
+  //  });
+  //};
+
 
 /* export default function Login() {
   const [isPassVisible, setIsPassVisible] = useState(false);
@@ -85,11 +110,7 @@ export default function SignInSide() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Grid
-        container
-        component="main"
-        sx={{ height: "90vh" }}
-      >
+      <Grid container component="main" sx={{ height: "90vh" }}>
         <CssBaseline />
         <Grid
           item
@@ -127,7 +148,7 @@ export default function SignInSide() {
             <Box
               component="form"
               noValidate
-              onSubmit={handleSubmit}
+              onSubmit={logIn}
               sx={{ mt: 1 }}
             >
               <TextField

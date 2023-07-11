@@ -23,7 +23,7 @@ const uri = process.env.DB_URI;
 
     // ADDING MIDDLEWARES & ROUTER
     const app = express()
-      //.use(cors())
+      .use(cors())
       .use(morgan('combined'))
       .use(express.json())
       .use('/api', require('./api/routes'))

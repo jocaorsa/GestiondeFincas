@@ -7,8 +7,8 @@ const checkAdmin = (req, res, next) => {
     }
 };
 
-const checkUsuario =  (req, res, next) => {
-    if (res.locals.usuario.role === 'Admin' || res.locals.usuario.role === 'Usuario') {
+const checkUser =  (req, res, next) => {
+    if (res.locals.usuario.role === 'Admin' || res.locals.usuario.role === 'User') {
         next()
     } else {
         res.status(403).send('Access denied');
@@ -16,4 +16,4 @@ const checkUsuario =  (req, res, next) => {
 };
 
 
-module.exports = { checkAdmin, checkUsuario }
+module.exports = { checkAdmin, checkUser }
