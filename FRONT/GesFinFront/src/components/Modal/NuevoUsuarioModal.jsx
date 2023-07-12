@@ -84,11 +84,19 @@ export default function ModalCrearUsuario({ handleCreate }) {
   };
 
   const handleResponse = async () => {
-    const res = await createUser(newUser);
+    const userWithRole={
+      ...newUser,
+      role: selectedRole,
+    };
+    
+    const res = await createUser(userWithRole);
     handleClose();
     handleCreate();
     console.log("Usuario creado");
+  
   };
+
+  const [selectedRole, setSelectedRole] = useState('');
 
   return (
     <div>
@@ -185,12 +193,19 @@ export default function ModalCrearUsuario({ handleCreate }) {
             >
               Role
             </Typography>
-            <BasicSelect
-              name="role"
-              value={newUser.role || ""}
-              onChange={handleInputChange}
-            />
-
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Role</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={selectedRole}
+                label="Role"
+                onChange={(event) => setSelectedRole(event.target.value)}
+              >
+                <MenuItem value="User">User</MenuItem>
+                <MenuItem value="Admin">Admin</MenuItem>
+              </Select>
+            </FormControl>
             <Typography></Typography>
             <Button
               variant="contained"
