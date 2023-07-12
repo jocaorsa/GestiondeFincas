@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 async function getOneUsuario (req, res){
     try {
-        const usuario = await Usuario.findById(req.params.usuarioId, {__v:0})
+        const usuario = await Usuario.findById(req.params.usuarioId)
         res.json(usuario)
     } catch (error){
         console.log(error)
@@ -31,8 +31,8 @@ async function createUsuario (req, res){
 
 async function updateUsuario (req, res){
     try{
-        const updateusuario = await Usuario.findByIdAndUpdate (req.params.usuarioId, req.body, {new: true})
-        res.json(updateusuario)
+        const usuario = await Usuario.findByIdAndUpdate (req.params.usuarioId, req.body, {new: true})
+        res.json(usuario)
     }catch (error){
         console.log(error)
     }
@@ -40,7 +40,7 @@ async function updateUsuario (req, res){
 
 async function deleteUsuario (req, res) {
     try{
-        const delusuario = await Usuario.findByIdAndDelete(req.params.usuarioId)
+        const delusuario = await Usuario.findByIdAndDelete(req.params.usuarioId, {__v:0})
         res.json(delusuario)
     } catch(error){
         console.log(error)

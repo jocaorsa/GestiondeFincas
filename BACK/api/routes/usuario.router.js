@@ -8,10 +8,10 @@ const{ getOneUsuario,
     } = require ('../controllers/usuario.controller')
 
 router
-    .get('/:id', getOneUsuario)
     .get('/', getAllUsuario)
+    .get('/:usuarioId', getOneUsuario)
     .post('/', createUsuario)
-    .put('/', updateUsuario)
-    .delete('/:id', deleteUsuario)  
+    .put('/:usuarioId', updateUsuario)
+    .delete('/:usuarioId', deleteUsuario)  
     
     module.exports = router

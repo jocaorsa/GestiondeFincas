@@ -16,6 +16,7 @@ export default function DataTableUsuarios({ data }) {
     const data = await getAllUsers();
     setUsers(data);
   };
+  console.log(users)
   useEffect(() => {
     showUsers();
   }, [actualizar]);
@@ -146,14 +147,15 @@ export default function DataTableUsuarios({ data }) {
         </TableContainer>
         <Link
           to={"/login/admin"}
-          style={{ color: "inherit", textDecoration: "none" }}
+          style={{ color: "inherit", padding: "5px", textDecoration: "none" }}
         >
           <Button variant="contained" DisableElevation>
             volver
           </Button>
         </Link>
-
-        <ModalCrearUsuario handleCreate={handleCreate} />
+        <Button>
+          <ModalCrearUsuario handleCreate={handleCreate} />
+        </Button>
       </div>
     </>
   );

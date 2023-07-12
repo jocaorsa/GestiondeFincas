@@ -21,11 +21,11 @@ const usuarioSchema = new Schema ({
         type: String,
         enum:["Admin", "User"]
     }
-    //,
-    //comunidad_id:[{
-    //    type: mongoose.Schema.Types.ObjectId,
-    //    ref: 'comunidad'
-    //}]
+    ,
+    comunidad_id:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'comunidad'
+    }]
 })
 
 const Usuario = mongoose.model('usuario', usuarioSchema)

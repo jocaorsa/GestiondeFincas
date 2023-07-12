@@ -4,12 +4,12 @@ const router = require('express').Router()
 
 router.use ('/auth', require('./auth.router'))
 router.use('/usuario', require('./usuario.router'))
-//router.use('/seguro', require('./seguro.router'))
-//router.use('/proveedor', require('./proveedor.router'))
-//router.use('/propiedad', require('./propiedad.router'))
-//router.use('/propietarios', require('./propietarios.router'))
-//router.use('/mediador', require('./mediador.router'))
 router.use('/incidencia', require('./incidencia.router'))
-//router.use('/comunidad', require('./comunidad.router'))
+router.use('/comunidad', require('./comunidad.router'))
+router.use('/seguro', require('./seguro.router'))
+router.use('/proveedor', require('./proveedor.router'))
+router.use('/propiedad', require('./propiedad.router'))
+router.use('/propietarios', require('./propietarios.router'))
+router.use('/mediador', require('./mediador.router'))
 
  module.exports =  router

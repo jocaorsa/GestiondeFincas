@@ -1,30 +1,30 @@
 import { api } from "./api";
 
 
-export const getOneUser = async () => {
-    const { data } = await api.get(`/usuario/${localStorage.id}`,{headers: {token: localStorage.getItem( 'token' ) }})
+export const getOneSeguro = async () => {
+    const { data } = await api.get(`/seguro/${localStorage.id}`,{headers: {token: localStorage.getItem( 'token' ) }})
     console.log(data)
     return data
 }
 
-export const getAllUsers = async () => {
-    const { data } = await api.get('/usuario', {headers: {token: localStorage.getItem( 'token' ) } } )
+export const getAllSeguros = async () => {
+    const { data } = await api.get('/seguro', {headers: {token: localStorage.getItem( 'token' ) } } )
     console.log(data)
     return data
 }
 
-export const createUser = async (newUser) => {
-    console.log(newUser)
+export const createSeguro = async (newSeguro) => {
+    console.log(newSeguro)
     try {
         const res = await api.post(
             '/auth/singup',
             {
-                name:newUser.name,
-                apellidos: newUser.apellidos,
-                tlf_usu: newUser.tlf_usu,
-                email: newUser.email,                             
-                password: newUser.password,
-                role: newUser.role,
+                name:newSeguro.name,
+                apellidos: newSeguro.apellidos,
+                tlf_usu: newSeguro.tlf_usu,
+                email: newSeguro.email,                             
+                password: newSeguro.password,
+                role: newSeguro.role,
             },
             {
                 headers: { token: localStorage.getItem('token') },
@@ -34,44 +34,44 @@ export const createUser = async (newUser) => {
             return res
         
     } catch (error) {
-        console.error('Fallo al crear Usuario')
+        console.error('Fallo al crear seguro')
         
     }
 }
 
 export const deleteOne = async (id) => {
   try {
-    const response = await api.delete(`/usuario/${id}`);
-    console.log('Usuario eliminado', response);
+    const response = await api.delete(`/seguro/${id}`);
+    console.log('seguro eliminado', response);
     return response.data; // Añade este return para devolver la respuesta del servidor
   } catch (error) {
-    console.error('Error eliminando usuario', error);
+    console.error('Error eliminando seguro', error);
     throw error; // Lanza el error para que pueda ser capturado en la función que llama a deleteOne
   }
 };
 
-export const updateOneUsuario = async (id, name, apellidos, tlf_usu, email, password, role, userData) => {
-    console.log(userData)
+export const updateOneSeguro = async (id, name, apellidos, tlf_usu, email, password, role, seguroData) => {
+    console.log(seguroData)
       if (name.length === 0) {
-        name=userData.name
+        name=seguroData.name
     }
     if (apellidos.length === 0) {
-        apellidos=userData.apellidos
+        apellidos=seguroData.apellidos
     }
     if (tlf_usu.length === 0) {
-        tlf_usu=userData.tlf_usu
+        tlf_usu=seguroData.tlf_usu
     }
     if (email.length === 0) {
-        email=userData.email
+        email=seguroData.email
     }
     if (password.length === 0) {
-        password=userData.password
+        password=seguroData.password
     }
     if (role.length === 0) {
-        role=userData.role
+        role=seguroData.role
     }
     console.log(id, name, apellidos, tlf_usu, email, password, role)
-    const { data } = await api.put(`/usuario/${id}`,
+    const { data } = await api.put(`/seguro/${id}`,
         {   "name":name,
             "apellidos":apellidos,
             "tlf_usu": tlf_usu,

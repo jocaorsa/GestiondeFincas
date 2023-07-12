@@ -9,6 +9,11 @@ import { useSpring, animated } from "@react-spring/web";
 import { TextField } from "@mui/material";
 import { useState } from "react";
 import { createUser } from "../../services/usuario.service";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import BasicSelect from "./selectrole";
 
 const Fade = React.forwardRef(function Fade(props, ref) {
   const {
@@ -56,12 +61,12 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
 };
+
 
 export default function ModalCrearUsuario({ handleCreate }) {
   const [open, setOpen] = React.useState(false);
@@ -88,7 +93,7 @@ export default function ModalCrearUsuario({ handleCreate }) {
   return (
     <div>
       <Button variant="contained" DisableElevation onClick={handleOpen}>
-        Crear Nuevo Usuario
+        Nuevo Usuario
       </Button>
       <Modal
         aria-labelledby="spring-modal-title"
@@ -105,10 +110,19 @@ export default function ModalCrearUsuario({ handleCreate }) {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <Typography color={"black"} id="spring-modal-title" variant="h5" component="h5">
+            <Typography
+              color={"black"}
+              id="spring-modal-title"
+              variant="h5"
+              component="h5"
+            >
               Nuevo Usuario:
             </Typography>
-            <Typography  color={"black"} id="spring-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
               Nombre
             </Typography>
             <TextField
@@ -116,7 +130,11 @@ export default function ModalCrearUsuario({ handleCreate }) {
               value={newUser.name || ""}
               onChange={handleInputChange}
             />
-            <Typography  color={"black"} id="spring-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
               Apellidos
             </Typography>
             <TextField
@@ -124,7 +142,11 @@ export default function ModalCrearUsuario({ handleCreate }) {
               value={newUser.apellidos || ""}
               onChange={handleInputChange}
             />
-            <Typography  color={"black"} id="spring-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
               Telefono
             </Typography>
             <TextField
@@ -132,7 +154,11 @@ export default function ModalCrearUsuario({ handleCreate }) {
               value={newUser.tlf_usu || ""}
               onChange={handleInputChange}
             />
-            <Typography  color={"black"} id="spring-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
               Email
             </Typography>
             <TextField
@@ -140,7 +166,11 @@ export default function ModalCrearUsuario({ handleCreate }) {
               value={newUser.email || ""}
               onChange={handleInputChange}
             />
-            <Typography  color={"black"} id="spring-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
               Password
             </Typography>
             <TextField
@@ -148,18 +178,28 @@ export default function ModalCrearUsuario({ handleCreate }) {
               value={newUser.password || ""}
               onChange={handleInputChange}
             />
-            <Typography  color={"black"} id="spring-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2}}
+            >
               Role
             </Typography>
-            <TextField
+            <BasicSelect
               name="role"
               value={newUser.role || ""}
               onChange={handleInputChange}
             />
+
+            <Typography></Typography>
             <Button
               variant="contained"
               DisableElevation
-              style={{ color: "inherit", textDecoration: "none" }}
+              style={{
+                color: "inherit",
+                padding: "5px",
+                textDecoration: "none",
+              }}
               onClick={handleResponse}
             >
               Crear

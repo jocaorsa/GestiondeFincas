@@ -134,6 +134,27 @@ function AccesoAdmin() {
             >
               <Link
                 style={{ color: "inherit", textDecoration: "none" }}
+                to="/login/admin/propietarios"
+              >
+                <Button variant="contained" DisableElevation>
+                  Propietarios
+                </Button>
+              </Link>
+            </Card>
+          </Grid>
+          <Grid item>
+            <Card
+              sx={{
+                display: "flex",
+                justifyItems: "center",
+                alignContent: "center",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "5vw",
+              }}
+            >
+              <Link
+                style={{ color: "inherit", textDecoration: "none" }}
                 to="/login/admin/seguros"
               >
                 <Button variant="contained" DisableElevation>
@@ -174,10 +195,7 @@ function AccesoAdmin() {
                 height: "5vw",
               }}
             >
-              <Link
-                style={{ color: "inherit", textDecoration: "none" }}
-                to="/"
-              >
+              <Link style={{ color: "inherit", textDecoration: "none" }} to="/">
                 <Button
                   style={{ color: "inherit", textDecoration: "none" }}
                   variant="contained"

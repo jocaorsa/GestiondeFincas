@@ -64,7 +64,7 @@ const style = {
   p: 4,
 };
 
-export default function ModalModificaDonante({ user, handleUpdate }) {
+export default function ModalModificaUsuario({ user, handleUpdate }) {
   const [open, setOpen] = useState(false);
   const [editedData, setEditedData] = useState({});
   const handleOpen = () => setOpen(true);
@@ -74,8 +74,7 @@ export default function ModalModificaDonante({ user, handleUpdate }) {
     console.log(editedData);
     console.log(localStorage.getItem("token"));
     try {
-      const respuesta = await api.put(
-        `/usuario/${editedData.id}`,
+      const respuesta = await api.put(`/usuario/${editedData._id}`,
         {
           name: editedData.name,
           apellidos: editedData.apellidos,
@@ -83,7 +82,7 @@ export default function ModalModificaDonante({ user, handleUpdate }) {
           email: editedData.email,
           password: editedData.password,
           role: editedData.role,
-/*           comunidad_id: editedData.comunidad_id,
+/*        comunidad_id: editedData.comunidad_id,
         */       },
         {
           headers: { token: localStorage.getItem("token") },
@@ -136,7 +135,7 @@ export default function ModalModificaDonante({ user, handleUpdate }) {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <Typography id="spring-modal-title" variant="h4" component="h5">
+            <Typography id="spring-modal-title" variant="h5" component="h5">
               <Typography> Modifica Datos del Usuario :</Typography>
             </Typography>
             <Typography id="spring-modal-description" sx={{ mt: 2 }}>
@@ -191,6 +190,7 @@ export default function ModalModificaDonante({ user, handleUpdate }) {
               variant="contained"
               DisableElevation
               style={{ color: "inherit", textDecoration: "none" }}
+              onChange={handleModify}
             >
               Confirmar
             </Button>

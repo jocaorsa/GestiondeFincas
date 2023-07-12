@@ -6,7 +6,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-export default function DeleteModalUser({ handleDelete }) {
+export default function DeleteModalUser({ handleDelete, user }) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -20,8 +20,8 @@ export default function DeleteModalUser({ handleDelete }) {
     handleClose();
   };
   const handleAceptar = () => {
+    handleDelete(user.id);
     handleClose();
-    handleDelete();
   };
 
   return (

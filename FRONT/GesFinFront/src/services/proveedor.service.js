@@ -1,30 +1,30 @@
 import { api } from "./api";
 
 
-export const getOneUser = async () => {
-    const { data } = await api.get(`/usuario/${localStorage.id}`,{headers: {token: localStorage.getItem( 'token' ) }})
+export const getOneProveedor = async () => {
+    const { data } = await api.get(`/proveedor/${localStorage.id}`,{headers: {token: localStorage.getItem( 'token' ) }})
     console.log(data)
     return data
 }
 
-export const getAllUsers = async () => {
-    const { data } = await api.get('/usuario', {headers: {token: localStorage.getItem( 'token' ) } } )
+export const getAllProveedores = async () => {
+    const { data } = await api.get('/proveedor', {headers: {token: localStorage.getItem( 'token' ) } } )
     console.log(data)
     return data
 }
 
-export const createUser = async (newUser) => {
-    console.log(newUser)
+export const createProveedor = async (newProveedor) => {
+    console.log(newProveedor)
     try {
         const res = await api.post(
             '/auth/singup',
             {
-                name:newUser.name,
-                apellidos: newUser.apellidos,
-                tlf_usu: newUser.tlf_usu,
-                email: newUser.email,                             
-                password: newUser.password,
-                role: newUser.role,
+                name:newProveedor.name,
+                apellidos: newProveedor.apellidos,
+                tlf_usu: newProveedor.tlf_usu,
+                email: newProveedor.email,                             
+                password: newProveedor.password,
+                role: newProveedor.role,
             },
             {
                 headers: { token: localStorage.getItem('token') },
@@ -41,37 +41,37 @@ export const createUser = async (newUser) => {
 
 export const deleteOne = async (id) => {
   try {
-    const response = await api.delete(`/usuario/${id}`);
-    console.log('Usuario eliminado', response);
+    const response = await api.delete(`/proveedor/${id}`);
+    console.log('proveedor eliminado', response);
     return response.data; // Añade este return para devolver la respuesta del servidor
   } catch (error) {
-    console.error('Error eliminando usuario', error);
+    console.error('Error eliminando proveedor', error);
     throw error; // Lanza el error para que pueda ser capturado en la función que llama a deleteOne
   }
 };
 
-export const updateOneUsuario = async (id, name, apellidos, tlf_usu, email, password, role, userData) => {
-    console.log(userData)
+export const updateOneUsuario = async (id, name, apellidos, tlf_usu, email, password, role, proveedorData) => {
+    console.log(proveedorData)
       if (name.length === 0) {
-        name=userData.name
+        name=proveedorData.name
     }
     if (apellidos.length === 0) {
-        apellidos=userData.apellidos
+        apellidos=proveedorData.apellidos
     }
     if (tlf_usu.length === 0) {
-        tlf_usu=userData.tlf_usu
+        tlf_usu=proveedorData.tlf_usu
     }
     if (email.length === 0) {
-        email=userData.email
+        email=proveedorData.email
     }
     if (password.length === 0) {
-        password=userData.password
+        password=proveedorData.password
     }
     if (role.length === 0) {
-        role=userData.role
+        role=proveedorData.role
     }
     console.log(id, name, apellidos, tlf_usu, email, password, role)
-    const { data } = await api.put(`/usuario/${id}`,
+    const { data } = await api.put(`/proveedor/${id}`,
         {   "name":name,
             "apellidos":apellidos,
             "tlf_usu": tlf_usu,

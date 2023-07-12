@@ -24,5 +24,5 @@ const propietariosSchema = new Schema ({
     }]
 })
 
-const Propietarios = mongoose.model('propietarios', propietarioSchema)
+const Propietarios = mongoose.model('propietarios', propietariosSchema)
 module.exports = Propietarios

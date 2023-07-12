@@ -1,4 +1,5 @@
 import * as React from "react";
+import axios from "axios";
 import PropTypes from "prop-types";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
@@ -10,6 +11,7 @@ import { TextField } from "@mui/material";
 import { useState, useEffect } from "react";
 import { api } from "../../services/api";
 import DeleteModalUser from "./DeleteModalUser";
+import { deleteOne, updateOneUsuario } from "../../services/usuario.service";
 
 const Fade = React.forwardRef(function Fade(props, ref) {
   const {
@@ -57,8 +59,6 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
-  height: "100vh",
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
@@ -76,19 +76,16 @@ export default function SpringModal({ user, hadleUpdate }) {
     console.log(editedData);
     console.log(localStorage.getItem("token"));
     try {
-      const respuesta = await api.put(
-        `/usuarios/${editedData.id}`,
-        {
-          name: editedData.name,
-          apellidos: editedData.apellidos,
-          tlf_usu: editedData.tlf_usu,
-          email: editedData.email,
-          password: editedData.password,
-        },
-        {
-          headers: { token: localStorage.getItem("token") },
-        }
-      );
+        const respuesta = await updateOneUsuario(
+          editedData._id,
+          editedData.name,
+          editedData.apellidos,
+          editedData.tlf_usu,
+          editedData.email,
+          editedData.password,
+          editedData.role
+        );
+
       if (respuesta) {
         console.log("Datos actualizados");
         hadleUpdate();
@@ -111,27 +108,29 @@ export default function SpringModal({ user, hadleUpdate }) {
     setEditedData(user);
   }, []);
 
-  const handleDelete = async () => {
-    try {
-      const respuesta = await api.delete(`/user/${editedData.id}`, {
-        headers: { token: localStorage.getItem("token") },
-      });
-      if (respuesta) {
-        console.log("Usuario eliminado");
-        hadleUpdate();
-        handleClose();
-      } else {
-        console.error(" No se pudo elimnar al usuario");
-      }
-    } catch (error) {
-      console.error("Error al eliminar el usuario", error);
+const handleDelete = async () => {
+  try {
+    const respuesta = await deleteOne(user._id);
+
+    if (respuesta) {
+      console.log("Usuario eliminado");
+      handleClose();
+      hadleUpdate();
+    } else {
+      console.error("No se pudo eliminar al usuario");
     }
-  };
+  } catch (error) {
+    console.error("Error al eliminar el usuario", error);
+  }
+};
 
   return (
     <div>
       <Button variant="contained" DisableElevation onClick={handleOpen}>
         Editar
+      </Button>
+      <Button variant="contained" DisableElevation onClick={handleDelete}>
+        Eliminar
       </Button>
       <Modal
         aria-labelledby="spring-modal-title"
@@ -148,10 +147,19 @@ export default function SpringModal({ user, hadleUpdate }) {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <Typography  color={"black"} id="spring-modal-title" variant="h5" component="h5">
-              Nuevo Usuario:
+            <Typography
+              color={"black"}
+              id="spring-modal-title"
+              variant="h5"
+              component="h5"
+            >
+              Datos Usuario:
             </Typography>
-            <Typography  color={"black"} id="spring-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
               Nombre
             </Typography>
             <TextField
@@ -159,7 +167,11 @@ export default function SpringModal({ user, hadleUpdate }) {
               value={editedData.name || ""}
               onChange={handleInputChange}
             />
-            <Typography  color={"black"} id="spring-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
               Apellidos
             </Typography>
             <TextField
@@ -167,7 +179,11 @@ export default function SpringModal({ user, hadleUpdate }) {
               value={editedData.apellidos || ""}
               onChange={handleInputChange}
             />
-            <Typography  color={"black"} id="spring-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
               Telefono
             </Typography>
             <TextField
@@ -175,7 +191,11 @@ export default function SpringModal({ user, hadleUpdate }) {
               value={editedData.tlf_usu || ""}
               onChange={handleInputChange}
             />
-            <Typography  color={"black"} id="spring-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
               Email
             </Typography>
             <TextField
@@ -183,7 +203,11 @@ export default function SpringModal({ user, hadleUpdate }) {
               value={editedData.email || ""}
               onChange={handleInputChange}
             />
-            <Typography  color={"black"} id="spring-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
               Password
             </Typography>
             <TextField
@@ -191,7 +215,11 @@ export default function SpringModal({ user, hadleUpdate }) {
               value={editedData.password || ""}
               onChange={handleInputChange}
             />
-            <Typography  color={"black"} id="spring-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
               Role
             </Typography>
             <TextField
@@ -199,15 +227,17 @@ export default function SpringModal({ user, hadleUpdate }) {
               value={editedData.role || ""}
               onChange={handleInputChange}
             />
+            <Typography></Typography>
             <Button
               variant="contained"
               DisableElevation
-              style={{ color: "inherit", textDecoration: "none" }}
+              style={{ color: "inherit",padding:"5px", textDecoration: "none" }}
               onClick={handleModify}
             >
               Modificar
             </Button>
-            <DeleteModalUser handleDelete={handleDelete} />
+            {/*<DeleteModalUser user={user} handleDelete={handleDelete} />
+             */}
           </Box>
         </Fade>
       </Modal>
