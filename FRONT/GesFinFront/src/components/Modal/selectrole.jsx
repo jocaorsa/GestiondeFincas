@@ -1,4 +1,4 @@
-import * as React from "react";
+/* import * as React from "react";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -8,7 +8,7 @@ import Select from "@mui/material/Select";
 export default function BasicSelect() {
   const [role, setRole] = React.useState("");
 
-  const handleChange = (event) => {
+  const handleInputChange = (event) => {
     setRole(event.target.value);
   };
 
@@ -21,7 +21,7 @@ export default function BasicSelect() {
           id="demo-simple-select"
           value={role}
           label="Role"
-          onChange={handleChange}
+          onChange={handleInputChange}
         >
           <MenuItem value={10}>User</MenuItem>
           <MenuItem value={20}>Admin</MenuItem>
@@ -30,3 +30,4 @@ export default function BasicSelect() {
     </Box>
   );
 }
+ */
