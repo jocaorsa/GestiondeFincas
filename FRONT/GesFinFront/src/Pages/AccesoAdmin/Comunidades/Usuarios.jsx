@@ -1,8 +1,20 @@
 import { Box, Button, Grid } from "@mui/material";
 import Card from "@mui/material/Card";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import DataTableComunidades from "./DataTableComunidades"
-function Comunidades() {
+import DataTableUsuarios from "./DataTableComunidades";
+
+function Usuarios() {
+    const [data, setData] = useState([]);
+
+    const handleData = async () => {
+      const user = await find();
+      setData(user);
+    };
+    useEffect(() => {
+      handleData();
+    }, []);
+
   return (
     <Box
       sx={{
@@ -40,14 +52,15 @@ function Comunidades() {
           alignContent: "center",
           alignItems: "center",
           justifyContent: "center",
-          width: "50vw",
+          width: "90vw",
           height: "100%",
         }}
       >
-        <DataTableComunidades data={data} />
+        <DataTableUsuarios data={data} />
+       
       </Card>
     </Box>
   );
 }
 
-export default Comunidades;
+export default Usuarios;
