@@ -1,4 +1,5 @@
 import * as React from "react";
+import axios from "axios";
 import PropTypes from "prop-types";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
@@ -7,9 +8,10 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useSpring, animated } from "@react-spring/web";
 import { TextField } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { api } from "../../services/api";
-import { useEffect } from "react";
+import DeleteModalIncidencia from "./DeleteModalIncidencia";
+import { deleteOne, updateOneIncidencia } from "../../services/incidencia.service";
 
 const Fade = React.forwardRef(function Fade(props, ref) {
   const {
@@ -57,16 +59,16 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
 };
 
-export default function ModalModificaUsuario({ user, handleUpdate }) {
-  const [open, setOpen] = useState(false);
+export default function SpringModal({ user, hadleUpdate }) {
+  const [open, setOpen] = React.useState(false);
   const [editedData, setEditedData] = useState({});
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -74,23 +76,22 @@ export default function ModalModificaUsuario({ user, handleUpdate }) {
     console.log(editedData);
     console.log(localStorage.getItem("token"));
     try {
-      const respuesta = await api.put(`/usuario/${editedData._id}`,
-        {
-          name: editedData.name,
-          apellidos: editedData.apellidos,
-          tlf_usu: editedData.tlf_usu,
-          email: editedData.email,
-          password: editedData.password,
-          role: editedData.role,
-/*        comunidad_id: editedData.comunidad_id,
-        */       },
-        {
-          headers: { token: localStorage.getItem("token") },
-        }
-      );
+        const respuesta = await updateOneIncidencia(
+          editedData._id,
+          editedData.num_incidencia,
+          editedData.comunidad_id,
+          editedData.propiedad_id,
+          editedData.fecha_creacion,
+          editedData.seguro,
+          editedData.estado,
+          editedData.descripcion,
+          editedData.img,
+          editedData.proveedor_id
+        );
+
       if (respuesta) {
         console.log("Datos actualizados");
-        handleUpdate();
+        hadleUpdate();
         handleClose();
       } else {
         console.error("Fallo al actualizar datos");
@@ -107,18 +108,32 @@ export default function ModalModificaUsuario({ user, handleUpdate }) {
     }));
   };
   useEffect(() => {
-    setEditedData(user);
+    setEditedData(incidencia);
   }, []);
+
+const handleDelete = async () => {
+  try {
+    const respuesta = await deleteOne(incidencia._id);
+
+    if (respuesta) {
+      console.log("Incidencia eliminado");
+      handleClose();
+      hadleUpdate();
+    } else {
+      console.error("No se pudo eliminar al incidencia");
+    }
+  } catch (error) {
+    console.error("Error al eliminar el incidencia", error);
+  }
+};
 
   return (
     <div>
-      <Button
-        onClick={handleOpen}
-        variant="contained"
-        DisableElevation
-        style={{ color: "inherit", textDecoration: "none" }}
-        >
-        Editar
+      <Button variant="contained" DisableElevation onClick={handleOpen}>
+        + info
+      </Button>
+      <Button variant="contained" DisableElevation onClick={handleDelete}>
+        Eliminar
       </Button>
       <Modal
         aria-labelledby="spring-modal-title"
@@ -135,10 +150,19 @@ export default function ModalModificaUsuario({ user, handleUpdate }) {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <Typography id="spring-modal-title" variant="h5" component="h5">
-              <Typography> Modifica Datos del Usuario :</Typography>
+            <Typography
+              color={"black"}
+              id="spring-modal-title"
+              variant="h5"
+              component="h5"
+            >
+              Datos Incidencia:
             </Typography>
-            <Typography id="spring-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
               Nombre
             </Typography>
             <TextField
@@ -146,7 +170,11 @@ export default function ModalModificaUsuario({ user, handleUpdate }) {
               value={editedData.name || ""}
               onChange={handleInputChange}
             />
-            <Typography id="spring-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
               Apellidos
             </Typography>
             <TextField
@@ -154,7 +182,11 @@ export default function ModalModificaUsuario({ user, handleUpdate }) {
               value={editedData.apellidos || ""}
               onChange={handleInputChange}
             />
-            <Typography id="spring-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
               Telefono
             </Typography>
             <TextField
@@ -162,7 +194,11 @@ export default function ModalModificaUsuario({ user, handleUpdate }) {
               value={editedData.tlf_usu || ""}
               onChange={handleInputChange}
             />
-            <Typography id="spring-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
               Email
             </Typography>
             <TextField
@@ -170,30 +206,41 @@ export default function ModalModificaUsuario({ user, handleUpdate }) {
               value={editedData.email || ""}
               onChange={handleInputChange}
             />
-            <Typography id="spring-modal-description" sx={{ mt: 2 }}>
-              password
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
+              Password
             </Typography>
             <TextField
               name="password"
               value={editedData.password || ""}
               onChange={handleInputChange}
             />
-            <Typography id="spring-modal-description" sx={{ mt: 2 }}>
-              role
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
+              Role
             </Typography>
             <TextField
               name="role"
               value={editedData.role || ""}
               onChange={handleInputChange}
             />
+            <Typography></Typography>
             <Button
               variant="contained"
               DisableElevation
-              style={{ color: "inherit", textDecoration: "none" }}
-              onChange={handleModify}
+              style={{ color: "inherit",padding:"5px", textDecoration: "none" }}
+              onClick={handleModify}
             >
-              Confirmar
+              Modificar
             </Button>
+            {/*<DeleteModalUser user={user} handleDelete={handleDelete} />
+             */}
           </Box>
         </Fade>
       </Modal>

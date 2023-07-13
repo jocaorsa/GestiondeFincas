@@ -8,12 +8,12 @@ import Typography from "@mui/material/Typography";
 import { useSpring, animated } from "@react-spring/web";
 import { TextField } from "@mui/material";
 import { useState } from "react";
-import { createUser } from "../../services/usuario.service";
+import { createIncidencia} from "../../services/incidencia.service";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import BasicSelect from "./selectrole";
+//import BasicSelect from "./selectrole";
 
 const Fade = React.forwardRef(function Fade(props, ref) {
   const {
@@ -68,32 +68,32 @@ const style = {
 };
 
 
-export default function ModalCrearUsuario({ handleCreate }) {
+export default function ModalCrearIncidencia({ handleCreate }) {
   const [open, setOpen] = React.useState(false);
-  const [newUser, setNewUser] = useState({});
+  const [newIncidencia, setNewIncidencia] = useState({});
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setNewUser((prevData) => ({
+    setNewIncidencia((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
 
   const handleResponse = async () => {
-    const res = await createUser(newUser);
+    const res = await createIncidencia(newIncidencia);
     handleClose();
     handleCreate();
-    console.log("Usuario creado");
+    console.log("Incidencia creada");
   };
 
   return (
     <div>
       <Button variant="contained" DisableElevation onClick={handleOpen}>
-        Nuevo Usuario
+        Nueva Incidencia
       </Button>
       <Modal
         aria-labelledby="spring-modal-title"
@@ -123,11 +123,11 @@ export default function ModalCrearUsuario({ handleCreate }) {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Nombre
+              Num Incidencia
             </Typography>
             <TextField
               name="name"
-              value={newUser.name || ""}
+              value={newIncidencia.num_incidencia || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -135,11 +135,11 @@ export default function ModalCrearUsuario({ handleCreate }) {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Apellidos
+              Comunidad
             </Typography>
             <TextField
               name="apellidos"
-              value={newUser.apellidos || ""}
+              value={newIncidencia.comunidad_id || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -147,11 +147,11 @@ export default function ModalCrearUsuario({ handleCreate }) {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Telefono
+              Propiedad
             </Typography>
             <TextField
               name="tlf_usu"
-              value={newUser.tlf_usu || ""}
+              value={newIncidencia.propiedad_id || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -159,11 +159,11 @@ export default function ModalCrearUsuario({ handleCreate }) {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Email
+              Fecha de Creaciom
             </Typography>
             <TextField
-              name="email"
-              value={newUser.email || ""}
+              name="fecha_creacion"
+              value={newIncidencia.fecha_creacion || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -171,11 +171,11 @@ export default function ModalCrearUsuario({ handleCreate }) {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Password
+              Seguro
             </Typography>
             <TextField
               name="password"
-              value={newUser.password || ""}
+              value={newIncidencia.seguro || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -183,14 +183,49 @@ export default function ModalCrearUsuario({ handleCreate }) {
               id="spring-modal-description"
               sx={{ mt: 2}}
             >
-              Role
+              Estado
             </Typography>
             <BasicSelect
-              name="role"
-              value={newUser.role || ""}
+              name="estado"
+              value={newIncidencia.estado || ""}
               onChange={handleInputChange}
             />
-
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2}}
+            >
+              Descripcion
+            </Typography>
+            <BasicSelect
+              name="estado"
+              value={newIncidencia.descripcion || ""}
+              onChange={handleInputChange}
+            />
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2}}
+            >
+              Imagen
+            </Typography>
+            <BasicSelect
+              name="img"
+              value={newIncidencia.img || ""}
+              onChange={handleInputChange}
+            />
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2}}
+            >
+              Proveedor
+            </Typography>
+            <BasicSelect
+              name="proveedor_id"
+              value={newIncidencia.proveedor_id || ""}
+              onChange={handleInputChange}
+            />
             <Typography></Typography>
             <Button
               variant="contained"

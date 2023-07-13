@@ -6,7 +6,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-export default function DeleteModalUser({ handleDelete, user }) {
+export default function DeleteModalIncidencia({ handleDelete, incidencia }) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -20,7 +20,7 @@ export default function DeleteModalUser({ handleDelete, user }) {
     handleClose();
   };
   const handleAceptar = () => {
-    handleDelete(user.id);
+    handleDelete(incidencia.id);
     handleClose();
   };
 
@@ -32,7 +32,7 @@ export default function DeleteModalUser({ handleDelete, user }) {
         DisableElevation
         onClick={handleClickOpen}
       >
-        Eliminar Usuario
+        Eliminar Incidencia
       </Button>
       <Dialog
         open={open}
@@ -45,7 +45,7 @@ export default function DeleteModalUser({ handleDelete, user }) {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Al aceptar eliminarás permanentemente al usuario de la base de datos
+            Al aceptar eliminarás permanentemente al incidencia de la base de datos
           </DialogContentText>
         </DialogContent>
         <DialogActions>
