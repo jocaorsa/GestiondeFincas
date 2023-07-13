@@ -17,14 +17,14 @@ export const createSeguro = async (newSeguro) => {
     console.log(newSeguro)
     try {
         const res = await api.post(
-            '/auth/singup',
+            '/seguro',
             {
-                name:newSeguro.name,
-                apellidos: newSeguro.apellidos,
-                tlf_usu: newSeguro.tlf_usu,
-                email: newSeguro.email,                             
-                password: newSeguro.password,
-                role: newSeguro.role,
+                compania:newSeguro.compania,
+                poliza: newSeguro.poliza,
+                tlf_seg: newSeguro.tlf_seg,
+                fecha_contrato: newSeguro.fecha_contrato,                             
+                fecha_fin_contrato: newSeguro.fecha_fin_contrato,
+                mediador_id: newSeguro.mediador_id,
             },
             {
                 headers: { token: localStorage.getItem('token') },
@@ -50,34 +50,34 @@ export const deleteOne = async (id) => {
   }
 };
 
-export const updateOneSeguro = async (id, name, apellidos, tlf_usu, email, password, role, seguroData) => {
+export const updateOneSeguro = async (id, compania, poliza, tlf_seg, fecha_contrato, fecha_fin_contrato, mediador_id, seguroData) => {
     console.log(seguroData)
-      if (name.length === 0) {
-        name=seguroData.name
+      if (compania.length === 0) {
+        compania=seguroData.compania
     }
-    if (apellidos.length === 0) {
-        apellidos=seguroData.apellidos
+    if (poliza.length === 0) {
+        poliza=seguroData.poliza
     }
-    if (tlf_usu.length === 0) {
-        tlf_usu=seguroData.tlf_usu
+    if (tlf_seg.length === 0) {
+        tlf_seg=seguroData.tlf_seg
     }
-    if (email.length === 0) {
-        email=seguroData.email
+    if (fecha_contrato.length === 0) {
+        fecha_contrato=seguroData.fecha_contrato
     }
-    if (password.length === 0) {
-        password=seguroData.password
+    if (fecha_fin_contrato.length === 0) {
+        fecha_fin_contrato=seguroData.fecha_fin_contrato
     }
-    if (role.length === 0) {
-        role=seguroData.role
+    if (mediador_id.length === 0) {
+        mediador_id=seguroData.mediador_id
     }
-    console.log(id, name, apellidos, tlf_usu, email, password, role)
+    console.log(id, compania, poliza, tlf_seg, fecha_contrato, fecha_fin_contrato, mediador_id)
     const { data } = await api.put(`/seguro/${id}`,
-        {   "name":name,
-            "apellidos":apellidos,
-            "tlf_usu": tlf_usu,
-            "email": email,
-            "password": password,
-            "role": role
+        {   "compania":compania,
+            "poliza":poliza,
+            "tlf_seg": tlf_seg,
+            "fecha_contrato": fecha_contrato,
+            "fecha_fin_contrato": fecha_fin_contrato,
+            "mediador_id": mediador_id
         }, 
         {
         headers: { token: localStorage.getItem('token') }  

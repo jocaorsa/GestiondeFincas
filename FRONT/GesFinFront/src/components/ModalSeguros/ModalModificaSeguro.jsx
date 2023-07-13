@@ -64,7 +64,7 @@ const style = {
   p: 4,
 };
 
-export default function ModalModificaUsuario({ user, handleUpdate }) {
+export default function ModalModificaSeguro({ seguro, handleUpdate }) {
   const [open, setOpen] = useState(false);
   const [editedData, setEditedData] = useState({});
   const handleOpen = () => setOpen(true);
@@ -74,7 +74,7 @@ export default function ModalModificaUsuario({ user, handleUpdate }) {
     console.log(editedData);
     console.log(localStorage.getItem("token"));
     try {
-      const respuesta = await api.put(`/usuario/${editedData._id}`,
+      const respuesta = await api.put(`/seguro/${editedData._id}`,
         {
           name: editedData.name,
           apellidos: editedData.apellidos,
@@ -107,7 +107,7 @@ export default function ModalModificaUsuario({ user, handleUpdate }) {
     }));
   };
   useEffect(() => {
-    setEditedData(user);
+    setEditedData(seguro);
   }, []);
 
   return (
@@ -136,54 +136,54 @@ export default function ModalModificaUsuario({ user, handleUpdate }) {
         <Fade in={open}>
           <Box sx={style}>
             <Typography id="spring-modal-title" variant="h5" component="h5">
-              <Typography> Modifica Datos del Usuario :</Typography>
+              <Typography> Modifica Datos del Seguro :</Typography>
             </Typography>
             <Typography id="spring-modal-description" sx={{ mt: 2 }}>
-              Nombre
+              Compañia
             </Typography>
             <TextField
-              name="name"
-              value={editedData.name || ""}
+              name="compania"
+              value={editedData.compania || ""}
               onChange={handleInputChange}
             />
             <Typography id="spring-modal-description" sx={{ mt: 2 }}>
-              Apellidos
+              Poliza
             </Typography>
             <TextField
-              name="apellidos"
-              value={editedData.apellidos || ""}
+              name="poliza"
+              value={editedData.poliza || ""}
               onChange={handleInputChange}
             />
             <Typography id="spring-modal-description" sx={{ mt: 2 }}>
               Telefono
             </Typography>
             <TextField
-              name="tlf_usu"
-              value={editedData.tlf_usu || ""}
+              name="tlf_seg"
+              value={editedData.tlf_seg || ""}
               onChange={handleInputChange}
             />
             <Typography id="spring-modal-description" sx={{ mt: 2 }}>
-              Email
+              Fecha Contrato
             </Typography>
             <TextField
-              name="email"
-              value={editedData.email || ""}
+              name="fecha_contrato"
+              value={editedData.fecha_contrato || ""}
               onChange={handleInputChange}
             />
             <Typography id="spring-modal-description" sx={{ mt: 2 }}>
-              password
+              Fecha Fin Contrato
             </Typography>
             <TextField
-              name="password"
-              value={editedData.password || ""}
+              name="fecha_fin_contrato"
+              value={editedData.fecha_fin_contrato || ""}
               onChange={handleInputChange}
             />
             <Typography id="spring-modal-description" sx={{ mt: 2 }}>
-              role
+              Mediador
             </Typography>
             <TextField
-              name="role"
-              value={editedData.role || ""}
+              name="mediador_id"
+              value={editedData.mediador_id || ""}
               onChange={handleInputChange}
             />
             <Button

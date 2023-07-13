@@ -41,7 +41,7 @@ export default function DeleteModalComunidad({ handleDelete, comunidad }) {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"¿Estas seguro de que quieres elminar este usuario?"}
+          {"¿Estas seguro de que quieres elminar esta comunidad?"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">

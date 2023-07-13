@@ -2,7 +2,19 @@ import { Box, Button, Grid } from "@mui/material";
 import Card from "@mui/material/Card";
 import { Link } from "react-router-dom";
 import DataTableComunidades from "./DataTableComunidades"
+import { useState } from "react";
+import { useEffect } from "react";
+
 function Comunidades() {
+    const [data, setData] = useState([]);
+
+    const handleData = async () => {
+      const user = await find();
+      setData(user);
+    };
+    useEffect(() => {
+      handleData();
+    }, []);
   return (
     <Box
       sx={{

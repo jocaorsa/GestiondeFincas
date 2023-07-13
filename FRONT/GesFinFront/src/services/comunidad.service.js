@@ -17,15 +17,18 @@ export const createComunidad = async (newComunidad) => {
     console.log(newComunidad)
     try {
         const res = await api.post(
-            '/auth/singup',
+            '/comunidad',
             {
-                name:newComunidad.name,
-                apellidos: newComunidad.apellidos,
-                tlf_usu: newComunidad.tlf_usu,
-                email: newComunidad.email,                             
-                password: newComunidad.password,
-                role: newComunidad.role,
-            },
+                nombre:newComunidad.nombre,
+                direccion: newComunidad.direccion,
+                tlf_com: newComunidad.tlf_com,
+                cif: newComunidad.cif,                             
+                per_contacto: newComunidad.per_contacto,
+                ascensor: newComunidad.ascensor,
+                localizacion: newComunidad.localizacion,                             
+                img: newComunidad.img,
+/*                 seguro_id: newComunidad.seguro_id
+ */            },
             {
                 headers: { token: localStorage.getItem('token') },
             }
@@ -50,34 +53,47 @@ export const deleteOne = async (id) => {
   }
 };
 
-export const updateOneComunidad = async (id, name, apellidos, tlf_usu, email, password, role, comunidadData) => {
+export const updateOneComunidad = async (id, nombre, direccion, tlf_com, cif, per_contacto, ascensor,localizacion, img, seguro_id, comunidadData) => {
     console.log(comunidadData)
-      if (name.length === 0) {
-        name=comunidadData.name
+      if (nombre.length === 0) {
+        nombre=comunidadData.nombre
     }
-    if (apellidos.length === 0) {
-        apellidos=comunidadData.apellidos
+    if (direccion.length === 0) {
+        direccion=comunidadData.direccion
     }
-    if (tlf_usu.length === 0) {
-        tlf_usu=comunidadData.tlf_usu
+    if (tlf_com.length === 0) {
+        tlf_com=comunidadData.tlf_com
     }
-    if (email.length === 0) {
-        email=comunidadData.email
+    if (cif.length === 0) {
+        cif=comunidadData.cif
     }
-    if (password.length === 0) {
-        password=comunidadData.password
+    if (per_contacto.length === 0) {
+        per_contacto=comunidadData.per_contacto
     }
-    if (role.length === 0) {
-        role=comunidadData.role
+    if (ascensor.length === 0) {
+        ascensor=comunidadData.ascensor
     }
-    console.log(id, name, apellidos, tlf_usu, email, password, role)
+    if (localizacion.length === 0) {
+        cif=comunidadData.localizacion
+    }
+    if (img.length === 0) {
+        img=comunidadData.img
+    }
+    /* if (seguro_id.length === 0) {
+        seguro_id=comunidadData.seguro_id
+    } */
+    console.log(id, nombre, direccion, tlf_com, cif, per_contacto, ascensor,localizacion, img, seguro_id)
     const { data } = await api.put(`/comunidad/${id}`,
-        {   "name":name,
-            "apellidos":apellidos,
-            "tlf_usu": tlf_usu,
-            "email": email,
-            "password": password,
-            "role": role
+        {   "nombre":nombre,
+            "direccion":direccion,
+            "tlf_com":tlf_com,
+            "cif":cif,
+            "per_contacto":per_contacto,
+            "ascensor":ascensor,
+            "localizacion":localizacion,
+            "img":img
+            /* "seguro_id":seguro_id */
+            
         }, 
         {
         headers: { token: localStorage.getItem('token') }  

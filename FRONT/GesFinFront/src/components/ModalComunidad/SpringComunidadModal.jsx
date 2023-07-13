@@ -66,9 +66,23 @@ const style = {
 };
 
 export default function SpringModal({ comunidad, hadleUpdate }) {
-  const [open, setOpen] = React.useState(false);
-  const [editedData, setEditedData] = useState({});
 
+/*     let startData = {
+      _id: '',
+      nombre: '',
+      direccion: '',
+      tlf_com: '',
+      cif: '',                             
+      per_contacto: '',
+      ascensor: '',
+      localizacion: '',                             
+      img: '',
+      seguro_id: ''
+    } */
+
+  const [open, setOpen] = React.useState(false);
+  const [editedData, setEditedData] = useState(comunidad);
+    
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -78,12 +92,15 @@ export default function SpringModal({ comunidad, hadleUpdate }) {
     try {
         const respuesta = await updateOneComunidad(
           editedData._id,
-          editedData.name,
-          editedData.apellidos,
-          editedData.tlf_usu,
-          editedData.email,
-          editedData.password,
-          editedData.role
+          editedData.nombre,
+          editedData.direccion,
+          editedData.tlf_com,
+          editedData.cif,                             
+          editedData.per_contacto,
+          editedData.ascensor,
+          editedData.localizacion,                             
+          editedData.img/* ,
+          editedData.seguro_id */
         );
 
       if (respuesta) {
@@ -113,14 +130,14 @@ const handleDelete = async () => {
     const respuesta = await deleteOne(comunidad._id);
 
     if (respuesta) {
-      console.log("Usuario eliminado");
+      console.log("Comunidad eliminada");
       handleClose();
       hadleUpdate();
     } else {
-      console.error("No se pudo eliminar al usuario");
+      console.error("No se pudo eliminar al Comunidad");
     }
   } catch (error) {
-    console.error("Error al eliminar el usuario", error);
+    console.error("Error al eliminar el Comunidad", error);
   }
 };
 
@@ -160,11 +177,11 @@ const handleDelete = async () => {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Nombre
+              Nombre Comunidad
             </Typography>
             <TextField
-              name="name"
-              value={editedData.name || ""}
+              name="nombre"
+              value={editedData.nombre || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -251,7 +268,7 @@ const handleDelete = async () => {
               value={editedData.img || ""}
               onChange={handleInputChange}
             />
-            <Typography
+            {/* <Typography
               color={"black"}
               id="spring-modal-description"
               sx={{ mt: 2 }}
@@ -262,7 +279,7 @@ const handleDelete = async () => {
               name="seguro_id"
               value={editedData.seguro_id || ""}
               onChange={handleInputChange}
-            />
+            /> */}
             <Typography></Typography>
             <Button
               variant="contained"

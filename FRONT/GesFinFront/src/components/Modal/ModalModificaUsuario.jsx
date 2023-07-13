@@ -82,8 +82,8 @@ export default function ModalModificaUsuario({ user, handleUpdate }) {
           email: editedData.email,
           password: editedData.password,
           role: editedData.role,
-/*        comunidad_id: editedData.comunidad_id,
-        */       },
+          comunidad_id: editedData.comunidad_id,
+         },
         {
           headers: { token: localStorage.getItem("token") },
         }

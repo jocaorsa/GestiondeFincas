@@ -5,7 +5,7 @@ import { getAllComunidades } from "../../../services/comunidad.service";
 import { Link } from "react-router-dom";
 import ModalCrearComunidad from "../../../components/ModalComunidad/NuevaComunidadModal";
 import Search from "../../../components/Search/search";
-import SpringComunidadModal from "../../../components/Modal/SpringUserModal";
+import SpringComunidadModal from "../../../components/ModalComunidad/SpringComunidadModal";
 
 export default function DataTableComunidades({ data }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -31,7 +31,7 @@ export default function DataTableComunidades({ data }) {
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
   };
-
+console.log(comunidades)
   const filteredData = () => {
     const query = searchQuery.toLowerCase();
     if (query.length > 0) {
@@ -47,7 +47,7 @@ export default function DataTableComunidades({ data }) {
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
             <TableCell size="small" component="th" scope="ele">
-              {ele.name}
+              {ele.nombre}
             </TableCell>
             <TableCell size="small" align="right">
               {ele.direccion}
@@ -70,9 +70,9 @@ export default function DataTableComunidades({ data }) {
             <TableCell size="small" align="right">
               {ele.img}
             </TableCell>
-            <TableCell size="small" align="right">
+             { <TableCell size="small" align="right">
               {ele.seguro_id}
-            </TableCell>
+            </TableCell> } 
             <TableCell>
               <SpringComunidadModal comunidades={ele} hadleUpdate={handleUpdate} />
             </TableCell>
@@ -81,13 +81,14 @@ export default function DataTableComunidades({ data }) {
       });
     } else {
       return comunidades.map((ele) => {
+        console.log(ele)
         return (
           <TableRow
             key={ele.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
             <TableCell size="small" component="th" scope="ele">
-              {ele.name}
+              {ele.nombre}
             </TableCell>
             <TableCell size="small" align="right">
               {ele.direccion}
@@ -110,12 +111,12 @@ export default function DataTableComunidades({ data }) {
             <TableCell size="small" align="right">
               {ele.img}
             </TableCell>
-            <TableCell size="small" align="right">
+             { <TableCell size="small" align="right">
               {ele.seguro_id}
-            </TableCell>
+            </TableCell> }
             <TableCell>
               <SpringComunidadModal
-                comunidades={ele}
+                comunidad={ele}
                 hadleUpdate={handleUpdate}
               />
             </TableCell>

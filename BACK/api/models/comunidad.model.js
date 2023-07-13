@@ -2,7 +2,7 @@ const mongoose= require('mongoose')
 const Schema = mongoose.Schema
 
 const comunidadSchema = new Schema ({
-    name: {
+    nombre: {
         type: String
     },
     direccion: {

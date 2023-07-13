@@ -73,10 +73,9 @@ export default function ModalModificaComunidad({ comunidad, handleUpdate }) {
     console.log(editedData);
     console.log(localStorage.getItem("token"));
     try {
-      const respuesta = await api.put(
-        `/comunidad/${editedData._id}`,
+      const respuesta = await api.put(`/comunidad/${editedData._id}`,
         {
-          name: editedData.name,
+          nombre: editedData.nombre,
           direccion: editedData.direccion,
           cif: editedData.cif,
           tlf_com: editedData.tlf_com,
@@ -84,8 +83,8 @@ export default function ModalModificaComunidad({ comunidad, handleUpdate }) {
           ascensor: editedData.ascensor,
           localizacion: editedData.localizacion,
           img: editedData.img,
-          seguro_id: editedData.seguro_id,
-        },
+/*           seguro_id: editedData.seguro_id,
+ */        },
         {
           headers: { token: localStorage.getItem("token") },
         }
@@ -144,8 +143,8 @@ export default function ModalModificaComunidad({ comunidad, handleUpdate }) {
               Nombre
             </Typography>
             <TextField
-              name="name"
-              value={editedData.name || ""}
+              name="nombre"
+              value={editedData.nombre || ""}
               onChange={handleInputChange}
             />
             <Typography id="spring-modal-description" sx={{ mt: 2 }}>
@@ -204,14 +203,14 @@ export default function ModalModificaComunidad({ comunidad, handleUpdate }) {
               value={editedData.img || ""}
               onChange={handleInputChange}
             />
-            <Typography id="spring-modal-description" sx={{ mt: 2 }}>
+           {/*  <Typography id="spring-modal-description" sx={{ mt: 2 }}>
               Seguro
             </Typography>
             <TextField
               name="seguro_id"
               value={editedData.seguro_id || ""}
               onChange={handleInputChange}
-            />
+            /> */}
             <Button
               variant="contained"
               DisableElevation

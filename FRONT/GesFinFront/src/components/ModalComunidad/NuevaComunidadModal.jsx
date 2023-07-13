@@ -123,11 +123,11 @@ export default function ModalCrearComunidad({ handleCreate }) {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Nombre
+              Nombre Comunidad
             </Typography>
             <TextField
-              name="name"
-              value={newCom.name || ""}
+              name="nombre"
+              value={newCom.nombre || ""}
               onChange={handleInputChange}
             />
             <Typography

@@ -1,5 +1,4 @@
 import * as React from "react";
-import axios from "axios";
 import PropTypes from "prop-types";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
@@ -8,10 +7,13 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useSpring, animated } from "@react-spring/web";
 import { TextField } from "@mui/material";
-import { useState, useEffect } from "react";
-import { api } from "../../services/api";
-import DeleteModalUser from "./DeleteModalUser";
-import { deleteOne, updateOneUsuario } from "../../services/usuario.service";
+import { useState } from "react";
+import { createSeguro } from "../../services/seguro.service";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+//import BasicSelect from "./selectrole";
 
 const Fade = React.forwardRef(function Fade(props, ref) {
   const {
@@ -65,72 +67,33 @@ const style = {
   p: 4,
 };
 
-export default function SpringModal({ user, hadleUpdate }) {
+
+export default function ModalCrearUsuario({ handleCreate }) {
   const [open, setOpen] = React.useState(false);
-  const [editedData, setEditedData] = useState({});
+  const [newSeguro, setNewSeguro] = useState({});
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const handleModify = async () => {
-    console.log(editedData);
-    console.log(localStorage.getItem("token"));
-    try {
-        const respuesta = await updateOneUsuario(
-          editedData._id,
-          editedData.name,
-          editedData.apellidos,
-          editedData.tlf_usu,
-          editedData.email,
-          editedData.password,
-          editedData.role
-        );
-
-      if (respuesta) {
-        console.log("Datos actualizados");
-        hadleUpdate();
-        handleClose();
-      } else {
-        console.error("Fallo al actualizar datos");
-      }
-    } catch (error) {
-      console.error("Fallo al actualizar los datos", error);
-    }
-  };
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setEditedData((prevData) => ({
+    setNewSeguro((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
-  useEffect(() => {
-    setEditedData(user);
-  }, []);
 
-const handleDelete = async () => {
-  try {
-    const respuesta = await deleteOne(user._id);
-
-    if (respuesta) {
-      console.log("Usuario eliminado");
-      handleClose();
-      hadleUpdate();
-    } else {
-      console.error("No se pudo eliminar al usuario");
-    }
-  } catch (error) {
-    console.error("Error al eliminar el usuario", error);
-  }
-};
+  const handleResponse = async () => {
+    const res = await createSeguro(newSeguro);
+    handleClose();
+    handleCreate();
+    console.log("Seguro creado");
+  };
 
   return (
     <div>
       <Button variant="contained" DisableElevation onClick={handleOpen}>
-        Editar
-      </Button>
-      <Button variant="contained" DisableElevation onClick={handleDelete}>
-        Eliminar
+        Nuevo Seguro
       </Button>
       <Modal
         aria-labelledby="spring-modal-title"
@@ -153,18 +116,18 @@ const handleDelete = async () => {
               variant="h5"
               component="h5"
             >
-              Datos Usuario:
+              Nuevo Seguro:
             </Typography>
             <Typography
               color={"black"}
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Nombre
+              Compañia
             </Typography>
             <TextField
-              name="name"
-              value={editedData.name || ""}
+              name="compania"
+              value={newSeguro.compania || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -172,11 +135,11 @@ const handleDelete = async () => {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Apellidos
+              Poliza
             </Typography>
             <TextField
-              name="apellidos"
-              value={editedData.apellidos || ""}
+              name="poliza"
+              value={newSeguro.poliza || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -187,8 +150,8 @@ const handleDelete = async () => {
               Telefono
             </Typography>
             <TextField
-              name="tlf_usu"
-              value={editedData.tlf_usu || ""}
+              name="tlf_seg"
+              value={newSeguro.tlf_seg || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -196,11 +159,11 @@ const handleDelete = async () => {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Email
+              Fecha Contrato
             </Typography>
             <TextField
-              name="email"
-              value={editedData.email || ""}
+              name="fecha_contrato"
+              value={newSeguro.fecha_contrato || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -208,11 +171,11 @@ const handleDelete = async () => {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Password
+              Fecha Fin Contrato
             </Typography>
             <TextField
-              name="password"
-              value={editedData.password || ""}
+              name="fecha_fin_contrato"
+              value={newSeguro.fecha_fin_contrato || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -220,24 +183,25 @@ const handleDelete = async () => {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Role
+              Mediador
             </Typography>
             <TextField
-              name="role"
-              value={editedData.role || ""}
+              name="mediador_id"
+              value={newSeguro.mediador_id || ""}
               onChange={handleInputChange}
             />
-            <Typography></Typography>
             <Button
               variant="contained"
               DisableElevation
-              style={{ color: "inherit",padding:"5px", textDecoration: "none" }}
-              onClick={handleModify}
+              style={{
+                color: "inherit",
+                padding: "5px",
+                textDecoration: "none",
+              }}
+              onClick={handleResponse}
             >
-              Modificar
+              Crear
             </Button>
-            {/*<DeleteModalUser user={user} handleDelete={handleDelete} />
-             */}
           </Box>
         </Fade>
       </Modal>
