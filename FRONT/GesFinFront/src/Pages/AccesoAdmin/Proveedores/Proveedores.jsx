@@ -1,8 +1,20 @@
 import { Box, Button, Grid } from "@mui/material";
 import Card from "@mui/material/Card";
+import { useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import DataTableProveedores from "./DataTableProveedores";
 
 function Proveedores() {
+      const [data, setData] = useState([]);
+
+      const handleData = async () => {
+        const comunidad = await find();
+        setData(comunidad);
+      };
+      useEffect(() => {
+        handleData();
+      }, []);
   return (
     <Box
       sx={{
@@ -44,23 +56,7 @@ function Proveedores() {
           height: "100%",
         }}
       >
-        Pequeño listado de incidencias
-        <Link
-          style={{ color: "inherit", textDecoration: "none" }}
-          to="/login/admin/"
-        >
-          <Button variant="contained" DisableElevation>
-            volver
-          </Button>
-        </Link>
-        <Link
-          style={{ color: "inherit", textDecoration: "none" }}
-          to="/login/admin/proveedores"
-        >
-          <Button variant="contained" DisableElevation>
-            editar
-          </Button>
-        </Link>
+        <DataTableProveedores data={data} />
       </Card>
     </Box>
   );

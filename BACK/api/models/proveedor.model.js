@@ -2,7 +2,7 @@ const mongoose= require('mongoose')
 const Schema = mongoose.Schema
 
 const proveedorSchema = new Schema ({
-    name: {
+    nombre: {
         type: String
     },
     direccion: {
@@ -35,5 +35,5 @@ const proveedorSchema = new Schema ({
 })
 
 
-const Proveedor = mongoose.model('proveedorProveedor', proveedorSchema)
+const Proveedor = mongoose.model('proveedor', proveedorSchema)
 module.exports = Proveedor

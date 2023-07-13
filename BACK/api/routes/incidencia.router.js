@@ -8,10 +8,10 @@ const{ getOneIncidencia,
     } = require ('../controllers/incidencia.controller')
 
 router
-    .get('/:id', getOneIncidencia)
+    .get('/:incidenciaId', getOneIncidencia)
     .get('/', getAllIncidencia)
     .post('/', createIncidencia)
-    .put('/', updateIncidencia)
-    .delete('/:id', deleteIncidencia)  
+    .put('/:incidenciaId', updateIncidencia)
+    .delete('/:incidenciaId', deleteIncidencia)  
     
     module.exports = router

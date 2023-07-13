@@ -10,8 +10,8 @@ import { useSpring, animated } from "@react-spring/web";
 import { TextField } from "@mui/material";
 import { useState, useEffect } from "react";
 import { api } from "../../services/api";
-import DeleteModalSeguro from "./DeleteModalSeguro";
-import { deleteOne, updateOneSeguro } from "../../services/seguro.service";
+import DeleteModalProveedor from "./DeleteModalProveedor";
+import { deleteOne, updateOneProveedor } from "../../services/proveedor.service.js";
 
 const Fade = React.forwardRef(function Fade(props, ref) {
   const {
@@ -65,7 +65,7 @@ const style = {
   p: 4,
 };
 
-export default function SpringModal({ seguro, hadleUpdate }) {
+export default function SpringModal({ proveedor, hadleUpdate }) {
   const [open, setOpen] = React.useState(false);
   const [editedData, setEditedData] = useState({});
 
@@ -76,14 +76,16 @@ export default function SpringModal({ seguro, hadleUpdate }) {
     console.log(editedData);
     console.log(localStorage.getItem("token"));
     try {
-        const respuesta = await updateOneSeguro(
+        const respuesta = await updateOneProveedor(
           editedData._id,
-          editedData.compania,
-          editedData.poliza,
-          editedData.tlf_seg,
-          editedData.fecha_contrato,
-          editedData.fecha_fin_contrato,
-          /* editedData.mediador_id */
+          editedData.nombre,
+          editedData.direccion,
+          editedData.tlf_prov,
+          editedData.cif,
+          editedData.per_contacto,
+          editedData.email,
+          editedData.puntuacion,
+          editedData.servicio
         );
 
       if (respuesta) {
@@ -98,29 +100,29 @@ export default function SpringModal({ seguro, hadleUpdate }) {
     }
   };
   const handleInputChange = (event) => {
-    const { compania, value } = event.target;
+    const { name, value } = event.target;
     setEditedData((prevData) => ({
       ...prevData,
-      [compania]: value,
+      [name]: value,
     }));
   };
   useEffect(() => {
-    setEditedData(seguro);
+    setEditedData(proveedor);
   }, []);
 
 const handleDelete = async () => {
   try {
-    const respuesta = await deleteOne(seguro._id);
+    const respuesta = await deleteOne(proveedor._id);
 
     if (respuesta) {
-      console.log("Seguro eliminado");
+      console.log("Usuario eliminado");
       handleClose();
       hadleUpdate();
     } else {
-      console.error("No se pudo eliminar al Seguro");
+      console.error("No se pudo eliminar al usuario");
     }
   } catch (error) {
-    console.error("Error al eliminar el Seguro", error);
+    console.error("Error al eliminar el usuario", error);
   }
 };
 
@@ -153,18 +155,18 @@ const handleDelete = async () => {
               variant="h5"
               component="h5"
             >
-              Datos Seguro:
+              Datos Proveedor:
             </Typography>
             <Typography
               color={"black"}
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Compañia
+              Nombre
             </Typography>
             <TextField
-              name="compania"
-              value={editedData.compania || ""}
+              name="name"
+              value={editedData.name || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -172,11 +174,11 @@ const handleDelete = async () => {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Poliza
+              Direccion
             </Typography>
             <TextField
-              name="poliza"
-              value={editedData.poliza || ""}
+              name="direccion"
+              value={editedData.direccion || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -187,8 +189,8 @@ const handleDelete = async () => {
               Telefono
             </Typography>
             <TextField
-              name="tlf_seg"
-              value={editedData.tlf_seg || ""}
+              name="tlf_prov"
+              value={editedData.tlf_prov || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -196,11 +198,11 @@ const handleDelete = async () => {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Fecha Contrato
+              Cif
             </Typography>
             <TextField
-              name="fecha_contrato"
-              value={editedData.fecha_contrato || ""}
+              name="cif"
+              value={editedData.cif || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -208,25 +210,50 @@ const handleDelete = async () => {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Fecha Fin Contrato
+              Contacto
             </Typography>
             <TextField
-              name="fecha_fin_contrato"
-              value={editedData.fecha_fin_contrato || ""}
+              name="per_contacto"
+              value={editedData.per_contacto || ""}
               onChange={handleInputChange}
             />
-            {/* <Typography
+            <Typography
               color={"black"}
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Mediador
+              Email
             </Typography>
             <TextField
-              name="mediador_id"
-              value={editedData.mediador_id || ""}
+              name="email"
+              value={editedData.email || ""}
               onChange={handleInputChange}
-            /> */}
+            />
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
+              Puntuacion
+            </Typography>
+            <TextField
+              name="puntuacion"
+              value={editedData.puntuacion || ""}
+              onChange={handleInputChange}
+            />
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
+              Servicio
+            </Typography>
+            <TextField
+              name="servicio"
+              value={editedData.servicio || ""}
+              onChange={handleInputChange}
+            />
+
             <Typography></Typography>
             <Button
               variant="contained"
@@ -240,8 +267,7 @@ const handleDelete = async () => {
             >
               Modificar
             </Button>
-            {/*<DeleteModalSeguro seguro={seguro} handleDelete={handleDelete} />
-             */}
+            
           </Box>
         </Fade>
       </Modal>

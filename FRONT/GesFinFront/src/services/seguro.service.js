@@ -23,9 +23,9 @@ export const createSeguro = async (newSeguro) => {
                 poliza: newSeguro.poliza,
                 tlf_seg: newSeguro.tlf_seg,
                 fecha_contrato: newSeguro.fecha_contrato,                             
-                fecha_fin_contrato: newSeguro.fecha_fin_contrato,
-                mediador_id: newSeguro.mediador_id,
-            },
+                fecha_fin_contrato: newSeguro.fecha_fin_contrato
+/*                 mediador_id: newSeguro.mediador_id,
+ */            },
             {
                 headers: { token: localStorage.getItem('token') },
             }
@@ -67,18 +67,18 @@ export const updateOneSeguro = async (id, compania, poliza, tlf_seg, fecha_contr
     if (fecha_fin_contrato.length === 0) {
         fecha_fin_contrato=seguroData.fecha_fin_contrato
     }
-    if (mediador_id.length === 0) {
+    /* if (mediador_id.length === 0) {
         mediador_id=seguroData.mediador_id
-    }
-    console.log(id, compania, poliza, tlf_seg, fecha_contrato, fecha_fin_contrato, mediador_id)
+    } */
+    console.log(id, compania, poliza, tlf_seg, fecha_contrato, fecha_fin_contrato/* , mediador_id */)
     const { data } = await api.put(`/seguro/${id}`,
         {   "compania":compania,
             "poliza":poliza,
             "tlf_seg": tlf_seg,
             "fecha_contrato": fecha_contrato,
-            "fecha_fin_contrato": fecha_fin_contrato,
-            "mediador_id": mediador_id
-        }, 
+            "fecha_fin_contrato": fecha_fin_contrato
+/*             "mediador_id": mediador_id
+ */        }, 
         {
         headers: { token: localStorage.getItem('token') }  
         }

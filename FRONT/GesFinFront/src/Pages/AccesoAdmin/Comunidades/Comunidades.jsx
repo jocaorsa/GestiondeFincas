@@ -9,8 +9,8 @@ function Comunidades() {
     const [data, setData] = useState([]);
 
     const handleData = async () => {
-      const user = await find();
-      setData(user);
+      const comunidad = await find();
+      setData(comunidad);
     };
     useEffect(() => {
       handleData();

@@ -137,7 +137,9 @@ console.log(comunidades)
           <Table size="small">
             <TableHead>
               <TableRow>
-                <TableCell size="small">Nombre</TableCell>
+                <TableCell size="small" align="right">
+                  Nombre
+                </TableCell>
                 <TableCell size="small" align="right">
                   Direccion
                 </TableCell>

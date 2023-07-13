@@ -8,10 +8,10 @@ const{ getOnePropiedad,
     } = require ('../controllers/propiedad.controller')
 
 router
-    .get('/:id', getOnePropiedad)
+    .get('/:propiedadId', getOnePropiedad)
     .get('/', getAllPropiedad)
     .post('/', createPropiedad)
-    .put('/', updatePropiedad)
-    .delete('/:id', deletePropiedad)  
+    .put('/:propiedadId', updatePropiedad)
+    .delete('/:propiedadId', deletePropiedad)  
     
     module.exports = router

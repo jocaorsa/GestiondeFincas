@@ -17,14 +17,16 @@ export const createProveedor = async (newProveedor) => {
     console.log(newProveedor)
     try {
         const res = await api.post(
-            '/auth/singup',
+            '/proveedor',
             {
-                name:newProveedor.name,
-                apellidos: newProveedor.apellidos,
-                tlf_usu: newProveedor.tlf_usu,
+                nombre:newProveedor.nombre,
+                direccion: newProveedor.direccion,
+                tlf_prov: newProveedor.tlf_prov,
+                cif: newProveedor.cif,
+                per_contacto: newProveedor.per_contacto,
                 email: newProveedor.email,                             
-                password: newProveedor.password,
-                role: newProveedor.role,
+                puntuacion: newProveedor.puntuacion,
+                servicio: newProveedor.servicio
             },
             {
                 headers: { token: localStorage.getItem('token') },
@@ -34,7 +36,7 @@ export const createProveedor = async (newProveedor) => {
             return res
         
     } catch (error) {
-        console.error('Fallo al crear Usuario')
+        console.error('Fallo al crear Proveedor')
         
     }
 }
@@ -50,34 +52,42 @@ export const deleteOne = async (id) => {
   }
 };
 
-export const updateOneUsuario = async (id, name, apellidos, tlf_usu, email, password, role, proveedorData) => {
+export const updateOneProveedor = async (id, nombre, direccion, tlf_prov, email, cif, per_contacto, servicio, puntuacion, proveedorData) => {
     console.log(proveedorData)
-      if (name.length === 0) {
-        name=proveedorData.name
+      if (nombre.length === 0) {
+        nombre=proveedorData.nombre
     }
-    if (apellidos.length === 0) {
-        apellidos=proveedorData.apellidos
+    if (direccion.length === 0) {
+        direccion=proveedorData.direccion
     }
-    if (tlf_usu.length === 0) {
-        tlf_usu=proveedorData.tlf_usu
+    if (tlf_prov.length === 0) {
+        tlf_prov=proveedorData.tlf_prov
+    }
+    if (cif.length === 0) {
+        cif=proveedorData.cif
+    }
+    if (per_contacto.length === 0) {
+        per_contacto=proveedorData.per_contacto
     }
     if (email.length === 0) {
         email=proveedorData.email
     }
-    if (password.length === 0) {
-        password=proveedorData.password
+    if (puntuacion.length === 0) {
+        puntuacion=proveedorData.puntuacion
     }
-    if (role.length === 0) {
-        role=proveedorData.role
+    if (servicio.length === 0) {
+        servicio=proveedorData.servicio
     }
-    console.log(id, name, apellidos, tlf_usu, email, password, role)
+    console.log(id, nombre, direccion, tlf_prov, email, cif, per_contacto, servicio, puntuacion)
     const { data } = await api.put(`/proveedor/${id}`,
-        {   "name":name,
-            "apellidos":apellidos,
-            "tlf_usu": tlf_usu,
+        {   "nombre":nombre,
+            "direccion": direccion,
+            "tlf_prov": tlf_prov,
+            "cif": cif,                             
+            "per_contacto": per_contacto,
             "email": email,
-            "password": password,
-            "role": role
+            "puntuacion": puntuacion,
+            "servicio": servicio
         }, 
         {
         headers: { token: localStorage.getItem('token') }  

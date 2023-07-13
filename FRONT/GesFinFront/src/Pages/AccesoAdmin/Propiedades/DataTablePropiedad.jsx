@@ -1,24 +1,24 @@
 import * as React from "react";
 import {Button,Paper,Table,TableBody,TableCell,TableContainer,TableHead,TableRow,} from "@mui/material";
 import { useState, useEffect } from "react";
-import { getAllProveedores } from "../../../services/proveedor.service";
+import { getAllPropiedad } from "../../../services/propiedad.service";
 import { Link } from "react-router-dom";
-import ModalCrearProveedor from "../../../components/ModalProveedores/NuevoProveedorModal";
+import ModalCrearPropiedad from "../../../components/ModalPropiedad/NuevoPropiedadModal";
 import Search from "../../../components/Search/search";
-import SpringProveedorModal from "../../../components/ModalProveedores/SpringProveedorModal";
+import SpringPropiedadModal from "../../../components/ModalPropiedad/SpringPropiedadModal";
 
-export default function DataTableProveedores({ data }) {
+export default function DataTablePropiedad({ data }) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [proveedores, setProveedores] = useState([]);
+  const [propiedades, setPropiedades] = useState([]);
   const [actualizar, setActualizar] = useState(false);
 
-  const showProveedores = async () => {
-    const data = await getAllProveedores();
-    setProveedores(data);
+  const showPropiedades = async () => {
+    const data = await getAllPropiedad();
+    setPropiedades(data);
   };
-  console.log(proveedores)
+  console.log(propiedades)
   useEffect(() => {
-    showProveedores();
+    showPropiedades();
   }, [actualizar]);
 
   const handleUpdate = () => {
@@ -35,80 +35,62 @@ export default function DataTableProveedores({ data }) {
   const filteredData = () => {
     const query = searchQuery.toLowerCase();
     if (query.length > 0) {
-      const filteredProveedores = proveedores.filter((ele) => {
+      const filteredPropiedades = propiedades.filter((ele) => {
         return Object.values(ele).some((value) =>
           String(value).toLowerCase().includes(query)
         );
       });
-      return filteredProveedores.map((ele) => {
+      return filteredPropiedades.map((ele) => {
         return (
           <TableRow
             key={ele.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
             <TableCell size="small" component="th" scope="ele">
-              {ele.nombre}
+              {ele.tipo_propiedad}
             </TableCell>
             <TableCell size="small" align="right">
-              {ele.direccion}
+              {ele.piso}
             </TableCell>
             <TableCell size="small" align="right">
-              {ele.tlf_prov}
+              {ele.num}
             </TableCell>
             <TableCell size="small" align="right">
-              {ele.cif}
+              {ele.letra}
             </TableCell>
             <TableCell size="small" align="right">
-              {ele.per_contacto}
-            </TableCell>
-            <TableCell size="small" align="right">
-              {ele.email}
-            </TableCell>
-            <TableCell size="small" align="right">
-              {ele.puntuacion}
-            </TableCell>
-            <TableCell size="small" align="right">
-              {ele.servicio}
+              {ele.comunidad_id}
             </TableCell>
             <TableCell>
-              <SpringProveedorModal user={ele} hadleUpdate={handleUpdate} />
+              <SpringPropiedadModal propiedad={ele} hadleUpdate={handleUpdate} />
             </TableCell>
           </TableRow>
         );
       });
     } else {
-      return proveedores.map((ele) => {
+      return propiedades.map((ele) => {
         return (
           <TableRow
             key={ele.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
             <TableCell component="th" scope="ele" size="small">
-              {ele.nombre}
+              {ele.tipo_propiedad}
             </TableCell>
             <TableCell size="small" align="right">
-              {ele.direccion}
+              {ele.piso}
             </TableCell>
             <TableCell size="small" align="right">
-              {ele.tlf_prov}
+              {ele.num}
             </TableCell>
             <TableCell size="small" align="right">
-              {ele.cif}
+              {ele.letra}
             </TableCell>
             <TableCell size="small" align="right">
-              {ele.per_contacto}
-            </TableCell>
-            <TableCell size="small" align="right">
-              {ele.email}
-            </TableCell>
-            <TableCell size="small" align="right">
-              {ele.puntuacion}
-            </TableCell>
-            <TableCell size="small" align="right">
-              {ele.servicio}
+              {ele.comunidad_id}
             </TableCell>
             <TableCell>
-              <SpringProveedorModal proveedor={ele} hadleUpdate={handleUpdate} />
+              <SpringPropiedadModal propiedad={ele} hadleUpdate={handleUpdate} />
             </TableCell>
           </TableRow>
         );
@@ -127,29 +109,18 @@ export default function DataTableProveedores({ data }) {
           <Table size="small">
             <TableHead>
               <TableRow>
+                <TableCell size="small">Tipo de Propiedad</TableCell>
                 <TableCell size="small" align="right">
-                  Nombre
+                  Piso
                 </TableCell>
                 <TableCell size="small" align="right">
-                  Direccion
+                  Numero
                 </TableCell>
                 <TableCell size="small" align="right">
-                  Telefono
+                  Letra
                 </TableCell>
                 <TableCell size="small" align="right">
-                  Cif
-                </TableCell>
-                <TableCell size="small" align="right">
-                  Contacto
-                </TableCell>
-                <TableCell size="small" align="right">
-                  Email
-                </TableCell>
-                <TableCell size="small" align="right">
-                  Puntuacion
-                </TableCell>
-                <TableCell size="small" align="right">
-                  Servicio
+                  Comunidad
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -165,7 +136,7 @@ export default function DataTableProveedores({ data }) {
           </Button>
         </Link>
         <Button>
-          <ModalCrearProveedor handleCreate={handleCreate} />
+          <ModalCrearPropiedad handleCreate={handleCreate} />
         </Button>
       </div>
     </>

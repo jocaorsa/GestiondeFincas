@@ -1,20 +1,20 @@
 import { Box, Button, Grid } from "@mui/material";
 import Card from "@mui/material/Card";
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import DataTableUsuarios from "./DataTableComunidades";
+import DataTablePropiedad from "./DataTablePropiedad";
+import { useEffect } from "react";
+import { useState } from "react";
 
-function Usuarios() {
-    const [data, setData] = useState([]);
+function Propietarios() {
+      const [data, setData] = useState([]);
 
-    const handleData = async () => {
-      const user = await find();
-      setData(user);
-    };
-    useEffect(() => {
-      handleData();
-    }, []);
-
+      const handleData = async () => {
+        const comunidad = await find();
+        setData(comunidad);
+      };
+      useEffect(() => {
+        handleData();
+      }, []);
   return (
     <Box
       sx={{
@@ -52,15 +52,14 @@ function Usuarios() {
           alignContent: "center",
           alignItems: "center",
           justifyContent: "center",
-          width: "90vw",
+          width: "50vw",
           height: "100%",
         }}
       >
-        <DataTableUsuarios data={data} />
-       
+        <DataTablePropiedad data={data} />
       </Card>
     </Box>
   );
 }
 
-export default Usuarios;
+export default Propietarios;

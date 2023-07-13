@@ -64,7 +64,7 @@ const style = {
   p: 4,
 };
 
-export default function ModalModificaSeguro({ seguro, handleUpdate }) {
+export default function ModalModificaProveedor({ proveedor, handleUpdate }) {
   const [open, setOpen] = useState(false);
   const [editedData, setEditedData] = useState({});
   const handleOpen = () => setOpen(true);
@@ -74,14 +74,17 @@ export default function ModalModificaSeguro({ seguro, handleUpdate }) {
     console.log(editedData);
     console.log(localStorage.getItem("token"));
     try {
-      const respuesta = await api.put(`/seguro/${editedData._id}`,
+      const respuesta = await api.put(
+        `/proveedor/${editedData._id}`,
         {
-          compania: editedData.compania,
-          poliza: editedData.poliza,
-          tlf_seg: editedData.tlf_seg,
-          fecha_contrato: editedData.fecha_contrato,
-          fecha_fin_contrato: editedData.fecha_fin_contrato,
-          /* mediador_id: editedData.mediador_id, */
+          nombre: editedData.nombre,
+          direccion: editedData.direccion,
+          tlf_prov: editedData.tlf_prov,
+          cif: editedData.cif,
+          per_contacto: editedData.per_contacto,
+          email: editedData.email,
+          puntuacion: editedData.puntuacion,
+          servicio: editedData.servicio
         },
         {
           headers: { token: localStorage.getItem("token") },
@@ -106,7 +109,7 @@ export default function ModalModificaSeguro({ seguro, handleUpdate }) {
     }));
   };
   useEffect(() => {
-    setEditedData(seguro);
+    setEditedData(proveedor);
   }, []);
 
   return (
@@ -116,7 +119,7 @@ export default function ModalModificaSeguro({ seguro, handleUpdate }) {
         variant="contained"
         DisableElevation
         style={{ color: "inherit", textDecoration: "none" }}
-        >
+      >
         Editar
       </Button>
       <Modal
@@ -135,54 +138,70 @@ export default function ModalModificaSeguro({ seguro, handleUpdate }) {
         <Fade in={open}>
           <Box sx={style}>
             <Typography id="spring-modal-title" variant="h5" component="h5">
-              <Typography> Modifica Datos del Seguro :</Typography>
+              <Typography> Modifica Datos del Proveedor :</Typography>
             </Typography>
             <Typography id="spring-modal-description" sx={{ mt: 2 }}>
-              Compañia
+              Nombre
             </Typography>
             <TextField
-              name="compania"
-              value={editedData.compania || ""}
+              name="nombre"
+              value={editedData.nombre || ""}
               onChange={handleInputChange}
             />
             <Typography id="spring-modal-description" sx={{ mt: 2 }}>
-              Poliza
+              Direccion
             </Typography>
             <TextField
-              name="poliza"
-              value={editedData.poliza || ""}
+              name="direccion"
+              value={editedData.direccion || ""}
               onChange={handleInputChange}
             />
             <Typography id="spring-modal-description" sx={{ mt: 2 }}>
               Telefono
             </Typography>
             <TextField
-              name="tlf_seg"
-              value={editedData.tlf_seg || ""}
+              name="tlf_prov"
+              value={editedData.tlf_prov || ""}
               onChange={handleInputChange}
             />
             <Typography id="spring-modal-description" sx={{ mt: 2 }}>
-              Fecha Contrato
+              Cif
             </Typography>
             <TextField
-              name="fecha_contrato"
-              value={editedData.fecha_contrato || ""}
+              name="cif"
+              value={editedData.cif || ""}
               onChange={handleInputChange}
             />
             <Typography id="spring-modal-description" sx={{ mt: 2 }}>
-              Fecha Fin Contrato
+              Contacto
             </Typography>
             <TextField
-              name="fecha_fin_contrato"
-              value={editedData.fecha_fin_contrato || ""}
+              name="per_contacto"
+              value={editedData.per_contacto || ""}
               onChange={handleInputChange}
             />
             <Typography id="spring-modal-description" sx={{ mt: 2 }}>
-              Mediador
+              Email
+            </Typography>
+            <Typography id="spring-modal-description" sx={{ mt: 2 }}>
+              Puntuacion
             </Typography>
             <TextField
-              name="mediador_id"
-              value={editedData.mediador_id || ""}
+              name="puntuacion"
+              value={editedData.puntuacion || ""}
+              onChange={handleInputChange}
+            />
+            <TextField
+              name="email"
+              value={editedData.email || ""}
+              onChange={handleInputChange}
+            />
+            <Typography id="spring-modal-description" sx={{ mt: 2 }}>
+              Servicio
+            </Typography>
+            <TextField
+              name="servicio"
+              value={editedData.servicio || ""}
               onChange={handleInputChange}
             />
             <Button

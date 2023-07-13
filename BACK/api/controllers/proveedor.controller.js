@@ -30,6 +30,8 @@ async function createProveedor (req, res){
 
 async function updateProveedor (req, res){
     try{
+        
+        console.log("hola",req.params.proveedorId)
         const updateproveedor = await Proveedor.findByIdAndUpdate (req.params.proveedorId, req.body, {new: true})
         res.json(updateproveedor)
     }catch (error){

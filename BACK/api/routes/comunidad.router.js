@@ -8,10 +8,10 @@ const{ getOneComunidad,
     } = require ('../controllers/comunidad.controller')
 
     router
-        .get('/:id', getOneComunidad)
+        .get('/:comunidadId', getOneComunidad)
         .get('/', getAllComunidad)
         .post('/', createComunidad)
-        .put('/', updateComunidad)
-        .delete('/:id', deleteComunidad)  
+        .put('/:comunidadId', updateComunidad)
+        .delete('/:comunidadId', deleteComunidad)  
     
     module.exports = router 

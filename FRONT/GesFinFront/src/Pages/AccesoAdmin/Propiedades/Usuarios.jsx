@@ -2,7 +2,7 @@ import { Box, Button, Grid } from "@mui/material";
 import Card from "@mui/material/Card";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import DataTableUsuarios from "./DataTableProveedores";
+import DataTableUsuarios from "./DataTablePropietarios";
 
 function Usuarios() {
     const [data, setData] = useState([]);

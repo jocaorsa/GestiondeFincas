@@ -8,12 +8,12 @@ import Typography from "@mui/material/Typography";
 import { useSpring, animated } from "@react-spring/web";
 import { TextField } from "@mui/material";
 import { useState } from "react";
-import { createUser } from "../../services/usuario.service";
+import { createPropiedad } from "../../services/propiedad.service";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import BasicSelect from "./selectrole";
+//import BasicSelect from "./selectrole";
 
 const Fade = React.forwardRef(function Fade(props, ref) {
   const {
@@ -68,32 +68,32 @@ const style = {
 };
 
 
-export default function ModalCrearUsuario({ handleCreate }) {
+export default function ModalCrearPropiedad({ handleCreate }) {
   const [open, setOpen] = React.useState(false);
-  const [newUser, setNewUser] = useState({});
+  const [newPropiedad, setNewPropiedad] = useState({});
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setNewUser((prevData) => ({
+    setNewPropiedad((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
 
   const handleResponse = async () => {
-    const res = await createUser(newUser);
+    const res = await createPropiedad(newPropiedad);
     handleClose();
     handleCreate();
-    console.log("Usuario creado");
+    console.log("Propiedad creada");
   };
 
   return (
     <div>
       <Button variant="contained" DisableElevation onClick={handleOpen}>
-        Nuevo Usuario
+        Nueva Propiedad
       </Button>
       <Modal
         aria-labelledby="spring-modal-title"
@@ -116,30 +116,18 @@ export default function ModalCrearUsuario({ handleCreate }) {
               variant="h5"
               component="h5"
             >
-              Nuevo Usuario:
+              Nueva Propiedad:
             </Typography>
             <Typography
               color={"black"}
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Nombre
+              Tipo de propiedad
             </Typography>
             <TextField
-              name="name"
-              value={newUser.name || ""}
-              onChange={handleInputChange}
-            />
-            <Typography
-              color={"black"}
-              id="spring-modal-description"
-              sx={{ mt: 2 }}
-            >
-              Apellidos
-            </Typography>
-            <TextField
-              name="apellidos"
-              value={newUser.apellidos || ""}
+              name="tipo_propiedad"
+              value={newPropiedad.tipo_propiedad || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -147,11 +135,11 @@ export default function ModalCrearUsuario({ handleCreate }) {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Telefono
+              Piso
             </Typography>
             <TextField
-              name="tlf_usu"
-              value={newUser.tlf_usu || ""}
+              name="piso"
+              value={newPropiedad.piso || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -159,11 +147,11 @@ export default function ModalCrearUsuario({ handleCreate }) {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Email
+              Num
             </Typography>
             <TextField
-              name="email"
-              value={newUser.email || ""}
+              name="num"
+              value={newPropiedad.num || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -171,26 +159,25 @@ export default function ModalCrearUsuario({ handleCreate }) {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Password
+              Letra
             </Typography>
             <TextField
-              name="password"
-              value={newUser.password || ""}
+              name="letra"
+              value={newPropiedad.letra || ""}
               onChange={handleInputChange}
             />
             <Typography
               color={"black"}
               id="spring-modal-description"
-              sx={{ mt: 2}}
+              sx={{ mt: 2 }}
             >
-              Role
+              Comunidad
             </Typography>
-            <BasicSelect
-              name="role"
-              value={newUser.role || ""}
+            <TextField
+              name="comunidad_id"
+              value={newPropiedad.comunidad_id || ""}
               onChange={handleInputChange}
             />
-
             <Typography></Typography>
             <Button
               variant="contained"

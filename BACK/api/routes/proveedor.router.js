@@ -8,10 +8,10 @@ const{ getOneProveedor,
     } = require ('../controllers/proveedor.controller')
 
 router
-    .get('/:id', getOneProveedor)
+    .get('/:proveedorId', getOneProveedor)
     .get('/', getAllProveedor)
     .post('/', createProveedor)
-    .put('/', updateProveedor)
-    .delete('/:id', deleteProveedor)  
+    .put('/:proveedorId', updateProveedor)
+    .delete('/:proveedorId', deleteProveedor)  
     
     module.exports = router

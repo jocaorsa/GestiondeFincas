@@ -1,5 +1,4 @@
 import * as React from "react";
-import axios from "axios";
 import PropTypes from "prop-types";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
@@ -8,10 +7,13 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useSpring, animated } from "@react-spring/web";
 import { TextField } from "@mui/material";
-import { useState, useEffect } from "react";
-import { api } from "../../services/api";
-import DeleteModalUser from "./DeleteModalUser";
-import { deleteOne, updateOneUsuario } from "../../services/usuario.service";
+import { useState } from "react";
+import { createProveedor } from "../../services/proveedor.service";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+//import BasicSelect from "./selectrole";
 
 const Fade = React.forwardRef(function Fade(props, ref) {
   const {
@@ -65,72 +67,36 @@ const style = {
   p: 4,
 };
 
-export default function SpringModal({ user, hadleUpdate }) {
+
+export default function ModalCrearProveedor({ handleCreate }) {
   const [open, setOpen] = React.useState(false);
-  const [editedData, setEditedData] = useState({});
+  const [newProveedor, setNewProveedor] = useState({});
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const handleModify = async () => {
-    console.log(editedData);
-    console.log(localStorage.getItem("token"));
-    try {
-        const respuesta = await updateOneUsuario(
-          editedData._id,
-          editedData.name,
-          editedData.apellidos,
-          editedData.tlf_usu,
-          editedData.email,
-          editedData.password,
-          editedData.role
-        );
-
-      if (respuesta) {
-        console.log("Datos actualizados");
-        hadleUpdate();
-        handleClose();
-      } else {
-        console.error("Fallo al actualizar datos");
-      }
-    } catch (error) {
-      console.error("Fallo al actualizar los datos", error);
-    }
-  };
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setEditedData((prevData) => ({
+    setNewProveedor((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
-  useEffect(() => {
-    setEditedData(user);
-  }, []);
 
-const handleDelete = async () => {
-  try {
-    const respuesta = await deleteOne(user._id);
+  const handleResponse = async () => {
+    const res = await createProveedor(newProveedor);
+    handleClose();
+    handleCreate();
+    console.log("Proveedor creado");
+  };
 
-    if (respuesta) {
-      console.log("Usuario eliminado");
-      handleClose();
-      hadleUpdate();
-    } else {
-      console.error("No se pudo eliminar al usuario");
-    }
-  } catch (error) {
-    console.error("Error al eliminar el usuario", error);
-  }
-};
+    const [selectedServicio, setSelectedServicio] = useState("");
+
 
   return (
     <div>
       <Button variant="contained" DisableElevation onClick={handleOpen}>
-        Editar
-      </Button>
-      <Button variant="contained" DisableElevation onClick={handleDelete}>
-        Eliminar
+        Nuevo Proveedor
       </Button>
       <Modal
         aria-labelledby="spring-modal-title"
@@ -153,7 +119,7 @@ const handleDelete = async () => {
               variant="h5"
               component="h5"
             >
-              Datos Usuario:
+              Nuevo Proveedor:
             </Typography>
             <Typography
               color={"black"}
@@ -163,8 +129,8 @@ const handleDelete = async () => {
               Nombre
             </Typography>
             <TextField
-              name="name"
-              value={editedData.name || ""}
+              name="nombre"
+              value={newProveedor.nombre || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -172,11 +138,11 @@ const handleDelete = async () => {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Apellidos
+              Direccion
             </Typography>
             <TextField
-              name="apellidos"
-              value={editedData.apellidos || ""}
+              name="direccion"
+              value={newProveedor.direccion || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -187,8 +153,32 @@ const handleDelete = async () => {
               Telefono
             </Typography>
             <TextField
-              name="tlf_usu"
-              value={editedData.tlf_usu || ""}
+              name="tlf_prov"
+              value={newProveedor.tlf_prov || ""}
+              onChange={handleInputChange}
+            />
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
+              Cif
+            </Typography>
+            <TextField
+              name="cif"
+              value={newProveedor.cif || ""}
+              onChange={handleInputChange}
+            />
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
+              Contacto
+            </Typography>
+            <TextField
+              name="contacto"
+              value={newProveedor.contacto || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -200,7 +190,7 @@ const handleDelete = async () => {
             </Typography>
             <TextField
               name="email"
-              value={editedData.email || ""}
+              value={newProveedor.email || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -208,11 +198,11 @@ const handleDelete = async () => {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Password
+              Puntuacion
             </Typography>
             <TextField
-              name="password"
-              value={editedData.password || ""}
+              name="puntuacion"
+              value={newProveedor.puntuacion || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -220,24 +210,37 @@ const handleDelete = async () => {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Role
+              Servicio
             </Typography>
-            <TextField
-              name="role"
-              value={editedData.role || ""}
-              onChange={handleInputChange}
-            />
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Servicio</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={selectedServicio}
+                label="Servicio"
+                onChange={(event) => setSelectedServicio(event.target.value)}
+              >
+                <MenuItem value="Fontaneria">Fontaneria</MenuItem>
+                <MenuItem value="Carpinteria">Carpinteria</MenuItem>
+                <MenuItem value="Electricidad">Electricidad</MenuItem>
+                <MenuItem value="Limpieza">Limpieza</MenuItem>
+                <MenuItem value="Obra">Obra</MenuItem>
+              </Select>
+            </FormControl>
             <Typography></Typography>
             <Button
               variant="contained"
               DisableElevation
-              style={{ color: "inherit",padding:"5px", textDecoration: "none" }}
-              onClick={handleModify}
+              style={{
+                color: "inherit",
+                padding: "5px",
+                textDecoration: "none",
+              }}
+              onClick={handleResponse}
             >
-              Modificar
+              Crear
             </Button>
-            {/*<DeleteModalUser user={user} handleDelete={handleDelete} />
-             */}
           </Box>
         </Fade>
       </Modal>

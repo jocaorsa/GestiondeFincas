@@ -30,8 +30,8 @@ async function createSeguro (req, res){
 
 async function updateSeguro (req, res){
     try{
-        const updateseguro = await Seguro.findByIdAndUpdate (req.params.seguroId, req.body, {new: true})
-        res.json(updateseguro)
+        const seguro = await Seguro.findByIdAndUpdate (req.params.seguroId, req.body, {new: true})
+        res.json(seguro)
     }catch (error){
         console.log(error)
     }

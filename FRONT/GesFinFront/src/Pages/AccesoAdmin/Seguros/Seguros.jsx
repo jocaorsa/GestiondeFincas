@@ -1,8 +1,20 @@
 import { Box, Button, Grid } from "@mui/material";
 import Card from "@mui/material/Card";
+import { useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import DataTableSeguros from "./DataTableSeguros";
 
 function Seguros() {
+     const [data, setData] = useState([]);
+
+     const handleData = async () => {
+       const seguro = await find();
+       setData(seguro);
+     };
+     useEffect(() => {
+       handleData();
+     }, []);
   return (
     <Box
       sx={{
@@ -44,23 +56,8 @@ function Seguros() {
           height: "100%",
         }}
       >
-        Pequeño listado de incidencias
-        <Link
-          style={{ color: "inherit", textDecoration: "none" }}
-          to="/login/admin/"
-        >
-          <Button variant="contained" DisableElevation>
-            volver
-          </Button>
-        </Link>
-        <Link
-          style={{ color: "inherit", textDecoration: "none" }}
-          to="/login/admin/seguros"
-        >
-          <Button variant="contained" DisableElevation>
-            editar
-          </Button>
-        </Link>
+        <DataTableSeguros data={data} />
+
       </Card>
     </Box>
   );

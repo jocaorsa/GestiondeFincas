@@ -7,6 +7,7 @@ import HistoricoIncidencia from "../Pages/AccesoUsuario/HistoricoIncidencia/Hist
 import Comunidades from "../Pages/AccesoAdmin/Comunidades/Comunidades";
 import Proveedores from "../Pages/AccesoAdmin/Proveedores/Proveedores";
 import Propietarios from "../Pages/AccesoAdmin/Propietarios/Propietarios";
+import Propiedades from "../Pages/AccesoAdmin/Propiedades/Propiedades";
 import Incidencias from "../Pages/AccesoAdmin/Incidencias/Incidencias";
 import Seguros from "../Pages/AccesoAdmin/Seguros/Seguros";
 import Usuarios from "../Pages/AccesoAdmin/Usuarios/Usuarios";
@@ -44,18 +45,53 @@ const checkUser = () => {
 };
 
 const router = createBrowserRouter([
-  {path: "/", element: <SignInSide />, errorElement: <NotFound />, children: [{ path: "/", element: <SignInSide /> }],},
-  {path: "/login/admin", element: <AccesoAdmin />, loader: checkAdmin },
-  {path: "/login/admin/comunidades", element: <Comunidades />, loader: checkAdmin,},
-  {path: "/login/admin/incidencias", element: <Incidencias />, loader: checkAdmin,},
-  {path: "/login/admin/proveedores", element: <Proveedores />, loader: checkAdmin,},
-  {path: "/login/admin/propietarios", element: <Propietarios />, loader: checkAdmin,},
-  {path: "/login/admin/seguros", element: <Seguros />, loader: checkAdmin },
-  {path: "/login/admin/usuarios", element: <Usuarios />, loader: checkAdmin },
-  {path: "/login/user", element: <AccesoUsuario />, loader: checkUser },
-  {path: "/login/user/crear", element: <CrearIncidencia />, loader: checkUser,},
-  {path: "/login/user/ver", element: <VerIncidencia />, loader: checkUser },
-  {path: "/login/user/historico", element: <HistoricoIncidencia />, loader: checkUser,},
+  {
+    path: "/",
+    element: <SignInSide />,
+    errorElement: <NotFound />,
+    children: [{ path: "/", element: <SignInSide /> }],
+  },
+  { path: "/login/admin", element: <AccesoAdmin />, loader: checkAdmin },
+  {
+    path: "/login/admin/comunidades",
+    element: <Comunidades />,
+    loader: checkAdmin,
+  },
+  {
+    path: "/login/admin/incidencias",
+    element: <Incidencias />,
+    loader: checkAdmin,
+  },
+  {
+    path: "/login/admin/proveedores",
+    element: <Proveedores />,
+    loader: checkAdmin,
+  },
+  {
+    path: "/login/admin/propietarios",
+    element: <Propietarios />,
+    loader: checkAdmin,
+  },
+  {
+    path: "/login/admin/propiedades",
+    element: <Propiedades />,
+    loader: checkAdmin,
+  },
+
+  { path: "/login/admin/seguros", element: <Seguros />, loader: checkAdmin },
+  { path: "/login/admin/usuarios", element: <Usuarios />, loader: checkAdmin },
+  { path: "/login/user", element: <AccesoUsuario />, loader: checkUser },
+  {
+    path: "/login/user/crear",
+    element: <CrearIncidencia />,
+    loader: checkUser,
+  },
+  { path: "/login/user/ver", element: <VerIncidencia />, loader: checkUser },
+  {
+    path: "/login/user/historico",
+    element: <HistoricoIncidencia />,
+    loader: checkUser,
+  },
 ]);
 
 

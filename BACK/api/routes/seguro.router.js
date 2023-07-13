@@ -8,10 +8,10 @@ const{ getOneSeguro,
     } = require ('../controllers/seguro.controller')
 
 router
-    .get('/:id', getOneSeguro)
+    .get('/:seguroId', getOneSeguro)
     .get('/', getAllSeguro)
     .post('/', createSeguro)
-    .put('/', updateSeguro)
-    .delete('/:id', deleteSeguro)  
+    .put('/:seguroId', updateSeguro)
+    .delete('/:seguroId', deleteSeguro)  
     
     module.exports = router

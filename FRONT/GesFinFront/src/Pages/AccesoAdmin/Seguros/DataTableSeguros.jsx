@@ -1,24 +1,24 @@
 import * as React from "react";
 import {Button,Paper,Table,TableBody,TableCell,TableContainer,TableHead,TableRow,} from "@mui/material";
 import { useState, useEffect } from "react";
-import { getAllUsers } from "../../../services/usuario.service";
+import { getAllSeguros } from "../../../services/seguro.service";
 import { Link } from "react-router-dom";
-import ModalCrearUsuario from "../../../components/Modal/NuevoUsuarioModal";
+import ModalCrearSeguro from "../../../components/ModalSeguros/NuevoSeguroModal";
 import Search from "../../../components/Search/search";
-import SpringUserModal from "../../../components/Modal/SpringUserModal";
+import SpringSeguroModal from "../../../components/ModalSeguros/SpringSeguroModal";
 
-export default function DataTableUsuarios({ data }) {
+export default function DataTableSeguros({ data }) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [users, setUsers] = useState([]);
+  const [seguros, setSeguros] = useState([]);
   const [actualizar, setActualizar] = useState(false);
 
-  const showUsers = async () => {
-    const data = await getAllUsers();
-    setUsers(data);
+  const showSeguros= async () => {
+    const data = await getAllSeguros();
+    setSeguros(data);
   };
-  console.log(users)
+  console.log(seguros)
   useEffect(() => {
-    showUsers();
+    showSeguros();
   }, [actualizar]);
 
   const handleUpdate = () => {
@@ -35,74 +35,74 @@ export default function DataTableUsuarios({ data }) {
   const filteredData = () => {
     const query = searchQuery.toLowerCase();
     if (query.length > 0) {
-      const filteredUsers = users.filter((ele) => {
+      const filteredSeguros = seguros.filter((ele) => {
         return Object.values(ele).some((value) =>
           String(value).toLowerCase().includes(query)
         );
       });
-      return filteredUsers.map((ele) => {
+      return filteredSeguros.map((ele) => {
         return (
           <TableRow
             key={ele.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
             <TableCell size="small" component="th" scope="ele">
-              {ele.name}
+              {ele.compania}
             </TableCell>
             <TableCell size="small" align="right">
-              {ele.apellidos}
+              {ele.poliza}
             </TableCell>
             <TableCell size="small" align="right">
-              {ele.tlf_usu}
+              {ele.tlf_seg}
             </TableCell>
             <TableCell size="small" align="right">
-              {ele.email}
+              {ele.fecha_contrato}
             </TableCell>
             <TableCell size="small" align="right">
-              {ele.role}
+              {ele.fecha_fin_contrato}
             </TableCell>
             <TableCell size="small" align="right">
-              {ele.comunidad_id}
+              {ele.mediador_id}
             </TableCell>
             {/* <TableCell size="small" align="right">
               {ele.password}
             </TableCell> */}
             <TableCell>
-              <SpringUserModal user={ele} hadleUpdate={handleUpdate} />
+              <SpringSeguroModal seguro={ele} hadleUpdate={handleUpdate} />
             </TableCell>
           </TableRow>
         );
       });
     } else {
-      return users.map((ele) => {
+      return seguros.map((ele) => {
         return (
           <TableRow
             key={ele.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
             <TableCell component="th" scope="ele" size="small">
-              {ele.name}
+              {ele.compania}
             </TableCell>
             <TableCell size="small" align="right">
-              {ele.apellidos}
+              {ele.poliza}
             </TableCell>
             <TableCell size="small" align="right">
-              {ele.tlf_usu}
+              {ele.tlf_seg}
             </TableCell>
             <TableCell size="small" align="right">
-              {ele.email}
+              {ele.fecha_contrato}
             </TableCell>
             <TableCell size="small" align="right">
-              {ele.role}
+              {ele.fecha_fin_contrato}
             </TableCell>
             <TableCell size="small" align="right">
-              {ele.comunidad_id}
+              {ele.mediador_id}
             </TableCell>
             {/* <TableCell size="small" align="right">
               {ele.password}
             </TableCell> */}
             <TableCell>
-              <SpringUserModal user={ele} hadleUpdate={handleUpdate} />
+              <SpringSeguroModal seguro={ele} hadleUpdate={handleUpdate} />
             </TableCell>
           </TableRow>
         );
@@ -121,21 +121,21 @@ export default function DataTableUsuarios({ data }) {
           <Table size="small">
             <TableHead>
               <TableRow>
-                <TableCell size="small">Nombre</TableCell>
+                <TableCell size="small">Compañia</TableCell>
                 <TableCell size="small" align="right">
-                  Apellidos
+                  Poliza
                 </TableCell>
                 <TableCell size="small" align="right">
-                  Telefono
+                  Telefono Seguro
                 </TableCell>
                 <TableCell size="small" align="right">
-                  Email
+                  Fecha Contrato
                 </TableCell>
                 <TableCell size="small" align="right">
-                  Role
+                  Fecha Fin
                 </TableCell>
                 <TableCell size="small" align="right">
-                  Comunidad
+                  Mediador
                 </TableCell>
                 {/* <TableCell size="small" align="right">
                   Contraseña
@@ -154,7 +154,7 @@ export default function DataTableUsuarios({ data }) {
           </Button>
         </Link>
         <Button>
-          <ModalCrearUsuario handleCreate={handleCreate} />
+          <ModalCrearSeguro handleCreate={handleCreate} />
         </Button>
       </div>
     </>

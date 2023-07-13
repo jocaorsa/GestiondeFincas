@@ -8,10 +8,10 @@ const{ getOneMediador,
     } = require ('../controllers/mediador.controller')
 
 router
-    .get('/:id', getOneMediador)
+    .get('/:mediadorId', getOneMediador)
     .get('/', getAllMediador)
     .post('/', createMediador)
-    .put('/', updateMediador)
-    .delete('/:id', deleteMediador)  
+    .put('/:mediadorId', updateMediador)
+    .delete('/:mediadorId', deleteMediador)  
     
     module.exports =  router 
