@@ -1,5 +1,14 @@
 import * as React from "react";
-import {Button,Paper,Table,TableBody,TableCell,TableContainer,TableHead,TableRow,} from "@mui/material";
+import {
+  Button,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 import { useState, useEffect } from "react";
 import { getAllIncidenciasAll } from "../../../services/incidencia.service";
 import { Link } from "react-router-dom";
@@ -7,17 +16,17 @@ import ModalCrearIncidencia from "../../../components/ModalIncidencia/NuevaIncid
 import Search from "../../../components/Search/search";
 import SpringIncidenciaModal from "../../../components/ModalIncidencia/SpringIncidenciaModal";
 
-export default function DataTableIncidencia({ data }) {
+export default function DataTableIncidencia() {
   const [searchQuery, setSearchQuery] = useState("");
   const [incidencia, setIncidencia] = useState([]);
   const [actualizar, setActualizar] = useState(false);
 
   const showIncidencias = async () => {
     const data = await getAllIncidenciasAll();
-    console.log(data)
+    console.log(data);
     setIncidencia(data);
   };
-  
+
   useEffect(() => {
     showIncidencias();
   }, [actualizar]);
@@ -54,7 +63,7 @@ export default function DataTableIncidencia({ data }) {
             <TableCell size="small" align="right">
               {ele.comunidad_id.nombre}
             </TableCell>
-           {/*  <TableCell size="small" align="right">
+            {/*  <TableCell size="small" align="right">
               {ele.propiedad_id}
             </TableCell> */}
             <TableCell size="small" align="right">
@@ -85,7 +94,6 @@ export default function DataTableIncidencia({ data }) {
         );
       });
     } else {
-      
       return incidencia.map((ele) => {
         return (
           <TableRow
@@ -113,7 +121,7 @@ export default function DataTableIncidencia({ data }) {
             <TableCell size="small" align="right">
               {ele.descripcion}
             </TableCell>
-          {/*   <TableCell size="small" align="right">
+            {/*   <TableCell size="small" align="right">
               {ele.img}
             </TableCell> */}
             <TableCell size="small" align="right">
@@ -138,8 +146,8 @@ export default function DataTableIncidencia({ data }) {
           searchQuery={searchQuery}
           handleSearchChange={handleSearchChange}
         />
-        <TableContainer component={Paper}>
-          <Table size="small">
+        <TableContainer component={Paper} style={{ maxHeight: 400 }}>
+          <Table stickyHeader>
             <TableHead>
               <TableRow>
                 <TableCell size="small">Num incidencia</TableCell>
@@ -161,7 +169,7 @@ export default function DataTableIncidencia({ data }) {
                 <TableCell size="small" align="right">
                   Descripcion
                 </TableCell>
-               {/*  <TableCell size="small" align="right">
+                {/*  <TableCell size="small" align="right">
                   Img
                 </TableCell> */}
                 <TableCell size="small" align="right">

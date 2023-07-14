@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const incidenciaSchema = new Schema ({
     num_incidencia: {
-        type: Date
+        type: String
     },
     comunidad_id: {
         type: mongoose.Schema.Types.ObjectId,

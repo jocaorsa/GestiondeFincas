@@ -87,7 +87,13 @@ export default function ModalCrearIncidencia({ handleCreate }) {
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const handleCom =(event) => setSelectedComunidadId(event.target.value)
+  const handleCom = (event) => {
+    setSelectedComunidadId(event.target.value)
+    setNewIncidencia((prevData) => ({
+      ...prevData,
+      ['comunidad_id']: event.target.value,
+    }))}
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setNewIncidencia((prevData) => ({
@@ -99,6 +105,7 @@ export default function ModalCrearIncidencia({ handleCreate }) {
   const handleResponse = async () => {
     const currentDate = new Date();
     const year = currentDate.getFullYear().toString();
+    console.log(year)
     let month = (currentDate.getMonth() + 1).toString();
     let day = currentDate.getDate().toString();
     let hours = currentDate.getHours().toString();
@@ -111,7 +118,7 @@ export default function ModalCrearIncidencia({ handleCreate }) {
     if (minutes.length === 1) minutes = "0" + minutes;
 
     const numIncidencia = year + month + day + hours + minutes;
-
+    console.log(numIncidencia)
     const newIncidenciaWithNum = {
       ...newIncidencia,
       num_incidencia: numIncidencia,
@@ -199,7 +206,7 @@ console.log(selectedComunidadId)
               value={newIncidencia.comunidad_id || ""}
               onChange={handleInputChange}
             /> */}
-            <Typography
+            {/* <Typography
               color={"black"}
               id="spring-modal-description"
               sx={{ mt: 2 }}
@@ -210,7 +217,7 @@ console.log(selectedComunidadId)
               name="propiedad_id"
               value={newIncidencia.propiedad_id || ""}
               onChange={handleInputChange}
-            />
+            /> */}
             {/* <Typography
               color={"black"}
               id="spring-modal-description"
@@ -251,7 +258,7 @@ console.log(selectedComunidadId)
                 value={newIncidencia.estado || ""}
                 onChange={handleInputChange}
               >
-                <MenuItem value="Nuevo">Nuevo</MenuItem>
+                <MenuItem value="Nueva">Nueva</MenuItem>
                 {/* Otros estados */}
               </Select>
             </FormControl>

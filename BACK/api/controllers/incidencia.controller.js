@@ -29,7 +29,9 @@ async function getAllIncidenciaAll (req, res){
 
 
 async function createIncidencia (req, res){
+    console.log(req.body)
     try{
+        console.log(req.body)
         const incidencia = await Incidencia.create(req.body)
         res.json(incidencia)
     }catch (error){
