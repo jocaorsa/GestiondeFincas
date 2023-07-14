@@ -65,10 +65,10 @@ const style = {
   p: 4,
 };
 
-export default function SpringModal({ user, hadleUpdate }) {
+export default function SpringModal({ incidencia, hadleUpdate }) {
   const [open, setOpen] = React.useState(false);
   const [editedData, setEditedData] = useState({});
-
+  console.log(incidencia)
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -130,7 +130,7 @@ const handleDelete = async () => {
   return (
     <div>
       <Button variant="contained" DisableElevation onClick={handleOpen}>
-        + info
+        Editar
       </Button>
       <Button variant="contained" DisableElevation onClick={handleDelete}>
         Eliminar
@@ -163,11 +163,11 @@ const handleDelete = async () => {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Nombre
+              Num Incidencia
             </Typography>
-            <TextField
-              name="name"
-              value={editedData.name || ""}
+           <TextField
+              name="num_incidencia"
+              value={editedData.num_incidencia || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -175,11 +175,11 @@ const handleDelete = async () => {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Apellidos
+              Comunidad
             </Typography>
             <TextField
-              name="apellidos"
-              value={editedData.apellidos || ""}
+              name="comunidad_id"
+              value={editedData.comunidad_id || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -187,11 +187,11 @@ const handleDelete = async () => {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Telefono
+              Propiedad
             </Typography>
             <TextField
-              name="tlf_usu"
-              value={editedData.tlf_usu || ""}
+              name="propiedad_id"
+              value={editedData.propiedad_id || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -199,11 +199,11 @@ const handleDelete = async () => {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Email
+              Fecha Creacion
             </Typography>
             <TextField
-              name="email"
-              value={editedData.email || ""}
+              name="fecha_creacion"
+              value={editedData.fecha_creacion || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -211,11 +211,11 @@ const handleDelete = async () => {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Password
+              Seguro
             </Typography>
             <TextField
-              name="password"
-              value={editedData.password || ""}
+              name="seguro"
+              value={editedData.seguro || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -223,18 +223,58 @@ const handleDelete = async () => {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Role
+              Estado
             </Typography>
             <TextField
-              name="role"
-              value={editedData.role || ""}
+              name="estado"
+              value={editedData.estado || ""}
+              onChange={handleInputChange}
+            />
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
+              Descripcion
+            </Typography>
+            <TextField
+              name="descripcion"
+              value={editedData.descripcion || ""}
+              onChange={handleInputChange}
+            />
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
+              Img
+            </Typography>
+            <TextField
+              name="img"
+              value={editedData.img || ""}
+              onChange={handleInputChange}
+            />
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
+              Proveedor
+            </Typography>
+            <TextField
+              name="proveedor_id"
+              value={editedData.proveedor_id || ""}
               onChange={handleInputChange}
             />
             <Typography></Typography>
             <Button
               variant="contained"
               DisableElevation
-              style={{ color: "inherit",padding:"5px", textDecoration: "none" }}
+              style={{
+                color: "inherit",
+                padding: "5px",
+                textDecoration: "none",
+              }}
               onClick={handleModify}
             >
               Modificar

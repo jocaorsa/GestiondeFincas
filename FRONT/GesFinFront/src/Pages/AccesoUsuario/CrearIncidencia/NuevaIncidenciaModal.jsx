@@ -8,11 +8,13 @@ import Typography from "@mui/material/Typography";
 import { useSpring, animated } from "@react-spring/web";
 import { TextField } from "@mui/material";
 import { useState } from "react";
-import { createIncidencia} from "../../services/incidencia.service";
+import { createIncidencia} from "../../../services/incidencia.service";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { getAllComunidades } from '../../../services/comunidad.service';
+import { useEffect } from "react";
 //import BasicSelect from "./selectrole";
 
 const Fade = React.forwardRef(function Fade(props, ref) {
@@ -71,10 +73,21 @@ const style = {
 export default function ModalCrearIncidencia({ handleCreate }) {
   const [open, setOpen] = React.useState(false);
   const [newIncidencia, setNewIncidencia] = useState({});
+  const [comunidades, setComunidades] = useState([]);
+  const [selectedComunidadId, setSelectedComunidadId] = useState("");
+
+
+  useEffect(() => {
+    const fetchComunidades = async () => {
+      const comunidadesData = await getAllComunidades();
+      setComunidades(comunidadesData);
+    };
+    fetchComunidades();
+  }, []);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
+  const handleCom =(event) => setSelectedComunidadId(event.target.value)
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setNewIncidencia((prevData) => ({
@@ -84,11 +97,32 @@ export default function ModalCrearIncidencia({ handleCreate }) {
   };
 
   const handleResponse = async () => {
-    const res = await createIncidencia(newIncidencia);
+    const currentDate = new Date();
+    const year = currentDate.getFullYear().toString();
+    let month = (currentDate.getMonth() + 1).toString();
+    let day = currentDate.getDate().toString();
+    let hours = currentDate.getHours().toString();
+    let minutes = currentDate.getMinutes().toString();
+
+    // Agregar un cero delante si el mes, día, horas o minutos tienen un solo dígito
+    if (month.length === 1) month = "0" + month;
+    if (day.length === 1) day = "0" + day;
+    if (hours.length === 1) hours = "0" + hours;
+    if (minutes.length === 1) minutes = "0" + minutes;
+
+    const numIncidencia = year + month + day + hours + minutes;
+
+    const newIncidenciaWithNum = {
+      ...newIncidencia,
+      num_incidencia: numIncidencia,
+    };
+    console.log(newIncidenciaWithNum)
+    const res = await createIncidencia(newIncidenciaWithNum);
     handleClose();
     handleCreate();
     console.log("Incidencia creada");
   };
+console.log(selectedComunidadId)
 
   return (
     <div>
@@ -118,7 +152,7 @@ export default function ModalCrearIncidencia({ handleCreate }) {
             >
               Nueva Incidencia:
             </Typography>
-            <Typography
+            {/* <Typography
               color={"black"}
               id="spring-modal-description"
               sx={{ mt: 2 }}
@@ -129,8 +163,31 @@ export default function ModalCrearIncidencia({ handleCreate }) {
               name="num_incidencia"
               value={newIncidencia.num_incidencia || ""}
               onChange={handleInputChange}
-            />
+            /> */}
             <Typography
+              color="black"
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            ></Typography>
+            <Box sx={{ minWidth: 120 }}>
+              <FormControl sx={{ minWidth: 220 }}>
+                <InputLabel id="comunidad-label">Comunidad</InputLabel>
+                <Select
+                  labelId="comunidad-label"
+                  id="comunidad_id"
+                  name="comunidad_id"
+                  value={selectedComunidadId}
+                  onChange={handleCom}
+                >
+                  {comunidades.map((comunidad) => (
+                    <MenuItem key={comunidad._id} value={comunidad._id}>
+                      {comunidad.nombre}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Box>{" "}
+            {/* <Typography
               color={"black"}
               id="spring-modal-description"
               sx={{ mt: 2 }}
@@ -141,7 +198,7 @@ export default function ModalCrearIncidencia({ handleCreate }) {
               name="comunidad_id"
               value={newIncidencia.comunidad_id || ""}
               onChange={handleInputChange}
-            />
+            /> */}
             <Typography
               color={"black"}
               id="spring-modal-description"
@@ -154,19 +211,19 @@ export default function ModalCrearIncidencia({ handleCreate }) {
               value={newIncidencia.propiedad_id || ""}
               onChange={handleInputChange}
             />
-            <Typography
+            {/* <Typography
               color={"black"}
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Fecha de Creaciom
+              Fecha Creacion
             </Typography>
             <TextField
               name="fecha_creacion"
               value={newIncidencia.fecha_creacion || ""}
               onChange={handleInputChange}
-            />
-            <Typography
+            /> */}
+            {/* <Typography
               color={"black"}
               id="spring-modal-description"
               sx={{ mt: 2 }}
@@ -177,7 +234,7 @@ export default function ModalCrearIncidencia({ handleCreate }) {
               name="seguro"
               value={newIncidencia.seguro || ""}
               onChange={handleInputChange}
-            />
+            /> */}
             <Typography
               color={"black"}
               id="spring-modal-description"
@@ -185,11 +242,19 @@ export default function ModalCrearIncidencia({ handleCreate }) {
             >
               Estado
             </Typography>
-            <TextField
-              name="estado"
-              value={newIncidencia.estado || ""}
-              onChange={handleInputChange}
-            />
+            <FormControl sx={{ mt: 3, minWidth: 120 }}>
+              <InputLabel id="estado-label">Estado</InputLabel>
+              <Select
+                labelId="estado-label"
+                id="estado"
+                name="estado"
+                value={newIncidencia.estado || ""}
+                onChange={handleInputChange}
+              >
+                <MenuItem value="Nuevo">Nuevo</MenuItem>
+                {/* Otros estados */}
+              </Select>
+            </FormControl>
             <Typography
               color={"black"}
               id="spring-modal-description"
@@ -202,7 +267,7 @@ export default function ModalCrearIncidencia({ handleCreate }) {
               value={newIncidencia.descripcion || ""}
               onChange={handleInputChange}
             />
-            <Typography
+            {/* <Typography
               color={"black"}
               id="spring-modal-description"
               sx={{ mt: 2 }}
@@ -213,8 +278,8 @@ export default function ModalCrearIncidencia({ handleCreate }) {
               name="img"
               value={newIncidencia.img || ""}
               onChange={handleInputChange}
-            />
-            <Typography
+            /> */}
+            {/*  <Typography
               color={"black"}
               id="spring-modal-description"
               sx={{ mt: 2 }}
@@ -225,14 +290,15 @@ export default function ModalCrearIncidencia({ handleCreate }) {
               name="proveedor_id"
               value={newIncidencia.proveedor_id || ""}
               onChange={handleInputChange}
-            />
+            /> */}
             <Typography></Typography>
             <Button
               variant="contained"
               DisableElevation
               style={{
                 color: "inherit",
-                padding: "5px",
+                padding: "2px",
+                marginTop: "6px",
                 textDecoration: "none",
               }}
               onClick={handleResponse}

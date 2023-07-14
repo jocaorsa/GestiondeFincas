@@ -5,10 +5,10 @@ const incidenciaSchema = new Schema ({
     num_incidencia: {
         type: Date
     },
-    comunidad_id: [{
+    comunidad_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'comunidad'
-    }],
+    },
     propiedad_id: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'propiedad'
@@ -21,7 +21,8 @@ const incidenciaSchema = new Schema ({
         enum:['Si','No']
     },
     estado: {
-        type: String
+        type: String,
+        enum:['Nueva','En Proceso',"Terminada"]
     },
     descripcion: {
         type: String

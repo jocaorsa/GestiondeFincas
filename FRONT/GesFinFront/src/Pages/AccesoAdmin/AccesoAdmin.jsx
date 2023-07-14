@@ -1,8 +1,20 @@
 import { Box, Button, Grid } from "@mui/material";
 import Card from "@mui/material/Card";
 import { Link } from "react-router-dom";
+import DataTableIncidencias from "../../Pages/AccesoAdmin/Incidencias/DataTableIncidencias";
+import { useEffect } from "react";
+import { useState } from "react";
 
 function AccesoAdmin() {
+   const [data, setData] = useState([]);
+
+   const handleData = async () => {
+     const incidencia = await find();
+     setData(incidencia);
+   };
+   useEffect(() => {
+     handleData();
+   }, []);
   return (
     <Box
       sx={{
@@ -44,8 +56,8 @@ function AccesoAdmin() {
           height: "100%",
         }}
       >
-        Pequeño listado de incidencias
-      </Card>
+     <DataTableIncidencias data={data} />
+     </Card>
       <Card
         sx={{
           display: "flex",
@@ -121,7 +133,7 @@ function AccesoAdmin() {
               </Link>
             </Card>
           </Grid>
-          <Grid item>
+          {/* <Grid item>
             <Card
               sx={{
                 display: "flex",
@@ -141,7 +153,7 @@ function AccesoAdmin() {
                 </Button>
               </Link>
             </Card>
-          </Grid>
+          </Grid> */}
           <Grid item>
             <Card
               sx={{

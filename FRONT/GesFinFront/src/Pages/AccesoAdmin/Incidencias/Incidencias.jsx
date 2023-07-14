@@ -1,8 +1,20 @@
 import { Box, Button, Grid } from "@mui/material";
 import Card from "@mui/material/Card";
+import { useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import DataTableIncidencias from "./DataTableIncidencias";
 
 function Incidencias() {
+  const [data, setData] = useState([]);
+
+  const handleData = async () => {
+    const seguro = await find();
+    setData(seguro);
+  };
+  useEffect(() => {
+    handleData();
+  }, []);
   return (
     <Box
       sx={{
@@ -44,23 +56,7 @@ function Incidencias() {
           height: "100%",
         }}
       >
-        Pequeño listado de incidencias
-        <Link
-          style={{ color: "inherit", textDecoration: "none" }}
-          to="/login/admin/"
-        >
-          <Button variant="contained" DisableElevation>
-            volver
-          </Button>
-        </Link>
-        <Link
-          style={{ color: "inherit", textDecoration: "none" }}
-          to="/login/admin/incidencias"
-        >
-          <Button variant="contained" DisableElevation>
-            editar
-          </Button>
-        </Link>
+        <DataTableIncidencias data={data} />
       </Card>
     </Box>
   );

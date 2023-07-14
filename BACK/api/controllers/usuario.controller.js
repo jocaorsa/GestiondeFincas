@@ -1,10 +1,17 @@
 const Usuario = require("../models/usuario.model");
 const mongoose = require('mongoose');
 
-
 async function getOneUsuario (req, res){
     try {
         const usuario = await Usuario.findById(req.params.usuarioId)
+        res.json(usuario)
+    } catch (error){
+        console.log(error)
+    }
+}
+async function getOneUser (req, res){
+    try {
+        const usuario = await Usuario.findById(req.params.usuarioId).populate("comunidad_id")
         res.json(usuario)
     } catch (error){
         console.log(error)
@@ -53,5 +60,6 @@ module.exports = {
                 getAllUsuario,
                 createUsuario,
                 updateUsuario,
-                deleteUsuario
+                deleteUsuario,
+                getOneUser
             } 

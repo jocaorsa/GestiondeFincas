@@ -1,8 +1,21 @@
 import { Box, Button, Grid } from "@mui/material";
 import Card from "@mui/material/Card";
+import { useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import DataTableUser from "./DataTableUser";
 
 function AccesoUsuario() {
+    const [data, setData] = useState([]);
+
+    const handleData = async () => {
+      const user = await find();
+      setData(user);
+    };
+    useEffect(() => {
+      handleData();
+    }, []);
+
   return (
     <Box
       sx={{
@@ -11,13 +24,54 @@ function AccesoUsuario() {
         alignContent: "center",
         alignItems: "center",
         justifyContent: "center",
-        height: "45vw",
+        height: "90vh",
+        margin: "auto",
       }}
     >
       <Card
         sx={{
           display: "flex",
-          backgroundImage: "url(https://source.unsplash.com/random?buildings)",
+          justifyItems: "center",
+          alignContent: "center",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "15vw",
+          height: "100%",
+        }}
+      >
+        <Link style={{ color: "inherit", textDecoration: "none" }} to="/">
+          <Button
+            style={{ color: "inherit", textDecoration: "none" }}
+            variant="contained"
+            DisableElevation
+            onClick={() => {
+              localStorage.removeItem("token");
+              localStorage.removeItem("id");
+              localStorage.removeItem("role");
+            }}
+          >
+            Cerrar sesión
+          </Button>
+        </Link>
+      </Card>
+      <Card
+        sx={{
+          display: "flex",
+          justifyItems: "center",
+          alignContent: "center",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "70vw",
+          height: "100%",
+        }}
+      >
+        <DataTableUser data={data} />
+      </Card>
+
+      <Card
+        sx={{
+          display: "flex",
+          backgroundImage: "url(https://source.unsplash.com/random?house)",
           backgroundRepeat: "no-repeat",
           backgroundColor: (t) =>
             t.palette.mode === "light"
@@ -33,126 +87,6 @@ function AccesoUsuario() {
           height: "100%",
         }}
       ></Card>
-      <Card
-        sx={{
-          display: "flex",
-          justifyItems: "center",
-          alignContent: "center",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "50vw",
-          height: "100%",
-        }}
-      >
-        Informacion de la comunidad
-      </Card>
-      <Card
-        sx={{
-          display: "flex",
-          justifyItems: "center",
-          alignContent: "center",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "17vw",
-          height: "100%",
-        }}
-      >
-        <Grid container spacing={2} direction="column">
-          <Grid item>
-            <Card
-              sx={{
-                display: "flex",
-                justifyItems: "center",
-                alignContent: "center",
-                alignItems: "center",
-                justifyContent: "center",
-                height: "10vw",
-              }}
-            >
-              <Link
-                style={{ color: "inherit", textDecoration: "none" }}
-                to="/login/user/crear"
-              >
-                <Button variant="contained" DisableElevation>
-                  Crear Incidencia
-                </Button>
-              </Link>
-            </Card>
-          </Grid>
-          <Grid item>
-            <Card
-              sx={{
-                display: "flex",
-                justifyItems: "center",
-                alignContent: "center",
-                alignItems: "center",
-                justifyContent: "center",
-                height: "10vw",
-              }}
-            >
-              <Link
-                style={{ color: "inherit", textDecoration: "none" }}
-                to="/login/user/ver"
-              >
-                <Button variant="contained" DisableElevation>
-                  Ver Estado de Incidencias
-                </Button>
-              </Link>
-            </Card>
-          </Grid>
-          <Grid item>
-            <Card
-              sx={{
-                display: "flex",
-                justifyItems: "center",
-                alignContent: "center",
-                alignItems: "center",
-                justifyContent: "center",
-                height: "10vw",
-              }}
-            >
-              <Link
-                style={{ color: "inherit", textDecoration: "none" }}
-                to="/login/user/historico"
-              >
-                <Button variant="contained" DisableElevation>
-                  Historico
-                </Button>
-              </Link>
-            </Card>
-          </Grid>
-          <Grid item>
-            <Card
-              sx={{
-                display: "flex",
-                justifyItems: "center",
-                alignContent: "center",
-                alignItems: "center",
-                justifyContent: "center",
-                height: "10vw",
-              }}
-            >
-              <Link
-                style={{ color: "inherit", textDecoration: "none" }}
-                to="/"
-              >
-                <Button
-                  style={{ color: "inherit", textDecoration: "none" }}
-                  variant="contained"
-                  DisableElevation
-                  onClick={() => {
-                    localStorage.removeItem("token");
-                    localStorage.removeItem("id");
-                    localStorage.removeItem("role");
-                  }}
-                >
-                  Cerrar sesión
-                </Button>
-              </Link>
-            </Card>
-          </Grid>
-        </Grid>
-      </Card>
     </Box>
   );
 }

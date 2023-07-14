@@ -9,7 +9,6 @@ async function getOneIncidencia (req, res){
         console.log(error)
     }
 }
-
 async function getAllIncidencia (req, res){
     try{
         const incidencia = await Incidencia.find({__v:0})
@@ -18,6 +17,16 @@ async function getAllIncidencia (req, res){
         console.log(error)
     }
 }
+
+async function getAllIncidenciaAll (req, res){
+    try{
+        const incidencia = await Incidencia.find({__v:0}).populate("comunidad_id").populate("proveedor_id")
+        res.json(incidencia)
+    } catch (error){
+        console.log(error)
+    }
+}
+
 
 async function createIncidencia (req, res){
     try{
@@ -52,4 +61,5 @@ module.exports = {
                 getAllIncidencia,
                 createIncidencia,
                 updateIncidencia,
-                deleteIncidencia} 
+                deleteIncidencia,
+                getAllIncidenciaAll} 

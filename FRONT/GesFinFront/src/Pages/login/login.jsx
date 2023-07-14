@@ -118,8 +118,7 @@ export default function SignInSide() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage:
-              "url(https://source.unsplash.com/random?hotel)",
+            backgroundImage: "url(https://source.unsplash.com/random?hotel)",
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
@@ -145,12 +144,7 @@ export default function SignInSide() {
             <Typography component="h1" variant="h5">
               Acceso Usuarios
             </Typography>
-            <Box
-              component="form"
-              noValidate
-              onSubmit={logIn}
-              sx={{ mt: 1 }}
-            >
+            <Box component="form" noValidate onSubmit={logIn} sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required

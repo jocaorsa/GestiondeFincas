@@ -4,12 +4,15 @@ const{ getOneIncidencia,
        getAllIncidencia,
        createIncidencia,
        updateIncidencia,
-       deleteIncidencia
+       deleteIncidencia,
+       getAllIncidenciaAll
     } = require ('../controllers/incidencia.controller')
 
 router
-    .get('/:incidenciaId', getOneIncidencia)
     .get('/', getAllIncidencia)
+    .get('/all', getAllIncidenciaAll)
+    .get('/:incidenciaId', getOneIncidencia)
+     
     .post('/', createIncidencia)
     .put('/:incidenciaId', updateIncidencia)
     .delete('/:incidenciaId', deleteIncidencia)  
