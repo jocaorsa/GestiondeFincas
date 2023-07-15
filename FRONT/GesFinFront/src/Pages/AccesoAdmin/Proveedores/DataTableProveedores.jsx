@@ -1,17 +1,35 @@
 import * as React from "react";
-import {Button,Paper,Table,TableBody,TableCell,TableContainer,TableHead,TableRow,} from "@mui/material";
+import {
+  Button,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+  Grid,
+  Box,
+} from "@mui/material";
 import { useState, useEffect } from "react";
 import { getAllProveedores } from "../../../services/proveedor.service";
 import { Link } from "react-router-dom";
 import ModalCrearProveedor from "../../../components/ModalProveedores/NuevoProveedorModal";
 import Search from "../../../components/Search/search";
 import SpringProveedorModal from "../../../components/ModalProveedores/SpringProveedorModal";
+import { getOneUser } from "../../../services/usuario.service";
 
 export default function DataTableProveedores({ data }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [proveedores, setProveedores] = useState([]);
   const [actualizar, setActualizar] = useState(false);
+  const [user, setUser] = useState(undefined);
 
+  const showUser = async () => {
+    const userData = await getOneUser(); // Obtén los datos del usuario
+    setUser(userData);
+  };
   const showProveedores = async () => {
     const data = await getAllProveedores();
     setProveedores(data);
@@ -19,6 +37,8 @@ export default function DataTableProveedores({ data }) {
   console.log(proveedores)
   useEffect(() => {
     showProveedores();
+    showUser();
+
   }, [actualizar]);
 
   const handleUpdate = () => {
@@ -119,11 +139,20 @@ export default function DataTableProveedores({ data }) {
   return (
     <>
       <div>
-        <Search
-          searchQuery={searchQuery}
-          handleSearchChange={handleSearchChange}
-        />
-        <TableContainer component={Paper}>
+      <Grid container justifyContent="space-between" alignItems="center">
+          <Grid item>
+            <Typography variant="h6" gutterBottom>
+              {user && `Bienvenido, ${user.name}`}
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Search
+              searchQuery={searchQuery}
+              handleSearchChange={handleSearchChange}
+            />
+          </Grid>
+        </Grid>
+        <TableContainer component={Paper} style={{ height: 400 }}>
           <Table size="small">
             <TableHead>
               <TableRow>
@@ -156,14 +185,6 @@ export default function DataTableProveedores({ data }) {
             <TableBody>{filteredData()}</TableBody>
           </Table>
         </TableContainer>
-        <Link
-          to={"/login/admin"}
-          style={{ color: "inherit", padding: "5px", textDecoration: "none" }}
-        >
-          <Button variant="contained" DisableElevation>
-            volver
-          </Button>
-        </Link>
         <Button>
           <ModalCrearProveedor handleCreate={handleCreate} />
         </Button>

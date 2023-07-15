@@ -8,6 +8,9 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Typography,
+  Grid,
+  Box,
 } from "@mui/material";
 import { useState, useEffect } from "react";
 import { getAllIncidenciasAll } from "../../../services/incidencia.service";
@@ -15,11 +18,18 @@ import { Link } from "react-router-dom";
 import ModalCrearIncidencia from "../../../components/ModalIncidencia/NuevaIncidenciaModal";
 import Search from "../../../components/Search/search";
 import SpringIncidenciaModal from "../../../components/ModalIncidencia/SpringIncidenciaModal";
+import { getOneUser } from "../../../services/usuario.service";
 
 export default function DataTableIncidencia() {
   const [searchQuery, setSearchQuery] = useState("");
   const [incidencia, setIncidencia] = useState([]);
   const [actualizar, setActualizar] = useState(false);
+  const [user, setUser] = useState(undefined);
+
+  const showUser = async () => {
+    const userData = await getOneUser(); // Obtén los datos del usuario
+    setUser(userData);
+  };
 
   const showIncidencias = async () => {
     const data = await getAllIncidenciasAll();
@@ -28,6 +38,7 @@ export default function DataTableIncidencia() {
   };
 
   useEffect(() => {
+    showUser(); // Llama a la función para obtener los datos del usuario
     showIncidencias();
   }, [actualizar]);
 
@@ -40,6 +51,17 @@ export default function DataTableIncidencia() {
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
+  };
+
+  const getStatusColor = (status) => {
+    if (status === "Nueva") {
+      return "green";
+    } else if (status === "En Proceso") {
+      return "orange";
+    } else if (status === "Terminada") {
+      return "red";
+    }
+    return "";
   };
 
   const filteredData = () => {
@@ -72,7 +94,11 @@ export default function DataTableIncidencia() {
             <TableCell size="small" align="right">
               {ele.seguro}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell
+              size="small"
+              align="right"
+              style={{ color: getStatusColor(ele.estado) }}
+            >
               {ele.estado}
             </TableCell>
             <TableCell size="small" align="right">
@@ -115,7 +141,11 @@ export default function DataTableIncidencia() {
             <TableCell size="small" align="right">
               {ele.seguro}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell
+              size="small"
+              align="right"
+              style={{ color: getStatusColor(ele.estado) }}
+            >
               {ele.estado}
             </TableCell>
             <TableCell size="small" align="right">
@@ -142,10 +172,19 @@ export default function DataTableIncidencia() {
   return (
     <>
       <div>
-        <Search
-          searchQuery={searchQuery}
-          handleSearchChange={handleSearchChange}
-        />
+        <Grid container justifyContent="space-between" alignItems="center">
+          <Grid item>
+            <Typography variant="h6" gutterBottom>
+              {user && `Bienvenido, ${user.name}`}
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Search
+              searchQuery={searchQuery}
+              handleSearchChange={handleSearchChange}
+            />
+          </Grid>
+        </Grid>
         <TableContainer component={Paper} style={{ maxHeight: 400 }}>
           <Table stickyHeader>
             <TableHead>
@@ -180,14 +219,14 @@ export default function DataTableIncidencia() {
             <TableBody>{filteredData()}</TableBody>
           </Table>
         </TableContainer>
-        <Link
+{/*         <Link
           to={"/login/admin"}
           style={{ color: "inherit", padding: "5px", textDecoration: "none" }}
         >
           <Button variant="contained" DisableElevation>
             volver
           </Button>
-        </Link>
+        </Link> */}
         <Button>
           <ModalCrearIncidencia handleCreate={handleCreate} />
         </Button>

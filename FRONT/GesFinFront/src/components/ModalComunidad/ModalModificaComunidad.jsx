@@ -119,8 +119,9 @@ export default function ModalModificaComunidad({ comunidad, handleUpdate }) {
         DisableElevation
         style={{ color: "inherit", textDecoration: "none" }}
       >
-        Editar
-      </Button>
+
+
+VER      </Button>
       <Modal
         aria-labelledby="spring-modal-title"
         aria-describedby="spring-modal-description"

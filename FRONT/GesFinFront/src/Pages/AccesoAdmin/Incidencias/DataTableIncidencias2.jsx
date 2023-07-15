@@ -13,16 +13,16 @@ import {
   Box,
 } from "@mui/material";
 import { useState, useEffect } from "react";
-import { getAllUsers } from "../../../services/usuario.service";
+import { getAllIncidenciasAll } from "../../../services/incidencia.service";
 import { Link } from "react-router-dom";
-import ModalCrearUsuario from "../../../components/Modal/NuevoUsuarioModal";
+import ModalCrearIncidencia from "../../../components/ModalIncidencia/NuevaIncidenciaModal";
 import Search from "../../../components/Search/search";
-import SpringUserModal from "../../../components/Modal/SpringUserModal";
+import SpringIncidenciaModal from "../../../components/ModalIncidencia/SpringIncidenciaModal";
 import { getOneUser } from "../../../services/usuario.service";
 
-export default function DataTableUsuarios({ data }) {
+export default function DataTableIncidencia() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [users, setUsers] = useState([]);
+  const [incidencia, setIncidencia] = useState([]);
   const [actualizar, setActualizar] = useState(false);
   const [user, setUser] = useState(undefined);
 
@@ -31,14 +31,15 @@ export default function DataTableUsuarios({ data }) {
     setUser(userData);
   };
 
-  const showUsers = async () => {
-    const data = await getAllUsers();
-    setUsers(data);
+  const showIncidencias = async () => {
+    const data = await getAllIncidenciasAll();
+    console.log(data);
+    setIncidencia(data);
   };
-  console.log(users)
+
   useEffect(() => {
-    showUsers();
-    showUser();
+    showUser(); // Llama a la función para obtener los datos del usuario
+    showIncidencias();
   }, [actualizar]);
 
   const handleUpdate = () => {
@@ -52,77 +53,115 @@ export default function DataTableUsuarios({ data }) {
     setSearchQuery(event.target.value);
   };
 
+  const getStatusColor = (status) => {
+    if (status === "Nueva") {
+      return "green";
+    } else if (status === "En Proceso") {
+      return "orange";
+    } else if (status === "Terminada") {
+      return "red";
+    }
+    return "";
+  };
+
   const filteredData = () => {
     const query = searchQuery.toLowerCase();
     if (query.length > 0) {
-      const filteredUsers = users.filter((ele) => {
+      const filteredIncidencia = incidencia.filter((ele) => {
         return Object.values(ele).some((value) =>
           String(value).toLowerCase().includes(query)
         );
       });
-      return filteredUsers.map((ele) => {
+      return filteredIncidencia.map((ele) => {
         return (
           <TableRow
             key={ele.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
+            {incidencia}
             <TableCell size="small" component="th" scope="ele">
-              {ele.name}
+              {ele.num_incidencia}
             </TableCell>
             <TableCell size="small" align="right">
-              {ele.apellidos}
+              {ele.comunidad_id.nombre}
             </TableCell>
-            <TableCell size="small" align="right">
-              {ele.tlf_usu}
-            </TableCell>
+            {/*  <TableCell size="small" align="right">
+              {ele.propiedad_id}
+            </TableCell> */}
             <TableCell size="small" align="right">
               {ele.email}
             </TableCell>
             <TableCell size="small" align="right">
-              {ele.role}
+              {ele.seguro}
+            </TableCell>
+            <TableCell
+              size="small"
+              align="right"
+              style={{ color: getStatusColor(ele.estado) }}
+            >
+              {ele.estado}
             </TableCell>
             <TableCell size="small" align="right">
-              {ele.comunidad_id}
+              {ele.descripcion}
             </TableCell>
             {/* <TableCell size="small" align="right">
-              {ele.password}
+              {ele.img}
             </TableCell> */}
+            <TableCell size="small" align="right">
+              {ele.proveedor_id.nombre}
+            </TableCell>
             <TableCell>
-              <SpringUserModal user={ele} hadleUpdate={handleUpdate} />
+              <SpringIncidenciaModal
+                incidencia={ele}
+                hadleUpdate={handleUpdate}
+              />
             </TableCell>
           </TableRow>
         );
       });
     } else {
-      return users.map((ele) => {
+      return incidencia.map((ele) => {
         return (
           <TableRow
             key={ele.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
             <TableCell component="th" scope="ele" size="small">
-              {ele.name}
+              {ele.num_incidencia}
             </TableCell>
             <TableCell size="small" align="right">
-              {ele.apellidos}
-            </TableCell>
-            <TableCell size="small" align="right">
-              {ele.tlf_usu}
-            </TableCell>
-            <TableCell size="small" align="right">
-              {ele.email}
-            </TableCell>
-            <TableCell size="small" align="right">
-              {ele.role}
-            </TableCell>
-            <TableCell size="small" align="right">
-              {ele.comunidad_id}
+              {ele.comunidad_id.nombre}
             </TableCell>
             {/* <TableCell size="small" align="right">
-              {ele.password}
+              {ele.propiedad_id}
             </TableCell> */}
+            <TableCell size="small" align="right">
+              {ele.fecha_creacion}
+            </TableCell>
+            <TableCell size="small" align="right">
+              {ele.seguro}
+            </TableCell>
+            <TableCell
+              size="small"
+              align="right"
+              style={{ color: getStatusColor(ele.estado) }}
+            >
+              {ele.estado}
+            </TableCell>
+            <TableCell size="small" align="right">
+              {ele.descripcion}
+            </TableCell>
+            {/*   <TableCell size="small" align="right">
+              {ele.img}
+            </TableCell> */}
+            <TableCell size="small" align="right">
+              {ele.proveedor_id.nombre}
+            </TableCell>
             <TableCell>
-              <SpringUserModal user={ele} hadleUpdate={handleUpdate} />
+              <SpringIncidenciaModal
+                incidencia={ele}
+                hadleUpdate={handleUpdate}
+              />
             </TableCell>
           </TableRow>
         );
@@ -133,7 +172,7 @@ export default function DataTableUsuarios({ data }) {
   return (
     <>
       <div>
-      <Grid container justifyContent="space-between" alignItems="center">
+        <Grid container justifyContent="space-between" alignItems="center">
           <Grid item>
             <Typography variant="h6" gutterBottom>
               {user && `Bienvenido, ${user.name}`}
@@ -146,36 +185,50 @@ export default function DataTableUsuarios({ data }) {
             />
           </Grid>
         </Grid>
-        <TableContainer component={Paper} style={{ height: 400 }}>
-          <Table size="small">
+        <TableContainer component={Paper} style={{ maxHeight: 400 }}>
+          <Table stickyHeader>
             <TableHead>
               <TableRow>
-                <TableCell size="small">Nombre</TableCell>
-                <TableCell size="small" align="right">
-                  Apellidos
-                </TableCell>
-                <TableCell size="small" align="right">
-                  Telefono
-                </TableCell>
-                <TableCell size="small" align="right">
-                  Email
-                </TableCell>
-                <TableCell size="small" align="right">
-                  Role
-                </TableCell>
+                <TableCell size="small">Num incidencia</TableCell>
                 <TableCell size="small" align="right">
                   Comunidad
                 </TableCell>
                 {/* <TableCell size="small" align="right">
-                  Contraseña
+                  Propiedad
                 </TableCell> */}
+                <TableCell size="small" align="right">
+                  Fecha de Creacion
+                </TableCell>
+                <TableCell size="small" align="right">
+                  Seguro
+                </TableCell>
+                <TableCell size="small" align="right">
+                  Estado
+                </TableCell>
+                <TableCell size="small" align="right">
+                  Descripcion
+                </TableCell>
+                {/*  <TableCell size="small" align="right">
+                  Img
+                </TableCell> */}
+                <TableCell size="small" align="right">
+                  Proveedor
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>{filteredData()}</TableBody>
           </Table>
         </TableContainer>
+        {/* <Link
+          to={"/login/admin"}
+          style={{ color: "inherit", padding: "5px", textDecoration: "none" }}
+        >
+          <Button variant="contained" DisableElevation>
+            volver
+          </Button>
+        </Link> */}
         <Button>
-          <ModalCrearUsuario handleCreate={handleCreate} />
+          <ModalCrearIncidencia handleCreate={handleCreate} />
         </Button>
       </div>
     </>

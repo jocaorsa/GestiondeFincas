@@ -117,7 +117,7 @@ export default function DataTableUsuarios({ data }) {
           searchQuery={searchQuery}
           handleSearchChange={handleSearchChange}
         />
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} style={{ height: 400 }}>
           <Table size="small">
             <TableHead>
               <TableRow>

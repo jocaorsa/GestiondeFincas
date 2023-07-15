@@ -49,8 +49,7 @@ function VerIncidencia() {
           to="/login/user/"
         >
           <Button variant="contained" DisableElevation>
-            editar
-          </Button>
+    VER          </Button>
         </Link>
         <Link
           style={{ color: "inherit", textDecoration: "none" }}

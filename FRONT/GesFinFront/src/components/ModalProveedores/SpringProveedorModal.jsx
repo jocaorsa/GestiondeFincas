@@ -129,11 +129,8 @@ const handleDelete = async () => {
   return (
     <div>
       <Button variant="contained" DisableElevation onClick={handleOpen}>
-        Editar
-      </Button>
-      <Button variant="contained" DisableElevation onClick={handleDelete}>
-        Eliminar
-      </Button>
+VER      </Button>
+
       <Modal
         aria-labelledby="spring-modal-title"
         aria-describedby="spring-modal-description"
@@ -255,18 +252,24 @@ const handleDelete = async () => {
             />
 
             <Typography></Typography>
-            <Button
-              variant="contained"
-              DisableElevation
-              style={{
-                color: "inherit",
-                padding: "5px",
-                textDecoration: "none",
-              }}
-              onClick={handleModify}
-            >
-              Modificar
-            </Button>
+            <div style={{ marginTop: "10px" }}>
+              <Button
+                variant="contained"
+                DisableElevation
+                style={{
+                  color: "inherit",
+                  padding: "5px",
+                  textDecoration: "none",
+                  marginRight: "5px",
+                }}
+                onClick={handleModify}
+              >
+                Modificar
+              </Button>
+              <Button variant="contained" DisableElevation onClick={handleDelete}>
+                Eliminar
+              </Button>
+            </div>
             
           </Box>
         </Fade>

@@ -10,8 +10,7 @@ import { useSpring, animated } from "@react-spring/web";
 import { TextField } from "@mui/material";
 import { useState, useEffect } from "react";
 import { api } from "../../services/api";
-import DeleteModalSeguro from "./DeleteModalSeguro";
-import { deleteOne, updateOneSeguro } from "../../services/seguro.service";
+import { deleteOne, updateOneIncidencia } from "../../services/incidencia.service";
 
 const Fade = React.forwardRef(function Fade(props, ref) {
   const {
@@ -65,10 +64,10 @@ const style = {
   p: 4,
 };
 
-export default function SpringModal({ seguro, hadleUpdate }) {
+export default function SpringModal({ incidencia, hadleUpdate }) {
   const [open, setOpen] = React.useState(false);
   const [editedData, setEditedData] = useState({});
-
+  console.log(incidencia)
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -76,14 +75,17 @@ export default function SpringModal({ seguro, hadleUpdate }) {
     console.log(editedData);
     console.log(localStorage.getItem("token"));
     try {
-        const respuesta = await updateOneSeguro(
+        const respuesta = await updateOneIncidencia(
           editedData._id,
-          editedData.compania,
-          editedData.poliza,
-          editedData.tlf_seg,
-          editedData.fecha_contrato,
-          editedData.fecha_fin_contrato,
-          /* editedData.mediador_id */
+          editedData.num_incidencia,
+          editedData.comunidad_id,
+          editedData.propiedad_id,
+          editedData.fecha_creacion,
+          editedData.seguro,
+          editedData.estado,
+          editedData.descripcion,
+          editedData.img,
+          editedData.proveedor_id
         );
 
       if (respuesta) {
@@ -98,37 +100,40 @@ export default function SpringModal({ seguro, hadleUpdate }) {
     }
   };
   const handleInputChange = (event) => {
-    const { compania, value } = event.target;
+    const { name, value } = event.target;
     setEditedData((prevData) => ({
       ...prevData,
-      [compania]: value,
+      [name]: value,
     }));
   };
   useEffect(() => {
-    setEditedData(seguro);
+    setEditedData(incidencia);
   }, []);
 
 const handleDelete = async () => {
   try {
-    const respuesta = await deleteOne(seguro._id);
+    const respuesta = await deleteOne(incidencia._id);
 
     if (respuesta) {
-      console.log("Seguro eliminado");
+      console.log("Incidencia eliminado");
       handleClose();
       hadleUpdate();
     } else {
-      console.error("No se pudo eliminar al Seguro");
+      console.error("No se pudo eliminar al incidencia");
     }
   } catch (error) {
-    console.error("Error al eliminar el Seguro", error);
+    console.error("Error al eliminar el incidencia", error);
   }
 };
 
   return (
     <div>
       <Button variant="contained" DisableElevation onClick={handleOpen}>
-VER      </Button>
-
+        Ver 
+      </Button>
+     {/*  <Button variant="contained" DisableElevation onClick={handleDelete}>
+        Eliminar
+      </Button> */}
       <Modal
         aria-labelledby="spring-modal-title"
         aria-describedby="spring-modal-description"
@@ -150,18 +155,18 @@ VER      </Button>
               variant="h5"
               component="h5"
             >
-              Datos Seguro:
+              Datos Incidencia:
             </Typography>
             <Typography
               color={"black"}
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Compañia
+              Num Incidencia
             </Typography>
-            <TextField
-              name="compania"
-              value={editedData.compania || ""}
+           <TextField
+              name="num_incidencia"
+              value={editedData.num_incidencia || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -169,47 +174,11 @@ VER      </Button>
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Poliza
+              Comunidad
             </Typography>
             <TextField
-              name="poliza"
-              value={editedData.poliza || ""}
-              onChange={handleInputChange}
-            />
-            <Typography
-              color={"black"}
-              id="spring-modal-description"
-              sx={{ mt: 2 }}
-            >
-              Telefono
-            </Typography>
-            <TextField
-              name="tlf_seg"
-              value={editedData.tlf_seg || ""}
-              onChange={handleInputChange}
-            />
-            <Typography
-              color={"black"}
-              id="spring-modal-description"
-              sx={{ mt: 2 }}
-            >
-              Fecha Contrato
-            </Typography>
-            <TextField
-              name="fecha_contrato"
-              value={editedData.fecha_contrato || ""}
-              onChange={handleInputChange}
-            />
-            <Typography
-              color={"black"}
-              id="spring-modal-description"
-              sx={{ mt: 2 }}
-            >
-              Fecha Fin Contrato
-            </Typography>
-            <TextField
-              name="fecha_fin_contrato"
-              value={editedData.fecha_fin_contrato || ""}
+              name="comunidad_id"
+              value={editedData.comunidad_id || ""}
               onChange={handleInputChange}
             />
             {/* <Typography
@@ -217,33 +186,99 @@ VER      </Button>
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Mediador
+              Propiedad
             </Typography>
             <TextField
-              name="mediador_id"
-              value={editedData.mediador_id || ""}
+              name="propiedad_id"
+              value={editedData.propiedad_id || ""}
               onChange={handleInputChange}
             /> */}
+            {/* <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
+              Fecha Creacion
+            </Typography>
+            <TextField
+              name="fecha_creacion"
+              value={editedData.fecha_creacion || ""}
+              onChange={handleInputChange}
+            /> */}
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
+              Seguro
+            </Typography>
+            <TextField
+              name="seguro"
+              value={editedData.seguro || ""}
+              onChange={handleInputChange}
+            />
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
+              Estado
+            </Typography>
+            <TextField
+              name="estado"
+              value={editedData.estado || ""}
+              onChange={handleInputChange}
+            />
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
+              Descripcion
+            </Typography>
+            <TextField
+              name="descripcion"
+              value={editedData.descripcion || ""}
+              onChange={handleInputChange}
+            />
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
+              Img
+            </Typography>
+            <TextField
+              name="img"
+              value={editedData.img || ""}
+              onChange={handleInputChange}
+            />
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
+              Proveedor
+            </Typography>
+            <TextField
+              name="proveedor_id"
+              value={editedData.proveedor_id || ""}
+              onChange={handleInputChange}
+            />
             <Typography></Typography>
-            <div style={{ marginTop: "10px" }}>
-              <Button
-                variant="contained"
-                DisableElevation
-                style={{
-                  color: "inherit",
-                  padding: "5px",
-                  textDecoration: "none",
-                  marginRight: "5px",
-                }}
-                onClick={handleModify}
-              >
-                Modificar
-              </Button>
-              <Button variant="contained" DisableElevation onClick={handleDelete}>
-                Eliminar
-              </Button>
-            </div>
-            {/*<DeleteModalSeguro seguro={seguro} handleDelete={handleDelete} />
+            <Button
+              variant="contained"
+              DisableElevation
+              style={{
+                color: "inherit",
+                padding: "5px",
+                textDecoration: "none",
+              }}
+              onClick={handleModify}
+            >
+              Modificar
+            </Button>
+            {/*<DeleteModalUser user={user} handleDelete={handleDelete} />
              */}
           </Box>
         </Fade>

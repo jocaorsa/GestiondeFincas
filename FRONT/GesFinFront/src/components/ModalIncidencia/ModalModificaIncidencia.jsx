@@ -120,8 +120,8 @@ export default function ModalModificaIncidencia({ incidencia, handleUpdate }) {
         DisableElevation
         style={{ color: "inherit", textDecoration: "none" }}
         >
-        Editar
-      </Button>
+        VER      
+        </Button>
       <Modal
         aria-labelledby="spring-modal-title"
         aria-describedby="spring-modal-description"

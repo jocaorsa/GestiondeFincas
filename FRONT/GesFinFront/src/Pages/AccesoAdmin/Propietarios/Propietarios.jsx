@@ -58,8 +58,7 @@ function Propietarios() {
           to="/login/admin/propietarios"
         >
           <Button variant="contained" DisableElevation>
-            editar
-          </Button>
+    VER          </Button>
         </Link>
       </Card>
     </Box>

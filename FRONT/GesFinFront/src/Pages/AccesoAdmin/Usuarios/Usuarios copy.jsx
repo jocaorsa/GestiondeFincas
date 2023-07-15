@@ -58,8 +58,7 @@ function Usuarios() {
           to="/login/admin/usuarios"
         >
           <Button variant="contained" DisableElevation>
-            editar
-          </Button>
+    VER          </Button>
         </Link>
       </Card>
     </Box>

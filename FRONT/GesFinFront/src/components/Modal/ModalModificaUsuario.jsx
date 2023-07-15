@@ -10,6 +10,7 @@ import { TextField } from "@mui/material";
 import { useState } from "react";
 import { api } from "../../services/api";
 import { useEffect } from "react";
+import { deleteOne, updateOneUsuario } from "../../services/usuario.service";
 
 const Fade = React.forwardRef(function Fade(props, ref) {
   const {
@@ -67,6 +68,7 @@ const style = {
 export default function ModalModificaUsuario({ user, handleUpdate }) {
   const [open, setOpen] = useState(false);
   const [editedData, setEditedData] = useState({});
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -118,7 +120,9 @@ export default function ModalModificaUsuario({ user, handleUpdate }) {
         DisableElevation
         style={{ color: "inherit", textDecoration: "none" }}
         >
-        Editar
+VER      </Button>
+      <Button variant="contained" DisableElevation onClick={handleDelete}>
+        Eliminar
       </Button>
       <Modal
         aria-labelledby="spring-modal-title"
