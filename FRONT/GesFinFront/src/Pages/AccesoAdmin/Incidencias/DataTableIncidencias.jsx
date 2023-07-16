@@ -106,10 +106,10 @@ export default function DataTableIncidencia() {
             </TableCell>
             {/* <TableCell size="small" align="right">
               {ele.img}
-            /* </TableCell> */}
+            /* </TableCell> 
             <TableCell size="small" align="right">
               {ele.proveedor_id.nombre}
-            </TableCell> */
+          </TableCell> */}
             <TableCell>
               <SpringIncidenciaModal
                 incidencia={ele}
@@ -210,10 +210,10 @@ export default function DataTableIncidencia() {
                 </TableCell>
                 {/*  <TableCell size="small" align="right">
                   Img
-                </TableCell> */}
+                </TableCell>
                 <TableCell size="small" align="right">
                   Proveedor
-                </TableCell>
+                </TableCell> */}
               </TableRow>
             </TableHead>
             <TableBody>{filteredData()}</TableBody>
