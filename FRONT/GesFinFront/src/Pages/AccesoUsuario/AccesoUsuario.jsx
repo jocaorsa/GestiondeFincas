@@ -6,87 +6,58 @@ import { Link } from "react-router-dom";
 import DataTableUser from "./DataTableUser";
 
 function AccesoUsuario() {
-    const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
 
-    const handleData = async () => {
-      const user = await find();
-      setData(user);
-    };
-    useEffect(() => {
-      handleData();
-    }, []);
+  const handleData = async () => {
+    const user = await find();
+    setData(user);
+  };
+  
+  useEffect(() => {
+    handleData();
+  }, []);
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyItems: "center",
-        alignContent: "center",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "90vh",
-        margin: "auto",
-      }}
-    >
+    <Box sx={{ display: "flex", height: "70%" }}>
       <Card
         sx={{
+          flex: "0 0 20%",
           display: "flex",
-          justifyItems: "center",
-          alignContent: "center",
-          alignItems: "center",
           justifyContent: "center",
-          width: "15vw",
-          height: "100%",
+          alignItems: "center",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
-        <Link style={{ textDecoration: "none" }} to="/">
-          <Button
-            style={{ textDecoration: "none" }}
-            variant="contained"
-            DisableElevation
-            onClick={() => {
-              localStorage.removeItem("token");
-              localStorage.removeItem("id");
-              localStorage.removeItem("role");
-            }}
-          >
-            Cerrar sesión
-          </Button>
-        </Link>
-      </Card>
-      <Card
-        sx={{
-          display: "flex",
-          justifyItems: "center",
-          alignContent: "center",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "70vw",
-          height: "100%",
-        }}
-      >
-        <DataTableUser data={data} />
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundImage: "url(https://source.unsplash.com/random?buildings)",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            filter: "brightness(70%)",
+          }}
+        />
       </Card>
 
-      <Card
-        sx={{
-          display: "flex",
-          backgroundImage: "url(https://source.unsplash.com/random?house)",
-          backgroundRepeat: "no-repeat",
-          backgroundColor: (t) =>
-            t.palette.mode === "light"
-              ? t.palette.grey[50]
-              : t.palette.grey[900],
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          justifyItems: "center",
-          alignContent: "center",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "15vw",
-          height: "100%",
-        }}
-      ></Card>
+      <Box sx={{ flexGrow: 1, p: 4 }}>
+        <Card sx={{ mt: 4, minHeight: "60vh" }}>
+          <DataTableUser data={data} />
+        </Card>
+
+        <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Button variant="contained" DisableElevation>
+              Cerrar sesión
+            </Button>
+          </Link>
+        </Box>
+      </Box>
     </Box>
   );
 }
