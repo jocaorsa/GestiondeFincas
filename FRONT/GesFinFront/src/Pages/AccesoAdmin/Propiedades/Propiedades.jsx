@@ -17,7 +17,7 @@ function Propietarios() {
       }, []);
 
 
-      
+
       return (
         <Box sx={{ display: "flex", height: "70%" }}>
           <Card
@@ -99,31 +99,24 @@ function Propietarios() {
                     <Button variant="contained" fullWidth>
                       Propiedades
                     </Button>
-                  </Link>
-                </Box>
-              </Grid>
-              <Grid item xs={12} sm={6} md={4} lg={3}>
-                <Box width="100%">
-                  <Link to="/" style={{ textDecoration: "none" }}>
-                    <Button
-                      variant="contained"
-                      fullWidth
-                      onClick={() => {
-                        localStorage.removeItem("token");
-                        localStorage.removeItem("id");
-                        localStorage.removeItem("role");
-                      }}
-                    >
-                      Cerrar sesión
-                    </Button>
-                  </Link>
-                </Box>
-              </Grid>
-            </Grid>
-            <Card sx={{ mt: 4, minHeight: "60vh" }}>
-        <DataTablePropiedad data={data} />
-      </Card>
-    </Box>
+              </Link>
+            </Box>
+          </Grid>
+        </Grid>
+        <Box sx={{ flexGrow: 1, p: 4 }}>
+        <Card sx={{ mt: 4, minHeight: "60vh" }}>
+          <DataTablePropiedad data={data} />
+        </Card>
+        <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Button variant="contained" DisableElevation>
+              Cerrar sesión
+            </Button>
+          </Link>
+        </Box>
+        </Box>
+
+      </Box>
     </Box>
   );
 }
