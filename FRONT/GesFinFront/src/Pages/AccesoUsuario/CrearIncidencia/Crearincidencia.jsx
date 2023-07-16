@@ -45,19 +45,17 @@ function CrearIncidencia() {
         }}
       >
         <Link
-          style={{ color: "inherit", textDecoration: "none" }}
+          style={{ textDecoration: "none" }}
           to="/login/user/"
         >
-          <Button variant="contained" DisableElevation>
-            Crear
+         <Button variant="contained" fullWidth>            Crear
           </Button>
         </Link>
         <Link
-          style={{ color: "inherit", textDecoration: "none" }}
+          style={{ textDecoration: "none" }}
           to="/login/user/"
         >
-         <Button variant="contained" DisableElevation>
-            volver 
+        <Button variant="contained" fullWidth>            volver 
         </Button>
         </Link>
       </Card>

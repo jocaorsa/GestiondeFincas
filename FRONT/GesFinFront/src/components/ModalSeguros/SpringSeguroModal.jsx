@@ -68,7 +68,9 @@ const style = {
 export default function SpringModal({ seguro, hadleUpdate }) {
   const [open, setOpen] = React.useState(false);
   const [editedData, setEditedData] = useState({});
-
+  
+  
+  console.log(seguro)
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -86,43 +88,43 @@ export default function SpringModal({ seguro, hadleUpdate }) {
           /* editedData.mediador_id */
         );
 
+        if (respuesta) {
+          console.log("Datos actualizados");
+          hadleUpdate();
+          handleClose();
+        } else {
+          console.error("Fallo al actualizar datos");
+        }
+      } catch (error) {
+        console.error("Fallo al actualizar los datos", error);
+      }
+    };
+    const handleInputChange = (event) => {
+      const { name, value } = event.target;
+      setEditedData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    };
+    useEffect(() => {
+      setEditedData(seguro);
+    }, []);
+  
+  const handleDelete = async () => {
+    try {
+      const respuesta = await deleteOne(seguro._id);
+  
       if (respuesta) {
-        console.log("Datos actualizados");
-        hadleUpdate();
+        console.log("Seguro eliminado");
         handleClose();
+        hadleUpdate();
       } else {
-        console.error("Fallo al actualizar datos");
+        console.error("No se pudo eliminar al seguro");
       }
     } catch (error) {
-      console.error("Fallo al actualizar los datos", error);
+      console.error("Error al eliminar el seguro", error);
     }
   };
-  const handleInputChange = (event) => {
-    const { compania, value } = event.target;
-    setEditedData((prevData) => ({
-      ...prevData,
-      [compania]: value,
-    }));
-  };
-  useEffect(() => {
-    setEditedData(seguro);
-  }, []);
-
-const handleDelete = async () => {
-  try {
-    const respuesta = await deleteOne(seguro._id);
-
-    if (respuesta) {
-      console.log("Seguro eliminado");
-      handleClose();
-      hadleUpdate();
-    } else {
-      console.error("No se pudo eliminar al Seguro");
-    }
-  } catch (error) {
-    console.error("Error al eliminar el Seguro", error);
-  }
-};
 
   return (
     <div>

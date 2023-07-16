@@ -98,11 +98,10 @@ function AccesoUsuario() {
             }}
           >
             <Link
-              style={{ color: "inherit", textDecoration: "none" }}
+              style={{ textDecoration: "none" }}
               to="/login/user/crear"
             >
-              <Button variant="contained" DisableElevation>
-                Crear Incidencia
+             <Button variant="contained" fullWidth>                Crear Incidencia
               </Button>
             </Link>
           </Card>
@@ -119,9 +118,9 @@ function AccesoUsuario() {
                 height: "10vw",
               }}
             >
-              <Link style={{ color: "inherit", textDecoration: "none" }} to="/">
+              <Link style={{ textDecoration: "none" }} to="/">
                 <Button
-                  style={{ color: "inherit", textDecoration: "none" }}
+                  style={{ textDecoration: "none" }}
                   variant="contained"
                   DisableElevation
                   onClick={() => {

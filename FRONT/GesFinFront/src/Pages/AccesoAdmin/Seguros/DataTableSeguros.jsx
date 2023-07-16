@@ -81,9 +81,9 @@ export default function DataTableSeguros({ data }) {
             <TableCell size="small" align="right">
               {ele.fecha_fin_contrato}
             </TableCell>
-            <TableCell size="small" align="right">
+            {/* <TableCell size="small" align="right">
               {ele.mediador_id}
-            </TableCell>
+            </TableCell> */}
             {/* <TableCell size="small" align="right">
               {ele.password}
             </TableCell> */}
@@ -115,9 +115,9 @@ export default function DataTableSeguros({ data }) {
             <TableCell size="small" align="right">
               {ele.fecha_fin_contrato}
             </TableCell>
-            <TableCell size="small" align="right">
+            {/* <TableCell size="small" align="right">
               {ele.mediador_id}
-            </TableCell>
+            </TableCell> */}
             {/* <TableCell size="small" align="right">
               {ele.password}
             </TableCell> */}
@@ -163,9 +163,9 @@ export default function DataTableSeguros({ data }) {
                 <TableCell size="small" align="right">
                   Fecha Fin
                 </TableCell>
-                <TableCell size="small" align="right">
+               {/*  <TableCell size="small" align="right">
                   Mediador
-                </TableCell>
+                </TableCell> */}
                 {/* <TableCell size="small" align="right">
                   Contraseña
                 </TableCell> */}

@@ -79,13 +79,13 @@ export default function SpringModal({ incidencia, hadleUpdate }) {
           editedData._id,
           editedData.num_incidencia,
           editedData.comunidad_id,
-          editedData.propiedad_id,
-          editedData.fecha_creacion,
-          editedData.seguro,
-          editedData.estado,
+   /*        editedData.propiedad_id,
+          editedData.fecha_creacion, */
+/*           editedData.seguro,
+ */          editedData.estado,
           editedData.descripcion,
-          editedData.img,
-          editedData.proveedor_id
+/*           editedData.img,
+          editedData.proveedor_id */
         );
 
       if (respuesta) {
@@ -177,9 +177,9 @@ const handleDelete = async () => {
               Comunidad
             </Typography>
             <TextField
-              name="comunidad_id"
-              value={editedData.comunidad_id || ""}
-              onChange={handleInputChange}
+             name="comunidad_id"
+             value={editedData.comunidad_id ? editedData.comunidad_id.nombre : ""}
+             onChange={handleInputChange}
             />
             {/* <Typography
               color={"black"}
@@ -205,18 +205,7 @@ const handleDelete = async () => {
               value={editedData.fecha_creacion || ""}
               onChange={handleInputChange}
             /> */}
-            <Typography
-              color={"black"}
-              id="spring-modal-description"
-              sx={{ mt: 2 }}
-            >
-              Seguro
-            </Typography>
-            <TextField
-              name="seguro"
-              value={editedData.seguro || ""}
-              onChange={handleInputChange}
-            />
+           
             <Typography
               color={"black"}
               id="spring-modal-description"
@@ -241,7 +230,7 @@ const handleDelete = async () => {
               value={editedData.descripcion || ""}
               onChange={handleInputChange}
             />
-            <Typography
+           {/*  <Typography
               color={"black"}
               id="spring-modal-description"
               sx={{ mt: 2 }}
@@ -264,7 +253,7 @@ const handleDelete = async () => {
               name="proveedor_id"
               value={editedData.proveedor_id || ""}
               onChange={handleInputChange}
-            />
+            /> */}
             <Typography></Typography>
             <Button
               variant="contained"

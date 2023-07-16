@@ -39,9 +39,9 @@ function AccesoUsuario() {
           height: "100%",
         }}
       >
-        <Link style={{ color: "inherit", textDecoration: "none" }} to="/">
+        <Link style={{ textDecoration: "none" }} to="/">
           <Button
-            style={{ color: "inherit", textDecoration: "none" }}
+            style={{ textDecoration: "none" }}
             variant="contained"
             DisableElevation
             onClick={() => {

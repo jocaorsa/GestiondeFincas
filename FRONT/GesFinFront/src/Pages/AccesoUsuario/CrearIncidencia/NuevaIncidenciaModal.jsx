@@ -193,7 +193,7 @@ console.log(selectedComunidadId)
                   ))}
                 </Select>
               </FormControl>
-            </Box>{" "}
+            </Box>
             {/* <Typography
               color={"black"}
               id="spring-modal-description"

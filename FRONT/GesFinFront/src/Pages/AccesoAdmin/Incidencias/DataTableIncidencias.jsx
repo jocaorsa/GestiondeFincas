@@ -88,12 +88,12 @@ export default function DataTableIncidencia() {
             {/*  <TableCell size="small" align="right">
               {ele.propiedad_id}
             </TableCell> */}
-            <TableCell size="small" align="right">
+            {/* <TableCell size="small" align="right">
               {ele.email}
-            </TableCell>
-            <TableCell size="small" align="right">
+            </TableCell> */}
+            {/* <TableCell size="small" align="right">
               {ele.seguro}
-            </TableCell>
+            </TableCell> */}
             <TableCell
               size="small"
               align="right"
@@ -106,10 +106,10 @@ export default function DataTableIncidencia() {
             </TableCell>
             {/* <TableCell size="small" align="right">
               {ele.img}
-            </TableCell> */}
+            /* </TableCell> */}
             <TableCell size="small" align="right">
               {ele.proveedor_id.nombre}
-            </TableCell>
+            </TableCell> */
             <TableCell>
               <SpringIncidenciaModal
                 incidencia={ele}
@@ -135,12 +135,12 @@ export default function DataTableIncidencia() {
             {/* <TableCell size="small" align="right">
               {ele.propiedad_id}
             </TableCell> */}
-            <TableCell size="small" align="right">
+            {/* <TableCell size="small" align="right">
               {ele.fecha_creacion}
             </TableCell>
             <TableCell size="small" align="right">
               {ele.seguro}
-            </TableCell>
+            </TableCell> */}
             <TableCell
               size="small"
               align="right"
@@ -154,9 +154,9 @@ export default function DataTableIncidencia() {
             {/*   <TableCell size="small" align="right">
               {ele.img}
             </TableCell> */}
-            <TableCell size="small" align="right">
+           {/*  <TableCell size="small" align="right">
               {ele.proveedor_id.nombre}
-            </TableCell>
+            </TableCell> */}
             <TableCell>
               <SpringIncidenciaModal
                 incidencia={ele}
@@ -196,12 +196,12 @@ export default function DataTableIncidencia() {
                 {/* <TableCell size="small" align="right">
                   Propiedad
                 </TableCell> */}
-                <TableCell size="small" align="right">
+                {/* <TableCell size="small" align="right">
                   Fecha de Creacion
                 </TableCell>
                 <TableCell size="small" align="right">
                   Seguro
-                </TableCell>
+                </TableCell> */}
                 <TableCell size="small" align="right">
                   Estado
                 </TableCell>
@@ -223,8 +223,7 @@ export default function DataTableIncidencia() {
           to={"/login/admin"}
           style={{ color: "inherit", padding: "5px", textDecoration: "none" }}
         >
-          <Button variant="contained" DisableElevation>
-            volver
+         <Button variant="contained" fullWidth>            volver
           </Button>
         </Link> */}
         <Button>

@@ -6,128 +6,106 @@ import { Link } from "react-router-dom";
 import DataTableSeguros from "./DataTableSeguros";
 
 function Seguros() {
-     const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
 
-     const handleData = async () => {
-       const seguro = await find();
-       setData(seguro);
-     };
-     useEffect(() => {
-       handleData();
-     }, []);
-     return (
-      <Box
+  const handleData = async () => {
+    const seguro = await find();
+    setData(seguro);
+  };
+  useEffect(() => {
+    handleData();
+  }, []);
+
+  return (
+    <Box sx={{ display: "flex", height: "70%" }}>
+      <Card
         sx={{
+          flex: "0 0 20%",
           display: "flex",
+          justifyContent: "center",
           alignItems: "center",
-          height: "100%",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
-        <Card
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "20vw",
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
             height: "100%",
-            position: "relative",
-            overflow: "hidden",
+            backgroundImage: "url(https://source.unsplash.com/random?buildings)",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            filter: "brightness(70%)",
           }}
-        >
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              backgroundImage: "url(https://source.unsplash.com/random?buildings)",
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              filter: "brightness(70%)",
-            }}
-          />
-        </Card>
-  
-        <Box sx={{ flexGrow: 1 }}>
-          <Grid container spacing={2} justifyContent="center" mt={2}>
-            <Grid item>
-              <Link
-                style={{ color: "inherit", textDecoration: "none" }}
-                to="/login/admin/incidencias"
-              >
-                <Button variant="contained" DisableElevation>
+        />
+      </Card>
+
+      <Box sx={{ flexGrow: 1, p: 4 }}>
+        <Grid container spacing={2} justifyContent="center" alignItems="center">
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Box width="100%">
+              <Link to="/login/admin/incidencias" style={{ textDecoration: "none" }}>
+                <Button variant="contained" fullWidth>
                   Incidencias
                 </Button>
               </Link>
-            </Grid>
-            <Grid item>
-              <Link
-                style={{ color: "inherit", textDecoration: "none" }}
-                to="/login/admin/comunidades"
-              >
-                <Button variant="contained" DisableElevation>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Box width="100%">
+              <Link to="/login/admin/comunidades" style={{ textDecoration: "none" }}>
+                <Button variant="contained" fullWidth>
                   Comunidades
                 </Button>
               </Link>
-            </Grid>
-            <Grid item>
-              <Link
-                style={{ color: "inherit", textDecoration: "none" }}
-                to="/login/admin/usuarios"
-              >
-                <Button variant="contained" DisableElevation>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Box width="100%">
+              <Link to="/login/admin/usuarios" style={{ textDecoration: "none" }}>
+                <Button variant="contained" fullWidth>
                   Usuarios
                 </Button>
               </Link>
-            </Grid>
-            {/* <Grid item>
-              <Link
-                style={{ color: "inherit", textDecoration: "none" }}
-                to="/login/admin/propietarios"
-              >
-                <Button variant="contained" DisableElevation>
-                  Propietarios
-                </Button>
-              </Link>
-            </Grid> */}
-            <Grid item>
-              <Link
-                style={{ color: "inherit", textDecoration: "none" }}
-                to="/login/admin/seguros"
-              >
-                <Button variant="contained" DisableElevation>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Box width="100%">
+              <Link to="/login/admin/seguros" style={{ textDecoration: "none" }}>
+                <Button variant="contained" fullWidth>
                   Seguros
                 </Button>
               </Link>
-            </Grid>
-            <Grid item>
-              <Link
-                style={{ color: "inherit", textDecoration: "none" }}
-                to="/login/admin/proveedores"
-              >
-                <Button variant="contained" DisableElevation>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Box width="100%">
+              <Link to="/login/admin/proveedores" style={{ textDecoration: "none" }}>
+                <Button variant="contained" fullWidth>
                   Proveedores
                 </Button>
               </Link>
-            </Grid>
-            <Grid item>
-              <Link
-                style={{ color: "inherit", textDecoration: "none" }}
-                to="/login/admin/propiedades"
-              >
-                <Button variant="contained" DisableElevation>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Box width="100%">
+              <Link to="/login/admin/propiedades" style={{ textDecoration: "none" }}>
+                <Button variant="contained" fullWidth>
                   Propiedades
                 </Button>
               </Link>
-            </Grid>
-            <Grid item>
-              <Link style={{ color: "inherit", textDecoration: "none" }} to="/">
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Box width="100%">
+              <Link to="/" style={{ textDecoration: "none" }}>
                 <Button
-                  style={{ color: "inherit", textDecoration: "none" }}
                   variant="contained"
-                  DisableElevation
+                  fullWidth
                   onClick={() => {
                     localStorage.removeItem("token");
                     localStorage.removeItem("id");
@@ -137,22 +115,13 @@ function Seguros() {
                   Cerrar sesión
                 </Button>
               </Link>
-            </Grid>
+            </Box>
           </Grid>
-          <Card
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "69vw",
-              height: "80vh",
-              mt: 4,
-            }}
-          >
-        <DataTableSeguros data={data} />
-
-      </Card>
-    </Box>
+        </Grid>
+        <Card sx={{ mt: 4, minHeight: "60vh" }}>
+          <DataTableSeguros data={data} />
+        </Card>
+      </Box>
     </Box>
   );
 }

@@ -125,7 +125,7 @@ export default function DataTableUser({ data }) {
             case "Nueva":
               estadoColor = "green";
               break;
-            case "En proceso":
+            case "En Proceso":
               estadoColor = "orange";
               break;
             case "Terminada":
@@ -217,8 +217,7 @@ export default function DataTableUser({ data }) {
             to={"/login/user"}
             style={{ color: "inherit", padding: "5px", textDecoration: "none" }}
           >
-            <Button variant="contained" DisableElevation>
-              Volver
+           <Button variant="contained" fullWidth>              Volver
             </Button>
           </Link> */}
           <Button>

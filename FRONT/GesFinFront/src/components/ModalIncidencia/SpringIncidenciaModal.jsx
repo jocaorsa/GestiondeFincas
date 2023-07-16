@@ -68,6 +68,8 @@ const style = {
 export default function SpringModal({ incidencia, hadleUpdate }) {
   const [open, setOpen] = React.useState(false);
   const [editedData, setEditedData] = useState({});
+  
+  
   console.log(incidencia)
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -80,13 +82,14 @@ export default function SpringModal({ incidencia, hadleUpdate }) {
           editedData._id,
           editedData.num_incidencia,
           editedData.comunidad_id,
-          editedData.propiedad_id,
-          editedData.fecha_creacion,
-          editedData.seguro,
-          editedData.estado,
+/*        editedData.propiedad_id,
+ */    /* editedData.fecha_creacion, */
+/*           editedData.seguro,
+ */          editedData.estado_incidencia,
           editedData.descripcion,
-          editedData.img,
-          editedData.proveedor_id
+          
+/*        editedData.img,
+          editedData.proveedor_id */
         );
 
       if (respuesta) {
@@ -175,11 +178,11 @@ const handleDelete = async () => {
               Comunidad
             </Typography>
             <TextField
-              name="comunidad_id"
-              value={editedData.comunidad_id || ""}
-              onChange={handleInputChange}
+             name="comunidad_id"
+             value={editedData.comunidad_id ? editedData.comunidad_id.nombre : ""}
+             onChange={handleInputChange}
             />
-            <Typography
+            {/* <Typography
               color={"black"}
               id="spring-modal-description"
               sx={{ mt: 2 }}
@@ -190,8 +193,8 @@ const handleDelete = async () => {
               name="propiedad_id"
               value={editedData.propiedad_id || ""}
               onChange={handleInputChange}
-            />
-            <Typography
+            /> */}
+          {/*   <Typography
               color={"black"}
               id="spring-modal-description"
               sx={{ mt: 2 }}
@@ -202,8 +205,8 @@ const handleDelete = async () => {
               name="fecha_creacion"
               value={editedData.fecha_creacion || ""}
               onChange={handleInputChange}
-            />
-            <Typography
+            /> */}
+            {/* <Typography
               color={"black"}
               id="spring-modal-description"
               sx={{ mt: 2 }}
@@ -214,7 +217,7 @@ const handleDelete = async () => {
               name="seguro"
               value={editedData.seguro || ""}
               onChange={handleInputChange}
-            />
+            /> */}
             <Typography
               color={"black"}
               id="spring-modal-description"
@@ -223,8 +226,8 @@ const handleDelete = async () => {
               Estado
             </Typography>
             <TextField
-              name="estado"
-              value={editedData.estado || ""}
+              name="estado_incidencia"
+              value={editedData.estado_incidencia || ""}
               onChange={handleInputChange}
             />
             <Typography
@@ -239,7 +242,7 @@ const handleDelete = async () => {
               value={editedData.descripcion || ""}
               onChange={handleInputChange}
             />
-            <Typography
+             {/*<Typography
               color={"black"}
               id="spring-modal-description"
               sx={{ mt: 2 }}
@@ -250,8 +253,8 @@ const handleDelete = async () => {
               name="img"
               value={editedData.img || ""}
               onChange={handleInputChange}
-            />
-            <Typography
+            /> */}
+            {/* <Typography
               color={"black"}
               id="spring-modal-description"
               sx={{ mt: 2 }}
@@ -260,9 +263,9 @@ const handleDelete = async () => {
             </Typography>
             <TextField
               name="proveedor_id"
-              value={editedData.proveedor_id || ""}
+              value={editedData.proveedor_id.nombre || ""}
               onChange={handleInputChange}
-            />
+            /> */}
             <Typography></Typography>
             <div style={{ marginTop: "10px" }}>
               <Button

@@ -117,7 +117,7 @@ export default function ModalModificaComunidad({ comunidad, handleUpdate }) {
         onClick={handleOpen}
         variant="contained"
         DisableElevation
-        style={{ color: "inherit", textDecoration: "none" }}
+        style={{ textDecoration: "none" }}
       >
 
 
@@ -215,7 +215,7 @@ VER      </Button>
             <Button
               variant="contained"
               DisableElevation
-              style={{ color: "inherit", textDecoration: "none" }}
+              style={{ textDecoration: "none" }}
               onChange={handleModify}
             >
               Confirmar

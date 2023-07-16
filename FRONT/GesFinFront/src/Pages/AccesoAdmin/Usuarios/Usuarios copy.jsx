@@ -46,19 +46,17 @@ function Usuarios() {
       >
         Pequeño listado de incidencias
         <Link
-          style={{ color: "inherit", textDecoration: "none" }}
+          style={{ textDecoration: "none" }}
           to="/login/admin/"
         >
-          <Button variant="contained" DisableElevation>
-            volver
+         <Button variant="contained" fullWidth>            volver
           </Button>
         </Link>
         <Link
-          style={{ color: "inherit", textDecoration: "none" }}
+          style={{ textDecoration: "none" }}
           to="/login/admin/usuarios"
         >
-          <Button variant="contained" DisableElevation>
-    VER          </Button>
+         <Button variant="contained" fullWidth>    VER          </Button>
         </Link>
       </Card>
     </Box>

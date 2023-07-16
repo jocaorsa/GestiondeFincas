@@ -1,4 +1,5 @@
 import * as React from "react";
+import axios from "axios";
 import PropTypes from "prop-types";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
@@ -7,9 +8,10 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useSpring, animated } from "@react-spring/web";
 import { TextField } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { api } from "../../services/api";
-import { useEffect } from "react";
+import DeleteModalSeguro from "./DeleteModalSeguro";
+import { deleteOne, updateOneSeguro } from "../../services/seguro.service";
 
 const Fade = React.forwardRef(function Fade(props, ref) {
   const {
@@ -57,16 +59,16 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
 };
 
-export default function ModalModificaSeguro({ seguro, handleUpdate }) {
-  const [open, setOpen] = useState(false);
+export default function SpringModal({ seguro, hadleUpdate }) {
+  const [open, setOpen] = React.useState(false);
   const [editedData, setEditedData] = useState({});
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -74,22 +76,19 @@ export default function ModalModificaSeguro({ seguro, handleUpdate }) {
     console.log(editedData);
     console.log(localStorage.getItem("token"));
     try {
-      const respuesta = await api.put(`/seguro/${editedData._id}`,
-        {
-          compania: editedData.compania,
-          poliza: editedData.poliza,
-          tlf_seg: editedData.tlf_seg,
-          fecha_contrato: editedData.fecha_contrato,
-          fecha_fin_contrato: editedData.fecha_fin_contrato,
-          /* mediador_id: editedData.mediador_id, */
-        },
-        {
-          headers: { token: localStorage.getItem("token") },
-        }
-      );
+        const respuesta = await updateOneSeguro(
+          editedData._id,
+          editedData.compania,
+          editedData.poliza,
+          editedData.tlf_seg,
+          editedData.fecha_contrato,
+          editedData.fecha_fin_contrato,
+          editedData.mediador_id
+        );
+
       if (respuesta) {
         console.log("Datos actualizados");
-        handleUpdate();
+        hadleUpdate();
         handleClose();
       } else {
         console.error("Fallo al actualizar datos");
@@ -99,25 +98,37 @@ export default function ModalModificaSeguro({ seguro, handleUpdate }) {
     }
   };
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
+    const { compania, value } = event.target;
     setEditedData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [compania]: value,
     }));
   };
   useEffect(() => {
     setEditedData(seguro);
   }, []);
 
+const handleDelete = async () => {
+  try {
+    const respuesta = await deleteOne(seguro._id);
+
+    if (respuesta) {
+      console.log("Seguro eliminado");
+      handleClose();
+      hadleUpdate();
+    } else {
+      console.error("No se pudo eliminar al Seguro");
+    }
+  } catch (error) {
+    console.error("Error al eliminar el Seguro", error);
+  }
+};
+
   return (
     <div>
-      <Button
-        onClick={handleOpen}
-        variant="contained"
-        DisableElevation
-        style={{ textDecoration: "none" }}
-        >
+      <Button variant="contained" DisableElevation onClick={handleOpen}>
 VER      </Button>
+
       <Modal
         aria-labelledby="spring-modal-title"
         aria-describedby="spring-modal-description"
@@ -133,10 +144,19 @@ VER      </Button>
       >
         <Fade in={open}>
           <Box sx={style}>
-            <Typography id="spring-modal-title" variant="h5" component="h5">
-              <Typography> Modifica Datos del Seguro :</Typography>
+            <Typography
+              color={"black"}
+              id="spring-modal-title"
+              variant="h5"
+              component="h5"
+            >
+              Datos Seguros:
             </Typography>
-            <Typography id="spring-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
               Compañia
             </Typography>
             <TextField
@@ -144,7 +164,11 @@ VER      </Button>
               value={editedData.compania || ""}
               onChange={handleInputChange}
             />
-            <Typography id="spring-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
               Poliza
             </Typography>
             <TextField
@@ -152,7 +176,11 @@ VER      </Button>
               value={editedData.poliza || ""}
               onChange={handleInputChange}
             />
-            <Typography id="spring-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
               Telefono
             </Typography>
             <TextField
@@ -160,7 +188,11 @@ VER      </Button>
               value={editedData.tlf_seg || ""}
               onChange={handleInputChange}
             />
-            <Typography id="spring-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
               Fecha Contrato
             </Typography>
             <TextField
@@ -168,7 +200,11 @@ VER      </Button>
               value={editedData.fecha_contrato || ""}
               onChange={handleInputChange}
             />
-            <Typography id="spring-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
               Fecha Fin Contrato
             </Typography>
             <TextField
@@ -176,22 +212,39 @@ VER      </Button>
               value={editedData.fecha_fin_contrato || ""}
               onChange={handleInputChange}
             />
-            <Typography id="spring-modal-description" sx={{ mt: 2 }}>
+            {/* <Typography
+              color={"black"}
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
               Mediador
             </Typography>
             <TextField
               name="mediador_id"
               value={editedData.mediador_id || ""}
               onChange={handleInputChange}
-            />
-            <Button
-              variant="contained"
-              DisableElevation
-              style={{ textDecoration: "none" }}
-              onChange={handleModify}
-            >
-              Confirmar
-            </Button>
+            /> */}
+            <Typography></Typography>
+            <div style={{ marginTop: "10px" }}>
+              <Button
+                variant="contained"
+                DisableElevation
+                style={{
+                  color: "inherit",
+                  padding: "5px",
+                  textDecoration: "none",
+                  marginRight: "5px",
+                }}
+                onClick={handleModify}
+              >
+                Modificar
+              </Button>
+              <Button variant="contained" DisableElevation onClick={handleDelete}>
+                Eliminar
+              </Button>
+            </div>
+            {/*<DeleteModalSeguro seguro={seguro} handleDelete={handleDelete} />
+             */}
           </Box>
         </Fade>
       </Modal>

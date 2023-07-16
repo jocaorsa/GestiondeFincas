@@ -149,8 +149,7 @@ export default function DataTableUsuarios({ data }) {
           to={"/login/admin"}
           style={{ color: "inherit", padding: "5px", textDecoration: "none" }}
         >
-          <Button variant="contained" DisableElevation>
-            volver
+         <Button variant="contained" fullWidth>            volver
           </Button>
         </Link>
         <Button>

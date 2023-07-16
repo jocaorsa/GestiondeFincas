@@ -1,10 +1,11 @@
-import { Box, Button, Grid } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import Card from "@mui/material/Card";
 import { Link } from "react-router-dom";
 import DataTableIncidencias2 from "../../Pages/AccesoAdmin/Incidencias/DataTableIncidencias2";
 import { useEffect } from "react";
 import { useState } from "react";
-import {getOneUser} from "../../services/usuario.service";
+import { getOneUser } from "../../services/usuario.service";
+
 function AccesoAdmin() {
   const [data, setData] = useState([]);
   const [userData, setUserData] = useState({});
@@ -25,118 +26,82 @@ function AccesoAdmin() {
   }, []);
 
   return (
-    <Box
-  sx={{
-    display: "flex",
-    alignItems: "center",
-    height: "100%",
-  }}
->
-<Card
-  sx={{
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "20vw",
-    height: "100%",
-    position: "relative",
-    overflow: "hidden",
-  }}
->
-  <div
-    style={{
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      backgroundImage: "url(https://source.unsplash.com/random?buildings)",
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      filter: "brightness(70%)",
-    }}
-  />
-</Card>
+    <Box sx={{ display: "flex", heigh:"70%" }}>
+      <Card
+        sx={{
+          flex: "0 0 20%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundImage: "url(https://source.unsplash.com/random?buildings)",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            filter: "brightness(70%)",
+          }}
+        />
+      </Card>
 
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={2} justifyContent="center" mt={2}>
-          <Grid item>
-            <Link
-              style={{ color: "inherit", textDecoration: "none" }}
-              to="/login/admin/incidencias"
-            >
-              <Button variant="contained" DisableElevation>
+      <Box sx={{ flexGrow: 1, p: 4 }}>
+        <Grid container spacing={2} justifyContent="center" alignItems="center">
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Link to="/login/admin/incidencias" style={{ textDecoration: "none" }}>
+              <Button variant="contained" fullWidth>
                 Incidencias
               </Button>
             </Link>
           </Grid>
-          <Grid item>
-            <Link
-              style={{ color: "inherit", textDecoration: "none" }}
-              to="/login/admin/comunidades"
-            >
-              <Button variant="contained" DisableElevation>
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Link to="/login/admin/comunidades" style={{ textDecoration: "none" }}>
+              <Button variant="contained" fullWidth>
                 Comunidades
               </Button>
             </Link>
           </Grid>
-          <Grid item>
-            <Link
-              style={{ color: "inherit", textDecoration: "none" }}
-              to="/login/admin/usuarios"
-            >
-              <Button variant="contained" DisableElevation>
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Link to="/login/admin/usuarios" style={{ textDecoration: "none" }}>
+              <Button variant="contained" fullWidth>
                 Usuarios
               </Button>
             </Link>
           </Grid>
-          {/* <Grid item>
-            <Link
-              style={{ color: "inherit", textDecoration: "none" }}
-              to="/login/admin/propietarios"
-            >
-              <Button variant="contained" DisableElevation>
-                Propietarios
-              </Button>
-            </Link>
-          </Grid> */}
-          <Grid item>
-            <Link
-              style={{ color: "inherit", textDecoration: "none" }}
-              to="/login/admin/seguros"
-            >
-              <Button variant="contained" DisableElevation>
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Link to="/login/admin/seguros" style={{ textDecoration: "none" }}>
+              <Button variant="contained" fullWidth>
                 Seguros
               </Button>
             </Link>
           </Grid>
-          <Grid item>
-            <Link
-              style={{ color: "inherit", textDecoration: "none" }}
-              to="/login/admin/proveedores"
-            >
-              <Button variant="contained" DisableElevation>
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Link to="/login/admin/proveedores" style={{ textDecoration: "none" }}>
+              <Button variant="contained" fullWidth>
                 Proveedores
               </Button>
             </Link>
           </Grid>
-          <Grid item>
-            <Link
-              style={{ color: "inherit", textDecoration: "none" }}
-              to="/login/admin/propiedades"
-            >
-              <Button variant="contained" DisableElevation>
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Link to="/login/admin/propiedades" style={{ textDecoration: "none" }}>
+              <Button variant="contained" fullWidth>
                 Propiedades
               </Button>
             </Link>
           </Grid>
-          <Grid item>
-            <Link style={{ color: "inherit", textDecoration: "none" }} to="/">
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Link to="/" style={{ textDecoration: "none" }}>
               <Button
-                style={{ color: "inherit", textDecoration: "none" }}
                 variant="contained"
-                DisableElevation
+                fullWidth
                 onClick={() => {
                   localStorage.removeItem("token");
                   localStorage.removeItem("id");
@@ -148,16 +113,15 @@ function AccesoAdmin() {
             </Link>
           </Grid>
         </Grid>
-        <Card
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "69vw",
-            height: "80vh",
-            mt: 4,
-          }}
-        >
+        <Box sx={{ mt: 4 }}>
+          <Typography variant="h5" mb={2}>
+            Datos de Usuario
+          </Typography>
+          <Typography variant="body1" mb={2}>
+            Nombre: {userData.name}
+          </Typography>
+        </Box>
+        <Card sx={{ mt: 4, minHeight: "60vh" }}>
           <DataTableIncidencias2 data={data} />
         </Card>
       </Box>

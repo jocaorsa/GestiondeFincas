@@ -27,7 +27,7 @@ export default function DeleteModalUser({ handleDelete, user }) {
   return (
     <div>
       <Button
-        style={{ color: "inherit", textDecoration: "none" }}
+        style={{ textDecoration: "none" }}
         variant="contained"
         DisableElevation
         onClick={handleClickOpen}
@@ -52,7 +52,7 @@ export default function DeleteModalUser({ handleDelete, user }) {
           <Button
             variant="contained"
             DisableElevation
-            style={{ color: "inherit", textDecoration: "none" }}
+            style={{ textDecoration: "none" }}
             onClick={handleVolver}
           >
             Volver
@@ -60,7 +60,7 @@ export default function DeleteModalUser({ handleDelete, user }) {
           <Button
             variant="contained"
             DisableElevation
-            style={{ color: "inherit", textDecoration: "none" }}
+            style={{ textDecoration: "none" }}
             onClick={handleAceptar}
             autoFocus
           >

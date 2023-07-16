@@ -78,14 +78,14 @@ export default function ModalModificaIncidencia({ incidencia, handleUpdate }) {
         {
           num_incidencia: editedData.num_incidencia,
           comunidad_id: editedData.comunidad_id,
-          propiedad_id: editedData.propiedad_id,
-          fecha_creacion: editedData.fecha_creacion,
-          seguro: editedData.seguro,
-          estado: editedData.estado,
+/*           propiedad_id: editedData.propiedad_id,
+ */         /* fecha_creacion: editedData.fecha_creacion,*/
+/*           seguro: editedData.seguro,
+ */          estado: editedData.estado,
           descripcion: editedData.descripcion,
-          img: editedData.img,
-          proveedor_id: editedData.proveedor_id,
-       },
+/*           img: editedData.img,
+        proveedor_id: editedData.proveedor_id,
+ */       },
         {
           headers: { token: localStorage.getItem("token") },
         }
@@ -118,7 +118,7 @@ export default function ModalModificaIncidencia({ incidencia, handleUpdate }) {
         onClick={handleOpen}
         variant="contained"
         DisableElevation
-        style={{ color: "inherit", textDecoration: "none" }}
+        style={{ textDecoration: "none" }}
         >
         VER      
         </Button>
@@ -138,7 +138,7 @@ export default function ModalModificaIncidencia({ incidencia, handleUpdate }) {
         <Fade in={open}>
           <Box sx={style}>
             <Typography id="spring-modal-title" variant="h5" component="h5">
-              <Typography> Modifica Datos del Usuario :</Typography>
+              <Typography> Modifica Datos de la Incidencia :</Typography>
             </Typography>
             <Typography id="spring-modal-description" sx={{ mt: 2 }}>
               Num. Incidencia
@@ -153,33 +153,33 @@ export default function ModalModificaIncidencia({ incidencia, handleUpdate }) {
             </Typography>
             <TextField
               name="comunidad_id"
-              value={editedData.comunidad_id || ""}
+              value={editedData.comunidad_id.nombre || ""}
               onChange={handleInputChange}
             />
-            <Typography id="spring-modal-description" sx={{ mt: 2 }}>
+            {/* <Typography id="spring-modal-description" sx={{ mt: 2 }}>
               Propiedad
             </Typography>
             <TextField
               name="propiedad_id"
               value={editedData.propiedad_id || ""}
               onChange={handleInputChange}
-            />
-            <Typography id="spring-modal-description" sx={{ mt: 2 }}>
+            /> */}
+           {/*  <Typography id="spring-modal-description" sx={{ mt: 2 }}>
               Fecha de Creacion
             </Typography>
             <TextField
               name="fecha_creacion"
               value={editedData.fecha_creacion || ""}
               onChange={handleInputChange}
-            />
-            <Typography id="spring-modal-description" sx={{ mt: 2 }}>
+            /> */}
+            {/* <Typography id="spring-modal-description" sx={{ mt: 2 }}>
               Seguro
             </Typography>
             <TextField
               name="seguro"
               value={editedData.seguro || ""}
               onChange={handleInputChange}
-            />
+            /> */}
             <Typography id="spring-modal-description" sx={{ mt: 2 }}>
               Estado
             </Typography>
@@ -196,7 +196,7 @@ export default function ModalModificaIncidencia({ incidencia, handleUpdate }) {
               value={editedData.descripcion || ""}
               onChange={handleInputChange}
             />
-            <Typography id="spring-modal-description" sx={{ mt: 2 }}>
+            {/* <Typography id="spring-modal-description" sx={{ mt: 2 }}>
               Img
             </Typography>
             <TextField
@@ -211,11 +211,11 @@ export default function ModalModificaIncidencia({ incidencia, handleUpdate }) {
               name="proveedor_id"
               value={editedData.proveedor_id || ""}
               onChange={handleInputChange}
-            />
+            /> */}
             <Button
               variant="contained"
               DisableElevation
-              style={{ color: "inherit", textDecoration: "none" }}
+              style={{ textDecoration: "none" }}
               onChange={handleModify}
             >
               Confirmar
