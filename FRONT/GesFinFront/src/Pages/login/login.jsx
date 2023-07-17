@@ -14,8 +14,8 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { login } from "../../services/auth.service";
 import { useState } from "react";
-import {useNavigate} from "react-router-dom"
-
+import {useNavigate} from "react-router-dom";
+import theme from "../../theme";
 
 function Copyright(props) {
     
@@ -31,7 +31,6 @@ function Copyright(props) {
         GesFin
       </Link>
       {new Date().getFullYear()}
-      {"."}
     </Typography>
   );
 }
@@ -109,7 +108,7 @@ export default function SignInSide() {
    */
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: "90vh" }}>
         <CssBaseline />
         <Grid
