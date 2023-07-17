@@ -12,7 +12,7 @@ async function getOnePropiedad (req, res){
 
 async function getAllPropiedad (req, res){
     try{
-        const propiedad = await Propiedad.find({__v:0})
+        const propiedad = await Propiedad.find({__v:0}).populate("comunidad_id")
         res.json(propiedad)
     } catch (error){
         console.log(error)

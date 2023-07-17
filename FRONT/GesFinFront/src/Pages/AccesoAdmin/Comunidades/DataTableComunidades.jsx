@@ -194,6 +194,8 @@ export default function DataTableComunidades({ data }) {
                 <TableCell size="small" align="right">
                   IMG
                 </TableCell>
+                <TableCell size="small" align="right">
+                </TableCell>
                 {/* <TableCell size="small" align="right">
                   Seguro
                 </TableCell> */}

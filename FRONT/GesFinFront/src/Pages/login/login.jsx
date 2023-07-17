@@ -29,7 +29,7 @@ function Copyright(props) {
       {"Copyright © "}
       <Link color="inherit" href="http://localhost:5173/">
         GesFin
-      </Link>{" "}
+      </Link>
       {new Date().getFullYear()}
       {"."}
     </Typography>
@@ -150,7 +150,7 @@ export default function SignInSide() {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label="Email"
                 name="email"
                 autoComplete="email"
                 autoFocus

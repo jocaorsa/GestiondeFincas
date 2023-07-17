@@ -27,7 +27,7 @@ export default function DataTableIncidencia() {
   const [user, setUser] = useState(undefined);
 
   const showUser = async () => {
-    const userData = await getOneUser(); // Obtén los datos del usuario
+    const userData = await getOneUser(); 
     setUser(userData);
   };
 
@@ -38,7 +38,7 @@ export default function DataTableIncidencia() {
   };
 
   useEffect(() => {
-    showUser(); // Llama a la función para obtener los datos del usuario
+    showUser(); 
     showIncidencias();
   }, [actualizar]);
 
@@ -72,10 +72,11 @@ export default function DataTableIncidencia() {
           String(value).toLowerCase().includes(query)
         );
       });
+
       return filteredIncidencia.map((ele) => {
         return (
           <TableRow
-            key={ele.id}
+            key={ele._id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
             {incidencia}
@@ -123,7 +124,7 @@ export default function DataTableIncidencia() {
       return incidencia.map((ele) => {
         return (
           <TableRow
-            key={ele.id}
+            key={ele._id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
             <TableCell component="th" scope="ele" size="small">
@@ -208,6 +209,9 @@ export default function DataTableIncidencia() {
                 <TableCell size="small" align="right">
                   Descripcion
                 </TableCell>
+                <TableCell size="small" align="right">
+                  
+                </TableCell>
                 {/*  <TableCell size="small" align="right">
                   Img
                 </TableCell>
@@ -219,7 +223,7 @@ export default function DataTableIncidencia() {
             <TableBody>{filteredData()}</TableBody>
           </Table>
         </TableContainer>
-{/*         <Link
+        {/*         <Link
           to={"/login/admin"}
           style={{ color: "inherit", padding: "5px", textDecoration: "none" }}
         >

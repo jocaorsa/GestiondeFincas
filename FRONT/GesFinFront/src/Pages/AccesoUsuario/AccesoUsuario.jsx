@@ -18,7 +18,14 @@ function AccesoUsuario() {
   }, []);
 
   return (
-    <Box sx={{ display: "flex", height: "70%" }}>
+    <Box
+      sx={{
+        display: "flex",
+        backgroundColor: "white",
+        width: "100%",
+        height: "100%",
+      }}
+    >
       <Card
         sx={{
           flex: "0 0 20%",
@@ -36,7 +43,8 @@ function AccesoUsuario() {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundImage: "url(https://source.unsplash.com/random?buildings)",
+            backgroundImage:
+              "url(https://source.unsplash.com/random?buildings)",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             backgroundPosition: "center",

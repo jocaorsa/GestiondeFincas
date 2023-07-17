@@ -163,7 +163,7 @@ VER      </Button>
             </Typography>
             <TextField
               name="name"
-              value={editedData.name || ""}
+              value={editedData.nombre || ""}
               onChange={handleInputChange}
             />
             <Typography

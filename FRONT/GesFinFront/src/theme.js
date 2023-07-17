@@ -4,19 +4,19 @@ import { createTheme } from "@mui/material/styles";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#3f51b5", // Cambia el color principal aquí
+      main: "#3f51b5", 
     },
   },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: "12px", // Ajusta el radio de los bordes aquí
+          borderRadius: "12px",
         },
         contained: {
-          backgroundColor: "#424949", // Cambia el color de fondo aquí
+          backgroundColor: "#424949", 
           "&:hover": {
-            backgroundColor: "#616A6B", // Cambia el color de fondo al pasar el ratón por encima aquí
+            backgroundColor: "#616A6B", 
           },
         },
       },

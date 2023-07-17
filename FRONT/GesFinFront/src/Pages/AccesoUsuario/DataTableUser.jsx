@@ -63,7 +63,6 @@ export default function DataTableUser({ data }) {
     const query = searchQuery.toLowerCase();
     if (query.length > 0) {
       const filteredIncidencia = incidencia.filter((ele) => {
-        // Filtrar por comunidades del usuario
         return comunidades.some(
           (comunidad) => comunidad._id.toString() === ele.comunidad_id._id.toString()
         );
@@ -114,7 +113,6 @@ export default function DataTableUser({ data }) {
       });
     } else {
       return incidencia.map((ele) => {
-        // Filtrar por comunidades del usuario
         if (
           comunidades.some(
             (comunidad) => comunidad._id.toString() === ele.comunidad_id._id.toString()
@@ -172,16 +170,23 @@ export default function DataTableUser({ data }) {
     <>
       <Grid item>
         <Card>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              padding: "10px",
+            }}
+          >
             {user && (
               <div>
-                <Typography variant="h6" gutterBottom>
+                <Typography variant="h5" gutterBottom>
                   Bienvenido, {user.name}
                 </Typography>
-                <Typography variant="subtitle1" gutterBottom>
-                  Comunidades:
+                <Typography variant="h6" gutterBottom>
+                  Comunidades: {}
                   {comunidades.map((comunidad) => (
-                    <span key={comunidad._id}>{comunidad.nombre}, </span>
+                    <span key={comunidad._id}>{comunidad.nombre} </span>
                   ))}
                 </Typography>
               </div>
@@ -195,7 +200,9 @@ export default function DataTableUser({ data }) {
             <Table stickyHeader>
               <TableHead>
                 <TableRow>
-                  <TableCell size="small">Num incidencia</TableCell>
+                  <TableCell size="small">
+                    Num incidencia
+                    </TableCell>
                   <TableCell size="small" align="right">
                     Comunidad
                   </TableCell>
@@ -205,24 +212,23 @@ export default function DataTableUser({ data }) {
                   <TableCell size="small" align="right">
                     Descripcion
                   </TableCell>
-                  <TableCell size="small" align="right">
-                    Proveedor
-                  </TableCell>
+                  <TableCell size="small" align="right"></TableCell>
+                  <TableCell size="small" align="right"></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>{filteredData()}</TableBody>
             </Table>
-          
-{/*           <Link
+
+            {/*           <Link
             to={"/login/user"}
             style={{ color: "inherit", padding: "5px", textDecoration: "none" }}
           >
            <Button variant="contained" fullWidth>              Volver
             </Button>
           </Link> */}
-          <Button>
-            <ModalCrearIncidencia handleCreate={handleCreate} />
-          </Button>
+            <Button>
+              <ModalCrearIncidencia handleCreate={handleCreate} />
+            </Button>
           </TableContainer>
         </Card>
       </Grid>

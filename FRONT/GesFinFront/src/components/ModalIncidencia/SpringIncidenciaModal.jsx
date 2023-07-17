@@ -7,11 +7,12 @@ import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useSpring, animated } from "@react-spring/web";
-import { TextField } from "@mui/material";
+import { InputLabel, Select, TextField } from "@mui/material";
 import { useState, useEffect } from "react";
 import { api } from "../../services/api";
 import DeleteModalIncidencia from "./DeleteModalIncidencia";
 import { deleteOne, updateOneIncidencia } from "../../services/incidencia.service";
+import { FormControl, MenuItem } from "@material-ui/core";
 
 const Fade = React.forwardRef(function Fade(props, ref) {
   const {
@@ -68,7 +69,9 @@ const style = {
 export default function SpringModal({ incidencia, hadleUpdate }) {
   const [open, setOpen] = React.useState(false);
   const [editedData, setEditedData] = useState({});
-  
+  const [selectedEstado, setSelectedEstado] = useState("");
+
+
   
   console.log(incidencia)
   const handleOpen = () => setOpen(true);
@@ -76,6 +79,7 @@ export default function SpringModal({ incidencia, hadleUpdate }) {
 
   const handleModify = async () => {
     console.log(editedData);
+    console.log(selectedEstado)
     console.log(localStorage.getItem("token"));
     try {
         const respuesta = await updateOneIncidencia(
@@ -84,11 +88,10 @@ export default function SpringModal({ incidencia, hadleUpdate }) {
           editedData.comunidad_id,
 /*        editedData.propiedad_id,
  */    /* editedData.fecha_creacion, */
-/*           editedData.seguro,
- */          editedData.estado_incidencia,
+/*        editedData.seguro,
+ */       editedData.estado,
           editedData.descripcion,
-          
-/*        editedData.img,
+        /* editedData.img,
           editedData.proveedor_id */
         );
 
@@ -103,6 +106,7 @@ export default function SpringModal({ incidencia, hadleUpdate }) {
       console.error("Fallo al actualizar los datos", error);
     }
   };
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setEditedData((prevData) => ({
@@ -112,7 +116,8 @@ export default function SpringModal({ incidencia, hadleUpdate }) {
   };
   useEffect(() => {
     setEditedData(incidencia);
-  }, []);
+    setSelectedEstado(incidencia.estado);
+  }, [incidencia]);
 
 const handleDelete = async () => {
   try {
@@ -129,6 +134,15 @@ const handleDelete = async () => {
     console.error("Error al eliminar el incidencia", error);
   }
 };
+
+  const handleEstadoChange = (event) => {
+    setSelectedEstado(event.target.value);
+    setEditedData((prevData) => ({
+      ...prevData,
+      estado: event.target.value,
+    }));
+  };
+
 
   return (
     <div>
@@ -165,7 +179,7 @@ const handleDelete = async () => {
             >
               Num Incidencia
             </Typography>
-           <TextField
+            <TextField
               name="num_incidencia"
               value={editedData.num_incidencia || ""}
               onChange={handleInputChange}
@@ -178,9 +192,11 @@ const handleDelete = async () => {
               Comunidad
             </Typography>
             <TextField
-             name="comunidad_id"
-             value={editedData.comunidad_id ? editedData.comunidad_id.nombre : ""}
-             onChange={handleInputChange}
+              name="comunidad_id"
+              value={
+                editedData.comunidad_id ? editedData.comunidad_id.nombre : ""
+              }
+              onChange={handleInputChange}
             />
             {/* <Typography
               color={"black"}
@@ -194,7 +210,7 @@ const handleDelete = async () => {
               value={editedData.propiedad_id || ""}
               onChange={handleInputChange}
             /> */}
-          {/*   <Typography
+            {/*   <Typography
               color={"black"}
               id="spring-modal-description"
               sx={{ mt: 2 }}
@@ -225,11 +241,25 @@ const handleDelete = async () => {
             >
               Estado
             </Typography>
-            <TextField
-              name="estado_incidencia"
-              value={editedData.estado_incidencia || ""}
+            {/* <TextField
+              name="estado"
+              value={editedData.estado || ""}
               onChange={handleInputChange}
-            />
+            /> */}
+            <FormControl sx={{ mt: 2 }}>
+              <InputLabel id="estado-label">Estado</InputLabel>
+              <Select
+                labelId="estado-label"
+                id="estado-select"
+                name="estado"
+                value={selectedEstado}
+                onChange={handleEstadoChange}
+              >
+                <MenuItem value={"Nuevo"}>Nuevo</MenuItem>
+                <MenuItem value={"En Proceso"}>En Proceso</MenuItem>
+                <MenuItem value={"Terminada"}>Terminada</MenuItem>
+              </Select>
+            </FormControl>
             <Typography
               color={"black"}
               id="spring-modal-description"
@@ -242,7 +272,8 @@ const handleDelete = async () => {
               value={editedData.descripcion || ""}
               onChange={handleInputChange}
             />
-             {/*<Typography
+
+            {/*<Typography
               color={"black"}
               id="spring-modal-description"
               sx={{ mt: 2 }}
@@ -281,7 +312,11 @@ const handleDelete = async () => {
               >
                 Modificar
               </Button>
-              <Button variant="contained" DisableElevation onClick={handleDelete}>
+              <Button
+                variant="contained"
+                DisableElevation
+                onClick={handleDelete}
+              >
                 Eliminar
               </Button>
             </div>

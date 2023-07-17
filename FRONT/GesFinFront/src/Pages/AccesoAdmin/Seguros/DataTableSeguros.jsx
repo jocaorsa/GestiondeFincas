@@ -133,7 +133,7 @@ export default function DataTableSeguros({ data }) {
   return (
     <>
       <div>
-      <Grid container justifyContent="space-between" alignItems="center">
+        <Grid container justifyContent="space-between" alignItems="center">
           <Grid item>
             <Typography variant="h6" gutterBottom>
               {user && `Bienvenido, ${user.name}`}
@@ -163,7 +163,10 @@ export default function DataTableSeguros({ data }) {
                 <TableCell size="small" align="right">
                   Fecha Fin
                 </TableCell>
-               {/*  <TableCell size="small" align="right">
+                <TableCell size="small" align="right">
+                  
+                </TableCell>
+                {/*  <TableCell size="small" align="right">
                   Mediador
                 </TableCell> */}
                 {/* <TableCell size="small" align="right">
