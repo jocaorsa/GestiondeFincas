@@ -255,7 +255,7 @@ const handleDelete = async () => {
                 value={selectedEstado}
                 onChange={handleEstadoChange}
               >
-                <MenuItem value={"Nuevo"}>Nuevo</MenuItem>
+                <MenuItem value={"Nueva"}>Nueva</MenuItem>
                 <MenuItem value={"En Proceso"}>En Proceso</MenuItem>
                 <MenuItem value={"Terminada"}>Terminada</MenuItem>
               </Select>
