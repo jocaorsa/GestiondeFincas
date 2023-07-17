@@ -79,7 +79,7 @@ export default function DataTableComunidades({ data }) {
             <TableCell size="small" align="right">
               {ele.cif}
             </TableCell>
-            <TableCell size="small" align="right">
+            {/* <TableCell size="small" align="right">
               {ele.per_contacto}
             </TableCell>
             <TableCell size="small" align="right">
@@ -90,7 +90,7 @@ export default function DataTableComunidades({ data }) {
             </TableCell>
             <TableCell size="small" align="right">
               {ele.img}
-            </TableCell>
+            </TableCell> */}
             {/* <TableCell size="small" align="right">
               {ele.seguro_id}
             </TableCell> */}
@@ -123,7 +123,7 @@ export default function DataTableComunidades({ data }) {
             <TableCell size="small" align="right">
               {ele.cif}
             </TableCell>
-            <TableCell size="small" align="right">
+           {/*  <TableCell size="small" align="right">
               {ele.per_contacto}
             </TableCell>
             <TableCell size="small" align="right">
@@ -134,7 +134,7 @@ export default function DataTableComunidades({ data }) {
             </TableCell>
             <TableCell size="small" align="right">
               {ele.img}
-            </TableCell>
+            </TableCell> */}
             {/* <TableCell size="small" align="right">
               {ele.seguro_id}
             </TableCell> */}
@@ -182,7 +182,7 @@ export default function DataTableComunidades({ data }) {
                 <TableCell size="small" align="right">
                   Cif
                 </TableCell>
-                <TableCell size="small" align="right">
+                {/* <TableCell size="small" align="right">
                   Contacto
                 </TableCell>
                 <TableCell size="small" align="right">
@@ -193,6 +193,8 @@ export default function DataTableComunidades({ data }) {
                 </TableCell>
                 <TableCell size="small" align="right">
                   IMG
+                </TableCell> */}
+                <TableCell size="small" align="right">
                 </TableCell>
                 {/* <TableCell size="small" align="right">
                   Seguro

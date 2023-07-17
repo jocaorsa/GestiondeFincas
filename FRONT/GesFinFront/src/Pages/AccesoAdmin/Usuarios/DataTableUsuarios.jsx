@@ -82,7 +82,7 @@ export default function DataTableUsuarios({ data }) {
               {ele.role}
             </TableCell>
             <TableCell size="small" align="right">
-              {ele.comunidad_id}
+              {ele.comunidad_id && ele.comunidad_id[0] && ele.comunidad_id[0].nombre}
             </TableCell>
             {/* <TableCell size="small" align="right">
               {ele.password}
@@ -116,7 +116,7 @@ export default function DataTableUsuarios({ data }) {
               {ele.role}
             </TableCell>
             <TableCell size="small" align="right">
-              {ele.comunidad_id}
+              {ele.comunidad_id && ele.comunidad_id[0] && ele.comunidad_id[0].nombre}
             </TableCell>
             {/* <TableCell size="small" align="right">
               {ele.password}
@@ -133,7 +133,7 @@ export default function DataTableUsuarios({ data }) {
   return (
     <>
       <div>
-      <Grid container justifyContent="space-between" alignItems="center">
+        <Grid container justifyContent="space-between" alignItems="center">
           <Grid item>
             <Typography variant="h6" gutterBottom>
               {user && `Bienvenido, ${user.name}`}

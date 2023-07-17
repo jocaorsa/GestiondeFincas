@@ -8,25 +8,16 @@ import Typography from "@mui/material/Typography";
 import { useSpring, animated } from "@react-spring/web";
 import { TextField } from "@mui/material";
 import { useState } from "react";
-import { createIncidencia} from "../../../services/incidencia.service";
+import { createIncidencia } from "../../../services/incidencia.service";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { getAllComunidades } from '../../../services/comunidad.service';
+import { getAllComunidades } from "../../../services/comunidad.service";
 import { useEffect } from "react";
-//import BasicSelect from "./selectrole";
 
 const Fade = React.forwardRef(function Fade(props, ref) {
-  const {
-    children,
-    in: open,
-    onClick,
-    onEnter,
-    onExited,
-    ownerState,
-    ...other
-  } = props;
+  const { children, in: open, onClick, onEnter, onExited, ownerState, ...other } = props;
   const style = useSpring({
     from: { opacity: 0 },
     to: { opacity: open ? 1 : 0 },
@@ -69,13 +60,13 @@ const style = {
   p: 4,
 };
 
-
 export default function ModalCrearIncidencia({ handleCreate }) {
   const [open, setOpen] = React.useState(false);
-  const [newIncidencia, setNewIncidencia] = useState({});
+  const [newIncidencia, setNewIncidencia] = useState({
+    estado: "Nueva", // Establecer el valor predeterminado del estado
+  });
   const [comunidades, setComunidades] = useState([]);
   const [selectedComunidadId, setSelectedComunidadId] = useState("");
-
 
   useEffect(() => {
     const fetchComunidades = async () => {
@@ -88,11 +79,12 @@ export default function ModalCrearIncidencia({ handleCreate }) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const handleCom = (event) => {
-    setSelectedComunidadId(event.target.value)
+    setSelectedComunidadId(event.target.value);
     setNewIncidencia((prevData) => ({
       ...prevData,
-      ['comunidad_id']: event.target.value,
-    }))}
+      comunidad_id: event.target.value,
+    }));
+  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -105,31 +97,28 @@ export default function ModalCrearIncidencia({ handleCreate }) {
   const handleResponse = async () => {
     const currentDate = new Date();
     const year = currentDate.getFullYear().toString();
-    console.log(year)
     let month = (currentDate.getMonth() + 1).toString();
     let day = currentDate.getDate().toString();
     let hours = currentDate.getHours().toString();
     let minutes = currentDate.getMinutes().toString();
 
-    // Agregar un cero delante si el mes, día, horas o minutos tienen un solo dígito
     if (month.length === 1) month = "0" + month;
     if (day.length === 1) day = "0" + day;
     if (hours.length === 1) hours = "0" + hours;
     if (minutes.length === 1) minutes = "0" + minutes;
 
     const numIncidencia = year + month + day + hours + minutes;
-    console.log(numIncidencia)
+
     const newIncidenciaWithNum = {
       ...newIncidencia,
       num_incidencia: numIncidencia,
     };
-    console.log(newIncidenciaWithNum)
+
     const res = await createIncidencia(newIncidenciaWithNum);
     handleClose();
     handleCreate();
     console.log("Incidencia creada");
   };
-console.log(selectedComunidadId)
 
   return (
     <div>
@@ -151,31 +140,9 @@ console.log(selectedComunidadId)
       >
         <Fade in={open}>
           <Box sx={style}>
-            <Typography
-              color={"black"}
-              id="spring-modal-title"
-              variant="h5"
-              component="h5"
-            >
+            <Typography color="black" id="spring-modal-title" variant="h5" component="h5">
               Nueva Incidencia:
             </Typography>
-            {/* <Typography
-              color={"black"}
-              id="spring-modal-description"
-              sx={{ mt: 2 }}
-            >
-              Num Incidencia
-            </Typography>
-            <TextField
-              name="num_incidencia"
-              value={newIncidencia.num_incidencia || ""}
-              onChange={handleInputChange}
-            /> */}
-            <Typography
-              color="black"
-              id="spring-modal-description"
-              sx={{ mt: 2 }}
-            ></Typography>
             <Box sx={{ minWidth: 120 }}>
               <FormControl sx={{ minWidth: 220 }}>
                 <InputLabel id="comunidad-label">Comunidad</InputLabel>
@@ -194,59 +161,7 @@ console.log(selectedComunidadId)
                 </Select>
               </FormControl>
             </Box>
-            {/* <Typography
-              color={"black"}
-              id="spring-modal-description"
-              sx={{ mt: 2 }}
-            >
-              Comunidad
-            </Typography>
-            <TextField
-              name="comunidad_id"
-              value={newIncidencia.comunidad_id || ""}
-              onChange={handleInputChange}
-            /> */}
-            {/* <Typography
-              color={"black"}
-              id="spring-modal-description"
-              sx={{ mt: 2 }}
-            >
-              Propiedad
-            </Typography>
-            <TextField
-              name="propiedad_id"
-              value={newIncidencia.propiedad_id || ""}
-              onChange={handleInputChange}
-            /> */}
-            {/* <Typography
-              color={"black"}
-              id="spring-modal-description"
-              sx={{ mt: 2 }}
-            >
-              Fecha Creacion
-            </Typography>
-            <TextField
-              name="fecha_creacion"
-              value={newIncidencia.fecha_creacion || ""}
-              onChange={handleInputChange}
-            /> */}
-            {/* <Typography
-              color={"black"}
-              id="spring-modal-description"
-              sx={{ mt: 2 }}
-            >
-              Seguro
-            </Typography>
-            <TextField
-              name="seguro"
-              value={newIncidencia.seguro || ""}
-              onChange={handleInputChange}
-            /> */}
-            <Typography
-              color={"black"}
-              id="spring-modal-description"
-              sx={{ mt: 2 }}
-            >
+            <Typography color="black" id="spring-modal-description" sx={{ mt: 2 }}>
               Estado
             </Typography>
             <FormControl sx={{ mt: 3, minWidth: 120 }}>
@@ -262,42 +177,11 @@ console.log(selectedComunidadId)
                 {/* Otros estados */}
               </Select>
             </FormControl>
-            <Typography
-              color={"black"}
-              id="spring-modal-description"
-              sx={{ mt: 2 }}
-            >
+            <Typography color="black" id="spring-modal-description" sx={{ mt: 2 }}>
               Descripcion
             </Typography>
-            <TextField
-              name="descripcion"
-              value={newIncidencia.descripcion || ""}
-              onChange={handleInputChange}
-            />
-            {/* <Typography
-              color={"black"}
-              id="spring-modal-description"
-              sx={{ mt: 2 }}
-            >
-              Imagen
-            </Typography>
-            <TextField
-              name="img"
-              value={newIncidencia.img || ""}
-              onChange={handleInputChange}
-            /> */}
-            {/*  <Typography
-              color={"black"}
-              id="spring-modal-description"
-              sx={{ mt: 2 }}
-            >
-              Proveedor
-            </Typography>
-            <TextField
-              name="proveedor_id"
-              value={newIncidencia.proveedor_id || ""}
-              onChange={handleInputChange}
-            /> */}
+            <TextField name="descripcion" value={newIncidencia.descripcion || ""} onChange={handleInputChange} />
+            
             <Typography></Typography>
             <Button
               variant="contained"

@@ -208,7 +208,7 @@ VER      </Button>
             </Typography>
             <TextField
               name="comunidad_id"
-              value={editedData.comunidad_id || ""}
+              value={editedData.comunidad_id?.[0]?.nombre || ""}
               onChange={handleInputChange}
             />
             <Typography></Typography>

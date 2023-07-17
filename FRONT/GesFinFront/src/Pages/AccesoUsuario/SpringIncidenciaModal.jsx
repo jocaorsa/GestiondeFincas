@@ -10,7 +10,7 @@ import { useSpring, animated } from "@react-spring/web";
 import { TextField } from "@mui/material";
 import { useState, useEffect } from "react";
 import { api } from "../../services/api";
-import { deleteOne, updateOneIncidencia } from "../../services/incidencia.service";
+import { /* deleteOne, */ updateOneIncidencia } from "../../services/incidencia.service";
 
 const Fade = React.forwardRef(function Fade(props, ref) {
   const {
@@ -67,6 +67,7 @@ const style = {
 export default function SpringModal({ incidencia, hadleUpdate }) {
   const [open, setOpen] = React.useState(false);
   const [editedData, setEditedData] = useState({});
+  
   console.log(incidencia)
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -110,7 +111,7 @@ export default function SpringModal({ incidencia, hadleUpdate }) {
     setEditedData(incidencia);
   }, []);
 
-const handleDelete = async () => {
+/* const handleDelete = async () => {
   try {
     const respuesta = await deleteOne(incidencia._id);
 
@@ -124,7 +125,7 @@ const handleDelete = async () => {
   } catch (error) {
     console.error("Error al eliminar el incidencia", error);
   }
-};
+}; */
 
   return (
     <div>
@@ -167,7 +168,6 @@ const handleDelete = async () => {
            <TextField
               name="num_incidencia"
               value={editedData.num_incidencia || ""}
-              onChange={handleInputChange}
             />
             <Typography
               color={"black"}
@@ -179,7 +179,6 @@ const handleDelete = async () => {
             <TextField
              name="comunidad_id"
              value={editedData.comunidad_id ? editedData.comunidad_id.nombre : ""}
-             onChange={handleInputChange}
             />
             {/* <Typography
               color={"black"}
@@ -216,7 +215,6 @@ const handleDelete = async () => {
             <TextField
               name="estado"
               value={editedData.estado || ""}
-              onChange={handleInputChange}
             />
             <Typography
               color={"black"}
@@ -230,7 +228,7 @@ const handleDelete = async () => {
               value={editedData.descripcion || ""}
               onChange={handleInputChange}
             />
-           {/*  <Typography
+          {/*  <Typography
               color={"black"}
               id="spring-modal-description"
               sx={{ mt: 2 }}

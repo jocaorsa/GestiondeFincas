@@ -176,7 +176,7 @@ export default function ModalCrearIncidencia({ handleCreate }) {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             ></Typography>
-            <Box sx={{ minWidth: 120 }}>
+            <Box sx={{ minWidth: 20 }}>
               <FormControl sx={{ minWidth: 220 }}>
                 <InputLabel id="comunidad-label">Comunidad</InputLabel>
                 <Select

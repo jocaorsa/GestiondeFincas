@@ -139,7 +139,7 @@ export default function DataTableProveedores({ data }) {
   return (
     <>
       <div>
-      <Grid container justifyContent="space-between" alignItems="center">
+        <Grid container justifyContent="space-between" alignItems="center">
           <Grid item>
             <Typography variant="h6" gutterBottom>
               {user && `Bienvenido, ${user.name}`}
@@ -179,6 +179,9 @@ export default function DataTableProveedores({ data }) {
                 </TableCell>
                 <TableCell size="small" align="right">
                   Servicio
+                </TableCell>
+                <TableCell size="small" align="right">
+                  
                 </TableCell>
               </TableRow>
             </TableHead>

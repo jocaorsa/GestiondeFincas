@@ -1,0 +1,747 @@
+[
+  {
+    "nombre": "29 DE ABRIL 89",
+    "direccion": "29 DE ABRIL, 89",
+    "tlf_com": "",
+    "cif": "H 35743996",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  {
+    "nombre": "ALCALDE DIAZ SAAVEDRA 38",
+    "direccion": "ALCALDE DIAZ SAAVEDRA",
+    "tlf_com": "",
+    "cif": "H 35342351",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  {
+    "nombre": "ALCALDE DIAZ SAAVEDRA 37",
+    "direccion": "ALCALDE DIAZ SAAVEDRA",
+    "tlf_com": "",
+    "cif": "H 35589233",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  {
+    "nombre": "LUIS MOROTE 43",
+    "direccion": "LUIS MOROTE 43",
+    "tlf_com": "",
+    "cif": "H35334325",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  {
+    "nombre": "LEON Y CASTILLO,315",
+    "direccion": "LEON Y CASTILLO,315",
+    "tlf_com": "",
+    "cif": "H35307651",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  {
+    "nombre": "BATALLA DE BALAGUER 23",
+    "direccion": "BATALLA DE BALAGUER 23",
+    "tlf_com": "",
+    "cif": "H06974935",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  {
+    "nombre": "BERNARDO DE LA TORRE 35",
+    "direccion": "BERNARDO DE LA TORRE 35",
+    "tlf_com": "",
+    "cif": "H-35364017",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  {
+    "nombre": "JESUS FERRER JIMENO, 2",
+    "direccion": "JESUS FERRER JIMENO, 2",
+    "tlf_com": "",
+    "cif": "H35528850",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  {
+    "nombre": "AVDA. ESCALERITAS, 74",
+    "direccion": "AVDA. ESCALERITAS, 74",
+    "tlf_com": "",
+    "cif": "H 35820281",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  {
+    "nombre": "AVDA. LAS CANTERAS 70",
+    "direccion": "AVDA. LAS CANTERAS 70",
+    "tlf_com": "",
+    "cif": "H35440650",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  {
+    "nombre": "PEDRO DEL CASTILLO",
+    "direccion": "PEDRO DEL CASTILLO",
+    "tlf_com": "",
+    "cif": "H 35843259",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+
+  {
+    "nombre": "CUATRO CAÑONES 10",
+    "direccion": "CUATRO CAÑONES 10",
+    "tlf_com": "",
+    "cif": "H35684380",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+
+  {
+    "nombre": "CONCEJAL GARCIA FEO 1-3",
+    "direccion": "CONCEJAL GARCIA FEO 1-3",
+    "tlf_com": "",
+    "cif": "E 35099191",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+
+  {
+    "nombre": "LUIS BENITEZ INGLOT 6-8",
+    "direccion": "LUIS BENITEZ INGLOT 6-8",
+    "tlf_com": "",
+    "cif": "H 35107077",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+
+  {
+    "nombre": "C/ DRAGO 7-9-11",
+    "direccion": "C/ DRAGO 7-9-11",
+    "tlf_com": "",
+    "cif": "V 76228055",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+
+  {
+    "nombre": "EMILIO ARRIETA 17",
+    "direccion": "EMILIO ARRIETA 17",
+    "tlf_com": "",
+    "cif": "H 35318856",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "FEMES 3",
+    "direccion": "FEMES 3",
+    "tlf_com": "",
+    "cif": "H76269364",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+
+  {
+    "nombre": "ESCUDERO SANCHO PANZA",
+    "direccion": "ESCUDERO SANCHO PANZA",
+    "tlf_com": "",
+    "cif": "H76345263",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "GARAJE 29 DE ABRIL 80-84",
+    "direccion": "GARAJE 29 DE ABRIL 80-84",
+    "tlf_com": "",
+    "cif": "H76357193",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+
+  {
+    "nombre": "GARAJE BONAMAR",
+    "direccion": "LUIS MOROTE, 28",
+    "tlf_com": "",
+    "cif": "H 35728054",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "GARAJE EUROCAN",
+    "direccion": "NICOLAS ESTEBANEZ, 33",
+    "tlf_com": "",
+    "cif": "H 35436245",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "GORDILLO 21",
+    "direccion": "GORDILLO 21",
+    "tlf_com": "",
+    "cif": "H 76108521",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "HIERRO 19",
+    "direccion": "HIERRO 19 -VILLEVA",
+    "tlf_com": "",
+    "cif": "H76089325",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "HOYA DEL ROSARIO 132",
+    "direccion": "HOYA DEL ROSARIO 132",
+    "tlf_com": "",
+    "cif": "H 76040237",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+
+  {
+    "nombre": "ITALIA 55",
+    "direccion": "ITALIA 55",
+    "tlf_com": "",
+    "cif": "H35252535",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+
+  {
+    "nombre": "JOAQUIN COSTA 46",
+    "direccion": "JOAQUIN COSTA 46",
+    "tlf_com": "",
+    "cif": "H35238880",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+
+  {
+    "nombre": "JUAN REJON, 69",
+    "direccion": "JUAN REJON, 69",
+    "tlf_com": "",
+    "cif": "H35904895",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+
+  {
+    "nombre": "JUAN REJON, 110",
+    "direccion": "JUAN REJON, 110",
+    "tlf_com": "",
+    "cif": "H-35434430",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+
+  {
+    "nombre": "LA MADERA 63",
+    "direccion": "MESA Y LOPEZ 63",
+    "tlf_com": "",
+    "cif": "H35231216",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+
+  {
+    "nombre": "CONCEJAL GARCÍA FEO 3",
+    "direccion": "CONCEJAL GARCÍA FEO 3",
+    "tlf_com": "",
+    "cif": "E-35376722",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "POETA JUAN SOSA SUAREZ 2",
+    "direccion": "POETA JUAN SOSA SUAREZ 2",
+    "tlf_com": "",
+    "cif": "H-35266378",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "M. G. M. - 16",
+    "direccion": "MANUEL GLEZ. MARTIN,16",
+    "tlf_com": "",
+    "cif": "H 35271535",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "PERU 27",
+    "direccion": "PERU 27",
+    "tlf_com": "",
+    "cif": "H 35801372",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "MARGARITA 4",
+    "direccion": "MARGARITA 4",
+    "tlf_com": "",
+    "cif": "H 76035971",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "MARMOLEJO 4",
+    "direccion": "MARMOLEJO 4",
+    "tlf_com": "",
+    "cif": "H-76293588",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "MAS DE GAMINDE 22",
+    "direccion": "MAS DE GAMINDE 22",
+    "tlf_com": "",
+    "cif": "H 76237676",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "MATÍAS PADRÓN",
+    "direccion": "MATIAN PADRÓN 62",
+    "tlf_com": "",
+    "cif": "H35940618",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+
+  {
+    "nombre": "MIGUEL ROSAS 3",
+    "direccion": "MIGUEL ROSAS 3",
+    "tlf_com": "",
+    "cif": "H76237890",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+
+  {
+    "nombre": "MIRADOR DE GALDAR",
+    "direccion": "EL BURRERO,  S/N.",
+    "tlf_com": "",
+    "cif": "H 35695030",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "MIRON - 27",
+    "direccion": "AVDA. EL MIRON, 27",
+    "tlf_com": "",
+    "cif": "H 35497213",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "OLOF PALME, 22",
+    "direccion": "OLOF PALME, 22",
+    "tlf_com": "",
+    "cif": "H 35466358",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "OSORIO 4",
+    "direccion": "OSORIO 4",
+    "tlf_com": "",
+    "cif": "H72397185",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "P. PENAGUILAS, 112",
+    "direccion": "PABLO PENAGUILAS, 112",
+    "tlf_com": "",
+    "cif": "H 35330620",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "PATAGONIA",
+    "direccion": "PATAGONIA,  23-25",
+    "tlf_com": "",
+    "cif": "H 76042936",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": ""
+  },
+
+  {
+    "nombre": "PEDRO DEL CASTILLO 27",
+    "direccion": "PEDRO DEL CAST. 27",
+    "tlf_com": "",
+    "cif": "H35573393",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+
+  {
+    "nombre": "RIPOCHE PARK",
+    "direccion": "29 DE ABRIL 60",
+    "tlf_com": "",
+    "cif": "H35266345",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "RUISEÑORES",
+    "direccion": "CALZADA L. NORTE, 31",
+    "tlf_com": "",
+    "cif": "H 35720648",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "REGINA CANTERAS",
+    "direccion": "29 DE ABRIL 51",
+    "tlf_com": "",
+    "cif": "E35033109",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+
+  {
+    "nombre": "SAGASTA 66",
+    "direccion": "SAGASTA 66, DRCH",
+    "tlf_com": "",
+    "cif": "H 76314475",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "SCHUBERT I",
+    "direccion": "SCHUBERT I",
+    "tlf_com": "",
+    "cif": "H35280346",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "SEMINARIO - LOMO BLANCO",
+    "direccion": "SEMINARIO 15",
+    "tlf_com": "",
+    "cif": "H35338409",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+
+  {
+    "nombre": "T.M 72",
+    "direccion": "TOMÁS MILLER 72",
+    "tlf_com": "",
+    "cif": "H76031624",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "T.M. 81 - LUSITANIA",
+    "direccion": "TOMAS MILLER, 81",
+    "tlf_com": "",
+    "cif": "H 35314236",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "T.M. 83 - SUACER",
+    "direccion": "TOMAS MILLER, 83",
+    "tlf_com": "",
+    "cif": "H 35367556",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+
+  {
+    "nombre": "TAIBE - LUIS MOROTE 42",
+    "direccion": "LUIS MOROTE, 42",
+    "tlf_com": "",
+    "cif": "E 35045251",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+
+  {
+    "nombre": "TERRAZA APTOS.",
+    "direccion": "LUIS MOROTE 46",
+    "tlf_com": "",
+    "cif": "H 35032648",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "TOMÁS MORALES 29",
+    "direccion": "TOMÁS MORALES 29",
+    "tlf_com": "",
+    "cif": "H35907955",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "TORRES QUEVEDO - 24",
+    "direccion": "TORRES QUEVEDO, 24",
+    "tlf_com": "",
+    "cif": "H 35228089",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "TORRES QUEVEDO - 30",
+    "direccion": "TORRES QUEVEDO, 30",
+    "tlf_com": "",
+    "cif": "H 35262872",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+
+  {
+    "nombre": "TRINIDAD 11",
+    "direccion": "TRINIDAD 11",
+    "tlf_com": "",
+    "cif": "H16735623",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+
+  {
+    "nombre": "GUAYEDRA, 22",
+    "direccion": "GUAYEDRA, 22",
+    "tlf_com": "",
+    "cif": "H35501501",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+  
+  {
+    "nombre": "VICTOR HUGO, 69",
+    "direccion": "VICTOR HUGO, 69",
+    "tlf_com": "",
+    "cif": "H10637106",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  },
+
+  {
+    "nombre": "VICTOR HUGO 71",
+    "direccion": "VICTOR HUGO, 71",
+    "tlf_com": "",
+    "cif": "H 76237668",
+    "per_contacto": "",
+    "ascensor": "",
+    "localizacion": "",
+    "img": "",
+    "seguro_id": []
+  }
+]

@@ -20,7 +20,7 @@ async function getOneUser (req, res){
 
 async function getAllUsuario (req, res){
     try{
-        const usuario = await Usuario.find({__v:0})
+        const usuario = await Usuario.find({__v:0}).populate("comunidad_id")
         res.json(usuario)
     } catch (error){
         console.log(error)

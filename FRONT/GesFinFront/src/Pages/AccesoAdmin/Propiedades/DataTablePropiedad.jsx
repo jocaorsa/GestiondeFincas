@@ -33,6 +33,7 @@ export default function DataTablePropiedad({ data }) {
 
   const showPropiedades = async () => {
     const data = await getAllPropiedad();
+    console.log(data)
     setPropiedades(data);
   };
   console.log(propiedades)
@@ -70,17 +71,17 @@ export default function DataTablePropiedad({ data }) {
             <TableCell size="small" component="th" scope="ele">
               {ele.tipo_propiedad}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell style={{ width: '15%' }} align="right">
               {ele.piso}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell style={{ width: '15%' }} align="right">
               {ele.num}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell style={{ width: '15%' }} align="right">
               {ele.letra}
             </TableCell>
-            <TableCell size="small" align="right">
-              {ele.comunidad_id}
+            <TableCell style={{ width: '15%' }} align="right">
+              {ele.comunidad_id[0].nombre}
             </TableCell>
             <TableCell>
               <SpringPropiedadModal propiedad={ele} hadleUpdate={handleUpdate} />
@@ -98,20 +99,23 @@ export default function DataTablePropiedad({ data }) {
             <TableCell component="th" scope="ele" size="small">
               {ele.tipo_propiedad}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell style={{ width: "15%" }} align="right">
               {ele.piso}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell style={{ width: "15%" }} align="right">
               {ele.num}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell style={{ width: "15%" }} align="right">
               {ele.letra}
             </TableCell>
-            <TableCell size="small" align="right">
-              {ele.comunidad_id}
+            <TableCell style={{ width: "15%" }} align="right">
+              {ele.comunidad_id[0].nombre}
             </TableCell>
             <TableCell>
-              <SpringPropiedadModal propiedad={ele} hadleUpdate={handleUpdate} />
+              <SpringPropiedadModal
+                propiedad={ele}
+                hadleUpdate={handleUpdate}
+              />
             </TableCell>
           </TableRow>
         );
@@ -122,7 +126,7 @@ export default function DataTablePropiedad({ data }) {
   return (
     <>
       <div>
-      <Grid container justifyContent="space-between" alignItems="center">
+        <Grid container justifyContent="space-between" alignItems="center">
           <Grid item>
             <Typography variant="h6" gutterBottom>
               {user && `Bienvenido, ${user.name}`}
@@ -135,23 +139,27 @@ export default function DataTablePropiedad({ data }) {
             />
           </Grid>
         </Grid>
-        <TableContainer component={Paper} style={{ height: 400 }}>
-          <Table size="small">
+        <TableContainer
+          component={Paper}
+          style={{ width: "100%", height: 400 }}
+        >
+          <Table size="small" style={{ width: "100%" }}>
             <TableHead>
               <TableRow>
                 <TableCell size="small">Tipo de Propiedad</TableCell>
-                <TableCell size="small" align="right">
+                <TableCell style={{ width: '15%' }} align="right">
                   Piso
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell style={{ width: '15%' }} align="right">
                   Numero
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell style={{ width: '15%' }} align="right">
                   Letra
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell style={{ width: '15%' }} align="right">
                   Comunidad
                 </TableCell>
+                <TableCell style={{ width: '15%' }} align="right"></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>{filteredData()}</TableBody>
