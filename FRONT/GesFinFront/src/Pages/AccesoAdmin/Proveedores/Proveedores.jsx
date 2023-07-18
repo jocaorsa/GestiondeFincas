@@ -47,7 +47,7 @@ function Proveedores() {
                 width: "100%",
                 height: "100%",
                 backgroundImage:
-                  "url(https://source.unsplash.com/random?buildings)",
+                  "url(https://source.unsplash.com/random?Suppliers)",
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 backgroundPosition: "center",

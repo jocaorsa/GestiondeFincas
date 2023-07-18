@@ -151,10 +151,10 @@ export default function DataTableUsuarios({ data }) {
           container
           justifyContent="space-between"
           alignItems="center"
-          width="100%"
+          width="60vw"
         >
           <Grid item padding={2}>
-            <Typography  variant="h5" gutterBottom>
+            <Typography variant="h5" gutterBottom>
               {user && `Bienvenido, ${user.name}`}
             </Typography>
           </Grid>

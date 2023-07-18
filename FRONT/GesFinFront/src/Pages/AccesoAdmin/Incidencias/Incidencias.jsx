@@ -46,7 +46,7 @@ function Incidencias() {
             width: "100%",
             height: "100%",
             backgroundImage:
-              "url(https://source.unsplash.com/random?buildings)",
+              "url(https://source.unsplash.com/random?incidents)",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             backgroundPosition: "center",
@@ -63,8 +63,8 @@ function Incidencias() {
             textAlign: "center",
           }}
         >
-          <img src={logo} width={200} ></img>
-     {/*      <h1>#GesFin</h1>
+          <img src={logo} width={200}></img>
+          {/*      <h1>#GesFin</h1>
           <p>Gestor de Incidencias</p> */}
         </div>
       </Card>

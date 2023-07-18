@@ -69,7 +69,7 @@ export default function DataTablePropiedad({ data }) {
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
             <TableCell size="medium"
-    > component="th" scope="ele">
+    component="th" scope="ele">
               {ele.tipo_propiedad}
             </TableCell>
             <TableCell style={{ width: '15%' }} align="right">
@@ -124,6 +124,9 @@ export default function DataTablePropiedad({ data }) {
       });
     }
   };
+const tableContainerStyle = {
+  height: "100%",
+};
 
   return (
     <>
@@ -132,7 +135,7 @@ export default function DataTablePropiedad({ data }) {
           container
           justifyContent="space-between"
           alignItems="center"
-          width="100%"
+          width="60vw"
         >
           <Grid item padding={2}>
             <Typography variant="h5" gutterBottom>

@@ -45,7 +45,7 @@ function Seguros() {
             width: "100%",
             height: "100%",
             backgroundImage:
-              "url(https://source.unsplash.com/random?buildings)",
+              "url(https://source.unsplash.com/random?insurance)",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             backgroundPosition: "center",

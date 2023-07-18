@@ -80,7 +80,7 @@ export default function DataTableIncidencia() {
           >
             {incidencia}
             <TableCell size="medium"
-    > component="th" scope="ele">
+    component="th" scope="ele">
               {ele.num_incidencia}
             </TableCell>
             <TableCell size="medium"

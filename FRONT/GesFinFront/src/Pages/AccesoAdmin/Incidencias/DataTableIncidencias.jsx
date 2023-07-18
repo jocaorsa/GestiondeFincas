@@ -125,7 +125,7 @@ export default function DataTableIncidencia() {
         return (
           <TableRow
             key={ele._id}
-            sx={{ "&:last-child td, &:last-child th": { border: 0} }}
+            sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
             <TableCell component="th" scope="ele" size="medium">
               {ele.num_incidencia}
@@ -155,7 +155,7 @@ export default function DataTableIncidencia() {
             {/*   <TableCell size="medium" align="right">
               {ele.img}
             </TableCell> */}
-           {/*  <TableCell size="medium" align="right">
+            {/*  <TableCell size="medium" align="right">
               {ele.proveedor_id.nombre}
             </TableCell> */}
             <TableCell>
@@ -173,9 +173,14 @@ export default function DataTableIncidencia() {
   return (
     <>
       <div>
-        <Grid container justifyContent="space-between" alignItems="center" width="100%">
+        <Grid
+          container
+          justifyContent="space-between"
+          alignItems="center"
+          width="60vw"
+        >
           <Grid item padding={2}>
-            <Typography  variant="h5" gutterBottom>
+            <Typography variant="h5" gutterBottom>
               {user && `Bienvenido, ${user.name}`}
             </Typography>
           </Grid>
@@ -190,7 +195,7 @@ export default function DataTableIncidencia() {
           <Table stickyHeader>
             <TableHead>
               <TableRow>
-                <TableCell size="medium" >Num incidencia</TableCell>
+                <TableCell size="medium">Num incidencia</TableCell>
                 <TableCell size="medium" align="right">
                   Comunidad
                 </TableCell>
@@ -209,9 +214,7 @@ export default function DataTableIncidencia() {
                 <TableCell size="medium" align="right">
                   Descripcion
                 </TableCell>
-                <TableCell size="medium" align="right">
-                  
-                </TableCell>
+                <TableCell size="medium" align="right"></TableCell>
                 {/*  <TableCell size="medium" align="right">
                   Img
                 </TableCell>

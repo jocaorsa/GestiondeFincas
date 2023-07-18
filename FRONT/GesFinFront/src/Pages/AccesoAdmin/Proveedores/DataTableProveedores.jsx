@@ -67,7 +67,7 @@ export default function DataTableProveedores({ data }) {
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
             <TableCell size="medium"
-    > component="th" scope="ele">
+     component="th" scope="ele">
               {ele.nombre}
             </TableCell>
             <TableCell size="medium"
@@ -159,7 +159,7 @@ export default function DataTableProveedores({ data }) {
           container
           justifyContent="space-between"
           alignItems="center"
-          width="100%"
+          width="60vw"
         >
           <Grid item padding={2}>
             <Typography variant="h5" gutterBottom>

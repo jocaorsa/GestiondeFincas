@@ -151,7 +151,7 @@ export default function DataTableSeguros({ data }) {
           container
           justifyContent="space-between"
           alignItems="center"
-          width="100%"
+          width="60vw"
         >
           <Grid item padding={2}>
             <Typography variant="h5" gutterBottom>

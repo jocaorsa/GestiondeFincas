@@ -47,7 +47,7 @@ export default function DataTableUsuarios({ data }) {
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
             <TableCell size="medium"
-    > component="th" scope="ele">
+    component="th" scope="ele">
               {ele.name}
             </TableCell>
             <TableCell size="medium"

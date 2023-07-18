@@ -88,7 +88,7 @@ export default function DataTableUser({ data }) {
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
             <TableCell size="medium"
-    > component="th" scope="ele">
+     component="th" scope="ele">
               {ele.num_incidencia}
             </TableCell>
             <TableCell size="medium"
@@ -142,8 +142,7 @@ export default function DataTableUser({ data }) {
               key={ele.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              <TableCell component="th" scope="ele" size="medium"
-    >
+              <TableCell component="th" scope="ele" size="medium">
                 {ele.num_incidencia}
               </TableCell>
               <TableCell size="medium"
@@ -186,6 +185,7 @@ export default function DataTableUser({ data }) {
               justifyContent: "space-between",
               alignItems: "center",
               padding: "10px",
+              width:"60vw"
             }}
           >
             {user && (
@@ -206,7 +206,7 @@ export default function DataTableUser({ data }) {
               handleSearchChange={handleSearchChange}
             />
           </div>
-          <TableContainer component={Paper} style={{ maxHeight: 400 }}>
+          <TableContainer component={Paper} style={{maxHeight: 600 }}>
             <Table stickyHeader>
               <TableHead>
                 <TableRow>

@@ -5,6 +5,7 @@ import DataTableIncidencias from "../../Pages/AccesoAdmin/Incidencias/DataTableI
 import { useEffect } from "react";
 import { useState } from "react";
 import { getOneUser } from "../../services/usuario.service";
+import logo from "../../../public/GF.png";
 
 function AccesoAdmin() {
   const [data, setData] = useState([]);
@@ -28,9 +29,10 @@ function AccesoAdmin() {
   return (
     <Box
       sx={{
+        margin: "0 auto",
         display: "flex",
         backgroundColor: "#F5F5F5",
-        width: "100%",
+        width: "75vw",
         height: "100%",
       }}
     >
@@ -59,9 +61,22 @@ function AccesoAdmin() {
             filter: "brightness(70%)",
           }}
         />
+        <div
+          style={{
+            position: "absolute",
+            top: "10%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            color: "#fff",
+            textAlign: "center",
+          }}
+        >
+          <img src={logo} width={200}></img>
+          {/*      <h1>#GesFin</h1>
+          <p>Gestor de Incidencias</p> */}
+        </div>
       </Card>
-
-      <Box sx={{ flexGrow: 1, p: 4 }}>
+      <Box sx={{ flexGrow: 0, p: 1 }}>
         <Grid container spacing={2} justifyContent="center" alignItems="center">
           <Grid item xs={12} sm={6} md={4} lg={3}>
             <Box width="100%">

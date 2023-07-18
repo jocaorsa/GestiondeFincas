@@ -1,5 +1,5 @@
 import { createBrowserRouter, redirect } from "react-router-dom";
-import AccesoAdmin from "../Pages/AccesoAdmin/AccesoAdmin";
+/* import AccesoAdmin from "../Pages/AccesoAdmin/AccesoAdmin";*/
 import AccesoUsuario from "../Pages/AccesoUsuario/AccesoUsuario";
 import CrearIncidencia from "../Pages/AccesoUsuario/CrearIncidencia/Crearincidencia";
 import VerIncidencia from "../Pages/AccesoUsuario/VerIncidencia/Verincidencia";
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
     children: [{ path: "/", element: <SignInSide /> }],
   },
-  { path: "/login/admin", element: <AccesoAdmin />, loader: checkAdmin },
+  { path: "/login/admin", element: <Incidencias />, loader: checkAdmin },
   {
     path: "/login/admin/comunidades",
     element: <Comunidades />,
