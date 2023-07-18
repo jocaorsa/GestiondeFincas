@@ -68,31 +68,31 @@ export default function DataTableSeguros({ data }) {
           >
             <TableCell size="medium"
      component="th" scope="ele">
-              {ele.compania}
+              <Typography fontSize={18}>{ele.compania}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.poliza}
+              <Typography fontSize={18}>{ele.poliza}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.tlf_seg}
+              <Typography fontSize={18}>{ele.tlf_seg}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.fecha_contrato}
+              <Typography fontSize={18}>{ele.fecha_contrato}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.fecha_fin_contrato}
+              <Typography fontSize={18}>{ele.fecha_fin_contrato}</Typography>
             </TableCell>
             {/* <TableCell size="medium"
     align="right">
-              {ele.mediador_id}
+              <Typography fontSize={18}>{ele.mediador_id}</Typography>
             </TableCell> */}
             {/* <TableCell size="medium"
     align="right">
-              {ele.password}
+              <Typography fontSize={18}>{ele.password}</Typography>
             </TableCell> */}
             <TableCell>
               <SpringSeguroModal seguro={ele} hadleUpdate={handleUpdate} />
@@ -109,31 +109,31 @@ export default function DataTableSeguros({ data }) {
           >
             <TableCell component="th" scope="ele" size="medium"
     >
-              {ele.compania}
+              <Typography fontSize={18}>{ele.compania}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.poliza}
+              <Typography fontSize={18}>{ele.poliza}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.tlf_seg}
+              <Typography fontSize={18}>{ele.tlf_seg}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.fecha_contrato}
+              <Typography fontSize={18}>{ele.fecha_contrato}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.fecha_fin_contrato}
+              <Typography fontSize={18}>{ele.fecha_fin_contrato}</Typography>
             </TableCell>
             {/* <TableCell size="medium"
     align="right">
-              {ele.mediador_id}
+              <Typography fontSize={18}>{ele.mediador_id}</Typography>
             </TableCell> */}
             {/* <TableCell size="medium"
     align="right">
-              {ele.password}
+              <Typography fontSize={18}>{ele.password}</Typography>
             </TableCell> */}
             <TableCell>
               <SpringSeguroModal seguro={ele} hadleUpdate={handleUpdate} />
@@ -169,27 +169,27 @@ export default function DataTableSeguros({ data }) {
           <Table stickyHeader>
             <TableHead>
               <TableRow>
-                <TableCell size="medium">Compañia</TableCell>
+                <TableCell size="medium"><Typography fontSize={20}>Compañia</Typography></TableCell>
                 <TableCell size="medium" align="right">
-                  Poliza
+                  <Typography fontSize={20}>Poliza</Typography>
                 </TableCell>
                 <TableCell size="medium" align="right">
-                  Telefono Seguro
+                  <Typography fontSize={20}>Telefono Seguro</Typography>
                 </TableCell>
                 <TableCell size="medium" align="right">
-                  Fecha Contrato
+                  <Typography fontSize={20}>Fecha Contrato</Typography>
                 </TableCell>
                 <TableCell size="medium" align="right">
-                  Fecha Fin
+                  <Typography fontSize={20}>Fecha Fin</Typography>
                 </TableCell>
                 <TableCell size="medium" align="right"></TableCell>
                 {/*  <TableCell size="medium"
     align="right">
-                  Mediador
+                  <Typography fontSize={20}>Mediador</Typography>
                 </TableCell> */}
                 {/* <TableCell size="medium"
     align="right">
-                  Contraseña
+                  <Typography fontSize={20}>Contraseña</Typography>
                 </TableCell> */}
               </TableRow>
             </TableHead>

@@ -70,19 +70,19 @@ export default function DataTablePropiedad({ data }) {
           >
             <TableCell size="medium"
     component="th" scope="ele">
-              {ele.tipo_propiedad}
+              <Typography fontSize={18}>{ele.tipo_propiedad}</Typography>
             </TableCell>
             <TableCell style={{ width: '15%' }} align="right">
-              {ele.piso}
+              <Typography fontSize={18}>{ele.piso}</Typography>
             </TableCell>
             <TableCell style={{ width: '15%' }} align="right">
-              {ele.num}
+              <Typography fontSize={18}>{ele.num}</Typography>
             </TableCell>
             <TableCell style={{ width: '15%' }} align="right">
-              {ele.letra}
+              <Typography fontSize={18}>{ele.letra}</Typography>
             </TableCell>
             <TableCell style={{ width: '15%' }} align="right">
-              {ele.comunidad_id[0].nombre}
+              <Typography fontSize={18}>{ele.comunidad_id[0].nombre}</Typography>
             </TableCell>
             <TableCell>
               <SpringPropiedadModal propiedad={ele} hadleUpdate={handleUpdate} />
@@ -99,19 +99,19 @@ export default function DataTablePropiedad({ data }) {
           >
             <TableCell component="th" scope="ele" size="medium"
     >
-              {ele.tipo_propiedad}
+              <Typography fontSize={18}>{ele.tipo_propiedad}</Typography>
             </TableCell>
             <TableCell style={{ width: "15%" }} align="right">
-              {ele.piso}
+              <Typography fontSize={18}>{ele.piso}</Typography>
             </TableCell>
             <TableCell style={{ width: "15%" }} align="right">
-              {ele.num}
+              <Typography fontSize={18}>{ele.num}</Typography>
             </TableCell>
             <TableCell style={{ width: "15%" }} align="right">
-              {ele.letra}
+              <Typography fontSize={18}>{ele.letra}</Typography>
             </TableCell>
             <TableCell style={{ width: "15%" }} align="right">
-              {ele.comunidad_id[0].nombre}
+             <Typography fontSize={18}>{ele.comunidad_id[0].nombre}</Typography>
             </TableCell>
             <TableCell>
               <SpringPropiedadModal
@@ -149,25 +149,24 @@ const tableContainerStyle = {
             />
           </Grid>
         </Grid>
-        <TableContainer
-          component={Paper}
-          style={{ height: 500 }}
-        >
+        <TableContainer component={Paper} style={{ height: 500 }}>
           <Table stickyHeader>
             <TableHead>
               <TableRow>
-                <TableCell size="medium">Tipo de Propiedad</TableCell>
-                <TableCell style={{ width: "15%" }} align="right">
-                  Piso
+                <TableCell size="medium">
+                  <Typography fontSize={20}>Tipo de Propiedad</Typography>
                 </TableCell>
                 <TableCell style={{ width: "15%" }} align="right">
-                  Numero
+                  <Typography fontSize={20}>Piso</Typography>
                 </TableCell>
                 <TableCell style={{ width: "15%" }} align="right">
-                  Letra
+                  <Typography fontSize={20}>Numero</Typography>
                 </TableCell>
                 <TableCell style={{ width: "15%" }} align="right">
-                  Comunidad
+                  <Typography fontSize={20}>Letra</Typography>
+                </TableCell>
+                <TableCell style={{ width: "15%" }} align="right">
+                  <Typography fontSize={20}>Comunidad</Typography>
                 </TableCell>
                 <TableCell style={{ width: "15%" }} align="right"></TableCell>
               </TableRow>

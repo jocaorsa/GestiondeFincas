@@ -66,37 +66,29 @@ export default function DataTableProveedores({ data }) {
             key={ele.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
-            <TableCell size="medium"
-     component="th" scope="ele">
-              {ele.nombre}
+            <TableCell size="medium" component="th" scope="ele">
+              <Typography fontSize={18}>{ele.nombre}</Typography>
             </TableCell>
-            <TableCell size="medium"
-    align="right">
-              {ele.direccion}
+            <TableCell size="medium" align="right">
+              <Typography fontSize={18}>{ele.direccion}</Typography>
             </TableCell>
-            <TableCell size="medium"
-    align="right">
-              {ele.tlf_prov}
+            <TableCell size="medium" align="right">
+              <Typography fontSize={18}>{ele.tlf_prov}</Typography>
             </TableCell>
-            <TableCell size="medium"
-    align="right">
-              {ele.cif}
+            <TableCell size="medium" align="right">
+              <Typography fontSize={18}>{ele.cif}</Typography>
             </TableCell>
-            <TableCell size="medium"
-    align="right">
-              {ele.per_contacto}
+            <TableCell size="medium" align="right">
+              <Typography fontSize={18}>{ele.per_contacto}</Typography>
             </TableCell>
-            <TableCell size="medium"
-    align="right">
-              {ele.email}
+            <TableCell size="medium" align="right">
+              <Typography fontSize={18}>{ele.email}</Typography>
             </TableCell>
-            <TableCell size="medium"
-    align="right">
-              {ele.puntuacion}
+            <TableCell size="medium" align="right">
+              <Typography fontSize={18}>{ele.puntuacion}</Typography>
             </TableCell>
-            <TableCell size="medium"
-    align="right">
-              {ele.servicio}
+            <TableCell size="medium" align="right">
+              <Typography fontSize={18}>{ele.servicio}</Typography>
             </TableCell>
             <TableCell>
               <SpringProveedorModal user={ele} hadleUpdate={handleUpdate} />
@@ -113,35 +105,35 @@ export default function DataTableProveedores({ data }) {
           >
             <TableCell component="th" scope="ele" size="medium"
     >
-              {ele.nombre}
+              <Typography fontSize={18}>{ele.nombre}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.direccion}
+              <Typography fontSize={18}>{ele.direccion}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.tlf_prov}
+             <Typography fontSize={18}> {ele.tlf_prov}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.cif}
+              <Typography fontSize={18}>{ele.cif}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.per_contacto}
+              <Typography fontSize={18}>{ele.per_contacto}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.email}
+              <Typography fontSize={18}>{ele.email}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.puntuacion}
+              <Typography fontSize={18}>{ele.puntuacion}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.servicio}
+              <Typography fontSize={18}>{ele.servicio}</Typography>
             </TableCell>
             <TableCell>
               <SpringProveedorModal proveedor={ele} hadleUpdate={handleUpdate} />
@@ -178,28 +170,28 @@ export default function DataTableProveedores({ data }) {
             <TableHead>
               <TableRow>
                 <TableCell size="medium" align="right">
-                  Nombre
+                  <Typography fontSize={20}>Nombre</Typography>
                 </TableCell>
                 <TableCell size="medium" align="right">
-                  Direccion
+                  <Typography fontSize={20}>Direccion</Typography>
                 </TableCell>
                 <TableCell size="medium" align="right">
-                  Telefono
+                  <Typography fontSize={20}>Telefono</Typography>
                 </TableCell>
                 <TableCell size="medium" align="right">
-                  Cif
+                  <Typography fontSize={20}>Cif</Typography>
                 </TableCell>
                 <TableCell size="medium" align="right">
-                  Contacto
+                  <Typography fontSize={20}>Contacto</Typography>
                 </TableCell>
                 <TableCell size="medium" align="right">
-                  Email
+                  <Typography fontSize={20}>Email</Typography>
                 </TableCell>
                 <TableCell size="medium" align="right">
-                  Puntuacion
+                  <Typography fontSize={20}>Puntuacion</Typography>
                 </TableCell>
                 <TableCell size="medium" align="right">
-                  Servicio
+                  <Typography fontSize={20}>Servicio</Typography>
                 </TableCell>
                 <TableCell size="medium" align="right"></TableCell>
               </TableRow>

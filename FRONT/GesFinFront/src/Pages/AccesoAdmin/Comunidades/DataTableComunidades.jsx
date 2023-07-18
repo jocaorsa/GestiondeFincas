@@ -67,41 +67,37 @@ export default function DataTableComunidades({ data }) {
             key={ele.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
-            <TableCell size="medium"
-    component="th" scope="ele">
-              {ele.nombre}
+            <TableCell size="medium" component="th" scope="ele">
+              <Typography fontSize={18}>{ele.nombre}</Typography>
             </TableCell>
-            <TableCell size="medium"
-    align="right">
-              {ele.direccion}
+            <TableCell size="medium" align="right">
+              <Typography fontSize={18}>{ele.direccion}</Typography>
             </TableCell>
-            <TableCell size="medium"
-    align="right">
-              {ele.tlf_com}
+            <TableCell size="medium" align="right">
+              <Typography fontSize={18}>{ele.tlf_com}</Typography>
             </TableCell>
-            <TableCell size="medium"
-    align="right">
-              {ele.cif}
+            <TableCell size="medium" align="right">
+              <Typography fontSize={18}>{ele.cif}</Typography>
             </TableCell>
             {/* <TableCell size="medium"
     align="right">
-              {ele.per_contacto}
+              <Typography fontSize={18}>{ele.per_contacto}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.ascensor}
+              <Typography fontSize={18}>{ele.ascensor}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.localizacion}
+              <Typography fontSize={18}>{ele.localizacion}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.img}
+              <Typography fontSize={18}>{ele.img}</Typography>
             </TableCell> */}
             {/* <TableCell size="medium"
     align="right">
-              {ele.seguro_id}
+              <Typography fontSize={18}>{ele.seguro_id}</Typography>
             </TableCell> */}
             <TableCell>
               <SpringComunidadModal
@@ -120,41 +116,37 @@ export default function DataTableComunidades({ data }) {
             key={ele.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
-            <TableCell size="medium"
-    component="th" scope="ele">
-              {ele.nombre}
+            <TableCell size="medium" component="th" scope="ele">
+              <Typography fontSize={18}>{ele.nombre}</Typography>
+            </TableCell>
+            <TableCell size="medium" align="right">
+              <Typography fontSize={18}>{ele.direccion}</Typography>
+            </TableCell>
+            <TableCell size="medium" align="right">
+              <Typography fontSize={18}>{ele.tlf_com}</Typography>
+            </TableCell>
+            <TableCell size="medium" align="right">
+              <Typography fontSize={18}>{ele.cif}</Typography>
+            </TableCell>
+            {/*  <TableCell size="medium"
+    align="right">
+              <Typography fontSize={18}>{ele.per_contacto}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.direccion}
+              <Typography fontSize={18}>{ele.ascensor}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.tlf_com}
+              <Typography fontSize={18}>{ele.localizacion}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.cif}
-            </TableCell>
-           {/*  <TableCell size="medium"
-    align="right">
-              {ele.per_contacto}
-            </TableCell>
-            <TableCell size="medium"
-    align="right">
-              {ele.ascensor}
-            </TableCell>
-            <TableCell size="medium"
-    align="right">
-              {ele.localizacion}
-            </TableCell>
-            <TableCell size="medium"
-    align="right">
-              {ele.img}
+              <Typography fontSize={18}>{ele.img}</Typography>
             </TableCell> */}
             {/* <TableCell size="medium"
     align="right">
-              {ele.seguro_id}
+              <Typography fontSize={18}>{ele.seguro_id}</Typography>
             </TableCell> */}
             <TableCell>
               <SpringComunidadModal
@@ -193,39 +185,39 @@ export default function DataTableComunidades({ data }) {
           <Table size="medium">
             <TableHead>
               <TableRow>
-                <TableCell size="medium" align="right">
-                  Nombre
+                <TableCell size="medium" align="center">
+                   <Typography fontSize={20}>Nombre</Typography>
                 </TableCell>
                 <TableCell size="medium" align="right">
-                  Direccion
+                   <Typography fontSize={20}>Direccion</Typography>
                 </TableCell>
                 <TableCell size="medium" align="right">
-                  Telefono
+                   <Typography fontSize={20}>Telefono</Typography>
                 </TableCell>
                 <TableCell size="medium" align="right">
-                  Cif
+                   <Typography fontSize={20}>Cif</Typography>
                 </TableCell>
                 {/* <TableCell size="medium"
     align="right">
-                  Contacto
+                  <Typography fontSize={20}> Contacto</Typography>
                 </TableCell>
                 <TableCell size="medium"
     align="right">
-                  Ascensor
+                   <Typography fontSize={20}>Ascensor</Typography>
                 </TableCell>
                 <TableCell size="medium"
     align="right">
-                  Localizacion
+                   <Typography fontSize={20}>Localizacion</Typography>
                 </TableCell>
                 <TableCell size="medium"
     align="right">
-                  IMG
+                   <Typography fontSize={20}>IMG</Typography>
                 </TableCell> */}
                 <TableCell size="medium" align="right"></TableCell>
                 <TableCell size="medium" align="right"></TableCell>
                 {/* <TableCell size="medium"
     align="right">
-                  Seguro
+                   <Typography fontSize={20}>Seguro</Typography>
                 </TableCell> */}
               </TableRow>
             </TableHead>

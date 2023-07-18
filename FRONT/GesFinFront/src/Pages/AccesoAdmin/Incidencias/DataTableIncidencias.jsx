@@ -27,7 +27,7 @@ export default function DataTableIncidencia() {
   const [user, setUser] = useState(undefined);
 
   const showUser = async () => {
-    const userData = await getOneUserAll(); 
+    const userData = await getOneUserAll();
     setUser(userData);
   };
 
@@ -38,7 +38,7 @@ export default function DataTableIncidencia() {
   };
 
   useEffect(() => {
-    showUser(); 
+    showUser();
     showIncidencias();
   }, [actualizar]);
 
@@ -81,37 +81,38 @@ export default function DataTableIncidencia() {
           >
             {incidencia}
             <TableCell size="medium" component="th" scope="ele">
-              {ele.num_incidencia}
+             <Typography fontSize={18}> {ele.num_incidencia}</Typography>
             </TableCell>
             <TableCell size="medium" align="right">
-              {ele.comunidad_id?.nombre}
+             <Typography fontSize={18}> {ele.comunidad_id?.nombre}</Typography>
             </TableCell>
             {/*  <TableCell size="medium" align="right">
-              {ele.propiedad_id}
+             <Typography fontSize={18}> {ele.propiedad_id}</Typography>
             </TableCell> */}
             {/* <TableCell size="medium" align="right">
-              {ele.email}
+             <Typography fontSize={18}> {ele.email}</Typography>
             </TableCell> */}
             {/* <TableCell size="medium" align="right">
-              {ele.seguro}
+             <Typography fontSize={18}> {ele.seguro}</Typography>
             </TableCell> */}
             <TableCell
               size="medium"
+            
               align="right"
               style={{ color: getStatusColor(ele.estado) }}
             >
-              {ele.estado}
+             <Typography fontSize={18}> {ele.estado}</Typography>
             </TableCell>
             <TableCell size="medium" align="right">
-              {ele.descripcion}
+             <Typography fontSize={18}> {ele.descripcion}</Typography>
             </TableCell>
             {/* <TableCell size="medium" align="right">
-              {ele.img}
+             <Typography fontSize={18}> {ele.img}</Typography>
             /* </TableCell> 
             <TableCell size="medium" align="right">
-              {ele.proveedor_id.nombre}
+              <Typography fontSize={18}>{ele.proveedor_id.nombre}</Typography>
           </TableCell> */}
-            <TableCell>
+            <TableCell >
               <SpringIncidenciaModal
                 incidencia={ele}
                 hadleUpdate={handleUpdate}
@@ -128,35 +129,36 @@ export default function DataTableIncidencia() {
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
             <TableCell component="th" scope="ele" size="medium">
-              {ele.num_incidencia}
+              <Typography fontSize={18}>{ele.num_incidencia}</Typography>
             </TableCell>
             <TableCell size="medium" align="right">
-              {ele.comunidad_id?.nombre}
+              <Typography fontSize={18}>{ele.comunidad_id?.nombre}</Typography>
             </TableCell>
             {/* <TableCell size="medium" align="right">
-              {ele.propiedad_id}
+              <Typography fontSize={18}>{ele.propiedad_id}</Typography>
             </TableCell> */}
             {/* <TableCell size="medium" align="right">
-              {ele.fecha_creacion}
+              <Typography fontSize={18}>{ele.fecha_creacion}</Typography>
             </TableCell>
             <TableCell size="medium" align="right">
-              {ele.seguro}
+              <Typography fontSize={18}>{ele.seguro}</Typography>
             </TableCell> */}
             <TableCell
               size="medium"
               align="right"
+            
               style={{ color: getStatusColor(ele.estado) }}
             >
-              {ele.estado}
+              <Typography fontSize={18}>{ele.estado}</Typography>
             </TableCell>
             <TableCell size="medium" align="right">
-              {ele.descripcion}
+              <Typography fontSize={18}>{ele.descripcion}</Typography>
             </TableCell>
             {/*   <TableCell size="medium" align="right">
-              {ele.img}
+              <Typography fontSize={18}>{ele.img}</Typography>
             </TableCell> */}
             {/*  <TableCell size="medium" align="right">
-              {ele.proveedor_id.nombre}
+              <Typography fontSize={18}>{ele.proveedor_id.nombre}</Typography>
             </TableCell> */}
             <TableCell>
               <SpringIncidenciaModal
@@ -195,26 +197,32 @@ export default function DataTableIncidencia() {
           <Table stickyHeader>
             <TableHead>
               <TableRow>
-                <TableCell size="medium">Num incidencia</TableCell>
+                <TableCell size="medium">
+                  <Typography fontSize={20}>Num incidencia</Typography>
+                </TableCell>
                 <TableCell size="medium" align="right">
-                  Comunidad
+                  <Typography fontSize={20}>Comunidad</Typography>
                 </TableCell>
                 {/* <TableCell size="medium" align="right">
-                  Propiedad
+                  <Typography fontSize={20}>Propiedad</Typography>
                 </TableCell> */}
                 {/* <TableCell size="medium" align="right">
-                  Fecha de Creacion
+                  <Typography fontSize={20}>Fecha de Creacion</Typography>
                 </TableCell>
                 <TableCell size="medium" align="right">
-                  Seguro
+                  <Typography fontSize={20}>Seguro</Typography>
                 </TableCell> */}
                 <TableCell size="medium" align="right">
-                  Estado
+                  <Typography fontSize={20}>Estado</Typography>
                 </TableCell>
                 <TableCell size="medium" align="right">
-                  Descripcion
+                  <Typography fontSize={20}>Descripcion</Typography>
                 </TableCell>
-                <TableCell size="medium" align="right"></TableCell>
+                <TableCell
+                  size="medium"
+                  align="right"
+                
+                ></TableCell>
                 {/*  <TableCell size="medium" align="right">
                   Img
                 </TableCell>

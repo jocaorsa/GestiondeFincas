@@ -68,31 +68,31 @@ export default function DataTableUsuarios({ data }) {
           >
             <TableCell size="medium"
     component="th" scope="ele">
-              {ele.name}
+              <Typography fontSize={18}>{ele.name}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.apellidos}
+              <Typography fontSize={18}>{ele.apellidos}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.tlf_usu}
+              <Typography fontSize={18}>{ele.tlf_usu}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.email}
+              <Typography fontSize={18}>{ele.email}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.role}
+              <Typography fontSize={18}>{ele.role}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.comunidad_id && ele.comunidad_id[0] && ele.comunidad_id[0].nombre}
+              <Typography fontSize={18}>{ele.comunidad_id && ele.comunidad_id[0] && ele.comunidad_id[0].nombre}</Typography>
             </TableCell>
             {/* <TableCell size="medium"
     align="right">
-              {ele.password}
+              <Typography fontSize={18}>{ele.password}</Typography>
             </TableCell> */}
             <TableCell>
               <SpringUserModal user={ele} hadleUpdate={handleUpdate} />
@@ -109,31 +109,31 @@ export default function DataTableUsuarios({ data }) {
           >
             <TableCell component="th" scope="ele" size="medium"
     >
-              {ele.name}
+              <Typography fontSize={18}>{ele.name}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.apellidos}
+              <Typography fontSize={18}>{ele.apellidos}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.tlf_usu}
+              <Typography fontSize={18}>{ele.tlf_usu}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.email}
+              <Typography fontSize={18}>{ele.email}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.role}
+              <Typography fontSize={18}>{ele.role}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.comunidad_id && ele.comunidad_id[0] && ele.comunidad_id[0].nombre}
+              <Typography fontSize={18}>{ele.comunidad_id && ele.comunidad_id[0] && ele.comunidad_id[0].nombre}</Typography>
             </TableCell>
             {/* <TableCell size="medium"
     align="right">
-              {ele.password}
+              <Typography fontSize={18}>{ele.password}</Typography>
             </TableCell> */}
             <TableCell>
               <SpringUserModal user={ele} hadleUpdate={handleUpdate} />
@@ -169,26 +169,26 @@ export default function DataTableUsuarios({ data }) {
           <Table size="medium">
             <TableHead>
               <TableRow>
-                <TableCell size="medium">Nombre</TableCell>
+                <TableCell size="medium"><Typography fontSize={20}>Nombre</Typography></TableCell>
                 <TableCell size="medium" align="right">
-                  Apellidos
+                  <Typography fontSize={20}>Apellidos</Typography>
                 </TableCell>
                 <TableCell size="medium" align="right">
-                  Telefono
+                  <Typography fontSize={20}>Telefono</Typography>
                 </TableCell>
                 <TableCell size="medium" align="right">
-                  Email
+                  <Typography fontSize={20}>Email</Typography>
                 </TableCell>
                 <TableCell size="medium" align="right">
-                  Role
+                  <Typography fontSize={20}>Role</Typography>
                 </TableCell>
                 <TableCell size="medium" align="right">
-                  Comunidad
+                  <Typography fontSize={20}>Comunidad</Typography>
                 </TableCell>
                 <TableCell size="medium" align="right"></TableCell>
                 {/* <TableCell size="medium"
     align="right">
-                  Contraseña
+                  <Typography fontSize={20}>Contraseña</Typography>
                 </TableCell> */}
               </TableRow>
             </TableHead>

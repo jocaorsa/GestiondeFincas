@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import DataTableIncidencias from "./DataTableIncidencias";
-import logo from "../../../../public/GF.png"
+import logo from "../../../../public/GF.png";
 
 function Incidencias() {
   const [data, setData] = useState([]);
