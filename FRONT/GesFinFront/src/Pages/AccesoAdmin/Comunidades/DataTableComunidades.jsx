@@ -196,6 +196,8 @@ export default function DataTableComunidades({ data }) {
                 </TableCell> */}
                 <TableCell size="small" align="right">
                 </TableCell>
+                <TableCell size="small" align="right">
+                </TableCell>
                 {/* <TableCell size="small" align="right">
                   Seguro
                 </TableCell> */}

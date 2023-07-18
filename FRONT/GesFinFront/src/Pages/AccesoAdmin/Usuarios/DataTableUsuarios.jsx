@@ -166,6 +166,9 @@ export default function DataTableUsuarios({ data }) {
                 <TableCell size="small" align="right">
                   Comunidad
                 </TableCell>
+                <TableCell size="small" align="right">
+                  
+                </TableCell>
                 {/* <TableCell size="small" align="right">
                   Contraseña
                 </TableCell> */}
