@@ -149,7 +149,7 @@ export default function DataTableIncidencia() {
             
               style={{ color: getStatusColor(ele.estado) }}
             >
-              <Typography fontSize={18}>{ele.estado}</Typography>
+              <Typography fontSize={20}>{ele.estado}</Typography>
             </TableCell>
             <TableCell size="medium" align="right">
               <Typography fontSize={18}>{ele.descripcion}</Typography>
