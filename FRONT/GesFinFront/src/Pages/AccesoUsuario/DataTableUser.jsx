@@ -89,23 +89,23 @@ export default function DataTableUser({ data }) {
           >
             <TableCell size="medium"
      component="th" scope="ele">
-              {ele.num_incidencia}
+              <Typography fontSize={18}>{ele.num_incidencia}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.comunidad_id.nombre}
+              <Typography fontSize={18}>{ele.comunidad_id.nombre}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              <span style={{ color: estadoColor }}>{ele.estado}</span>
+              <span style={{ color: estadoColor }}><Typography fontSize={18}>{ele.estado}</Typography></span>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.descripcion}
+              <Typography fontSize={18}>{ele.descripcion}</Typography>
             </TableCell>
             <TableCell size="medium"
     align="right">
-              {ele.proveedor_id.nombre}
+              <Typography fontSize={18}>{ele.proveedor_id.nombre}</Typography>
             </TableCell>
             <TableCell>
               <SpringIncidenciaModal
@@ -143,23 +143,19 @@ export default function DataTableUser({ data }) {
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="ele" size="medium">
-                {ele.num_incidencia}
+                <Typography fontSize={18}>{ele.num_incidencia}</Typography>
               </TableCell>
-              <TableCell size="medium"
-    align="right">
-                {ele.comunidad_id.nombre}
+              <TableCell size="medium" align="right">
+                <Typography fontSize={18}>{ele.comunidad_id.nombre}</Typography>
               </TableCell>
-              <TableCell size="medium"
-    align="right">
-                <span style={{ color: estadoColor }}>{ele.estado}</span>
+              <TableCell size="medium" align="right">
+                <span style={{ color: estadoColor }}><Typography fontSize={18}>{ele.estado}</Typography></span>
               </TableCell>
-              <TableCell size="medium"
-    align="right">
-                {ele.descripcion}
+              <TableCell size="medium" align="right">
+                <Typography fontSize={18}>{ele.descripcion}</Typography>
               </TableCell>
-              <TableCell size="medium"
-    align="right">
-                {ele.proveedor_id.nombre}
+              <TableCell size="medium" align="right">
+                <Typography fontSize={18}>{ele.proveedor_id.nombre}</Typography>
               </TableCell>
               <TableCell>
                 <SpringIncidenciaModal
@@ -211,18 +207,18 @@ export default function DataTableUser({ data }) {
               <TableHead>
                 <TableRow>
                   <TableCell size="medium"
-    >Num incidencia</TableCell>
+    ><Typography fontSize={20}>Num incidencia</Typography></TableCell>
                   <TableCell size="medium"
     align="right">
-                    Comunidad
+                    <Typography fontSize={20}>Comunidad</Typography>
                   </TableCell>
                   <TableCell size="medium"
     align="right">
-                    Estado
+                    <Typography fontSize={20}>Estado</Typography>
                   </TableCell>
                   <TableCell size="medium"
     align="right">
-                    Descripcion
+                    <Typography fontSize={20}>Descripcion</Typography>
                   </TableCell>
                   <TableCell size="medium"
     align="right"></TableCell>
