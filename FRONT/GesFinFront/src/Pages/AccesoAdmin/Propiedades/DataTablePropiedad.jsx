@@ -68,7 +68,8 @@ export default function DataTablePropiedad({ data }) {
             key={ele.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
-            <TableCell size="small" component="th" scope="ele">
+            <TableCell size="medium"
+    > component="th" scope="ele">
               {ele.tipo_propiedad}
             </TableCell>
             <TableCell style={{ width: '15%' }} align="right">
@@ -96,7 +97,8 @@ export default function DataTablePropiedad({ data }) {
             key={ele.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
-            <TableCell component="th" scope="ele" size="small">
+            <TableCell component="th" scope="ele" size="medium"
+    >
               {ele.tipo_propiedad}
             </TableCell>
             <TableCell style={{ width: "15%" }} align="right">
@@ -126,9 +128,14 @@ export default function DataTablePropiedad({ data }) {
   return (
     <>
       <div>
-        <Grid container justifyContent="space-between" alignItems="center">
-          <Grid item>
-            <Typography variant="h6" gutterBottom>
+        <Grid
+          container
+          justifyContent="space-between"
+          alignItems="center"
+          width="100%"
+        >
+          <Grid item padding={2}>
+            <Typography variant="h5" gutterBottom>
               {user && `Bienvenido, ${user.name}`}
             </Typography>
           </Grid>
@@ -141,25 +148,25 @@ export default function DataTablePropiedad({ data }) {
         </Grid>
         <TableContainer
           component={Paper}
-          style={{ width: "100%", height: 400 }}
+          style={{ height: 500 }}
         >
-          <Table size="small" style={{ width: "100%" }}>
+          <Table stickyHeader>
             <TableHead>
               <TableRow>
-                <TableCell size="small">Tipo de Propiedad</TableCell>
-                <TableCell style={{ width: '15%' }} align="right">
+                <TableCell size="medium">Tipo de Propiedad</TableCell>
+                <TableCell style={{ width: "15%" }} align="right">
                   Piso
                 </TableCell>
-                <TableCell style={{ width: '15%' }} align="right">
+                <TableCell style={{ width: "15%" }} align="right">
                   Numero
                 </TableCell>
-                <TableCell style={{ width: '15%' }} align="right">
+                <TableCell style={{ width: "15%" }} align="right">
                   Letra
                 </TableCell>
-                <TableCell style={{ width: '15%' }} align="right">
+                <TableCell style={{ width: "15%" }} align="right">
                   Comunidad
                 </TableCell>
-                <TableCell style={{ width: '15%' }} align="right"></TableCell>
+                <TableCell style={{ width: "15%" }} align="right"></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>{filteredData()}</TableBody>

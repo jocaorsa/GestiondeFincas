@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
 import ModalCrearIncidencia from "../../../components/ModalIncidencia/NuevaIncidenciaModal";
 import Search from "../../../components/Search/search";
 import SpringIncidenciaModal from "../../../components/ModalIncidencia/SpringIncidenciaModal";
-import { getOneUser } from "../../../services/usuario.service";
+import { getOneUserAll } from "../../../services/usuario.service";
 
 export default function DataTableIncidencia() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -27,7 +27,7 @@ export default function DataTableIncidencia() {
   const [user, setUser] = useState(undefined);
 
   const showUser = async () => {
-    const userData = await getOneUser(); 
+    const userData = await getOneUserAll(); 
     setUser(userData);
   };
 
@@ -80,35 +80,35 @@ export default function DataTableIncidencia() {
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
             {incidencia}
-            <TableCell size="small" component="th" scope="ele">
+            <TableCell size="medium" component="th" scope="ele">
               {ele.num_incidencia}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium" align="right">
               {ele.comunidad_id?.nombre}
             </TableCell>
-            {/*  <TableCell size="small" align="right">
+            {/*  <TableCell size="medium" align="right">
               {ele.propiedad_id}
             </TableCell> */}
-            {/* <TableCell size="small" align="right">
+            {/* <TableCell size="medium" align="right">
               {ele.email}
             </TableCell> */}
-            {/* <TableCell size="small" align="right">
+            {/* <TableCell size="medium" align="right">
               {ele.seguro}
             </TableCell> */}
             <TableCell
-              size="small"
+              size="medium"
               align="right"
               style={{ color: getStatusColor(ele.estado) }}
             >
               {ele.estado}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium" align="right">
               {ele.descripcion}
             </TableCell>
-            {/* <TableCell size="small" align="right">
+            {/* <TableCell size="medium" align="right">
               {ele.img}
             /* </TableCell> 
-            <TableCell size="small" align="right">
+            <TableCell size="medium" align="right">
               {ele.proveedor_id.nombre}
           </TableCell> */}
             <TableCell>
@@ -125,37 +125,37 @@ export default function DataTableIncidencia() {
         return (
           <TableRow
             key={ele._id}
-            sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+            sx={{ "&:last-child td, &:last-child th": { border: 0} }}
           >
-            <TableCell component="th" scope="ele" size="small">
+            <TableCell component="th" scope="ele" size="medium">
               {ele.num_incidencia}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium" align="right">
               {ele.comunidad_id?.nombre}
             </TableCell>
-            {/* <TableCell size="small" align="right">
+            {/* <TableCell size="medium" align="right">
               {ele.propiedad_id}
             </TableCell> */}
-            {/* <TableCell size="small" align="right">
+            {/* <TableCell size="medium" align="right">
               {ele.fecha_creacion}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium" align="right">
               {ele.seguro}
             </TableCell> */}
             <TableCell
-              size="small"
+              size="medium"
               align="right"
               style={{ color: getStatusColor(ele.estado) }}
             >
               {ele.estado}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium" align="right">
               {ele.descripcion}
             </TableCell>
-            {/*   <TableCell size="small" align="right">
+            {/*   <TableCell size="medium" align="right">
               {ele.img}
             </TableCell> */}
-           {/*  <TableCell size="small" align="right">
+           {/*  <TableCell size="medium" align="right">
               {ele.proveedor_id.nombre}
             </TableCell> */}
             <TableCell>
@@ -173,9 +173,9 @@ export default function DataTableIncidencia() {
   return (
     <>
       <div>
-        <Grid container justifyContent="space-between" alignItems="center">
-          <Grid item>
-            <Typography variant="h6" gutterBottom>
+        <Grid container justifyContent="space-between" alignItems="center" width="100%">
+          <Grid item padding={2}>
+            <Typography  variant="h5" gutterBottom>
               {user && `Bienvenido, ${user.name}`}
             </Typography>
           </Grid>
@@ -186,36 +186,36 @@ export default function DataTableIncidencia() {
             />
           </Grid>
         </Grid>
-        <TableContainer component={Paper} style={{ maxHeight: 400 }}>
+        <TableContainer component={Paper} style={{ maxHeight: 500 }}>
           <Table stickyHeader>
             <TableHead>
               <TableRow>
-                <TableCell size="small">Num incidencia</TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium" >Num incidencia</TableCell>
+                <TableCell size="medium" align="right">
                   Comunidad
                 </TableCell>
-                {/* <TableCell size="small" align="right">
+                {/* <TableCell size="medium" align="right">
                   Propiedad
                 </TableCell> */}
-                {/* <TableCell size="small" align="right">
+                {/* <TableCell size="medium" align="right">
                   Fecha de Creacion
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium" align="right">
                   Seguro
                 </TableCell> */}
-                <TableCell size="small" align="right">
+                <TableCell size="medium" align="right">
                   Estado
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium" align="right">
                   Descripcion
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium" align="right">
                   
                 </TableCell>
-                {/*  <TableCell size="small" align="right">
+                {/*  <TableCell size="medium" align="right">
                   Img
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium" align="right">
                   Proveedor
                 </TableCell> */}
               </TableRow>

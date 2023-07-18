@@ -66,28 +66,36 @@ export default function DataTableProveedores({ data }) {
             key={ele.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
-            <TableCell size="small" component="th" scope="ele">
+            <TableCell size="medium"
+    > component="th" scope="ele">
               {ele.nombre}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.direccion}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.tlf_prov}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.cif}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.per_contacto}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.email}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.puntuacion}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.servicio}
             </TableCell>
             <TableCell>
@@ -103,28 +111,36 @@ export default function DataTableProveedores({ data }) {
             key={ele.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
-            <TableCell component="th" scope="ele" size="small">
+            <TableCell component="th" scope="ele" size="medium"
+    >
               {ele.nombre}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.direccion}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.tlf_prov}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.cif}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.per_contacto}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.email}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.puntuacion}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.servicio}
             </TableCell>
             <TableCell>
@@ -139,9 +155,14 @@ export default function DataTableProveedores({ data }) {
   return (
     <>
       <div>
-        <Grid container justifyContent="space-between" alignItems="center">
-          <Grid item>
-            <Typography variant="h6" gutterBottom>
+        <Grid
+          container
+          justifyContent="space-between"
+          alignItems="center"
+          width="100%"
+        >
+          <Grid item padding={2}>
+            <Typography variant="h5" gutterBottom>
               {user && `Bienvenido, ${user.name}`}
             </Typography>
           </Grid>
@@ -152,37 +173,35 @@ export default function DataTableProveedores({ data }) {
             />
           </Grid>
         </Grid>
-        <TableContainer component={Paper} style={{ height: 400 }}>
-          <Table size="small">
+        <TableContainer component={Paper} style={{ height: 500 }}>
+          <Table stickyHeader>
             <TableHead>
               <TableRow>
-                <TableCell size="small" align="right">
+                <TableCell size="medium" align="right">
                   Nombre
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium" align="right">
                   Direccion
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium" align="right">
                   Telefono
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium" align="right">
                   Cif
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium" align="right">
                   Contacto
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium" align="right">
                   Email
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium" align="right">
                   Puntuacion
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium" align="right">
                   Servicio
                 </TableCell>
-                <TableCell size="small" align="right">
-                  
-                </TableCell>
+                <TableCell size="medium" align="right"></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>{filteredData()}</TableBody>

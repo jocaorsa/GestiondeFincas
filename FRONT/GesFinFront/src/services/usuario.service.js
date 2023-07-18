@@ -6,6 +6,7 @@ export const getOneUser = async () => {
     console.log(data)
     return data
 }
+
 export const getOneUserAll = async () => {
     const { data } = await api.get(`/usuario/${localStorage.id}/all`,{headers: {token: localStorage.getItem( 'token' ) }})
     console.log(data)

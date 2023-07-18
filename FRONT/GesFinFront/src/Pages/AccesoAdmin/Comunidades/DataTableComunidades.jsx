@@ -67,31 +67,40 @@ export default function DataTableComunidades({ data }) {
             key={ele.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
-            <TableCell size="small" component="th" scope="ele">
+            <TableCell size="medium"
+    > component="th" scope="ele">
               {ele.nombre}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.direccion}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.tlf_com}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.cif}
             </TableCell>
-            {/* <TableCell size="small" align="right">
+            {/* <TableCell size="medium"
+    align="right">
               {ele.per_contacto}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.ascensor}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.localizacion}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.img}
             </TableCell> */}
-            {/* <TableCell size="small" align="right">
+            {/* <TableCell size="medium"
+    align="right">
               {ele.seguro_id}
             </TableCell> */}
             <TableCell>
@@ -111,31 +120,40 @@ export default function DataTableComunidades({ data }) {
             key={ele.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
-            <TableCell size="small" component="th" scope="ele">
+            <TableCell size="medium"
+    > component="th" scope="ele">
               {ele.nombre}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.direccion}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.tlf_com}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.cif}
             </TableCell>
-           {/*  <TableCell size="small" align="right">
+           {/*  <TableCell size="medium"
+    align="right">
               {ele.per_contacto}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.ascensor}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.localizacion}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.img}
             </TableCell> */}
-            {/* <TableCell size="small" align="right">
+            {/* <TableCell size="medium"
+    align="right">
               {ele.seguro_id}
             </TableCell> */}
             <TableCell>
@@ -153,9 +171,14 @@ export default function DataTableComunidades({ data }) {
   return (
     <>
       <div>
-        <Grid container justifyContent="space-between" alignItems="center">
-          <Grid item>
-            <Typography variant="h6" gutterBottom>
+        <Grid
+          container
+          justifyContent="space-between"
+          alignItems="center"
+          width="100%"
+        >
+          <Grid item padding={2}>
+            <Typography  variant="h5" gutterBottom>
               {user && `Bienvenido, ${user.name}`}
             </Typography>
           </Grid>
@@ -166,39 +189,42 @@ export default function DataTableComunidades({ data }) {
             />
           </Grid>
         </Grid>
-        <TableContainer component={Paper} style={{ height: 400 }}>
-          <Table size="small">
+        <TableContainer component={Paper} style={{ height: 500 }}>
+          <Table size="medium">
             <TableHead>
               <TableRow>
-                <TableCell size="small" align="right">
+                <TableCell size="medium" align="right">
                   Nombre
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium" align="right">
                   Direccion
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium" align="right">
                   Telefono
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium" align="right">
                   Cif
                 </TableCell>
-                {/* <TableCell size="small" align="right">
+                {/* <TableCell size="medium"
+    align="right">
                   Contacto
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium"
+    align="right">
                   Ascensor
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium"
+    align="right">
                   Localizacion
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium"
+    align="right">
                   IMG
                 </TableCell> */}
-                <TableCell size="small" align="right">
-                </TableCell>
-                <TableCell size="small" align="right">
-                </TableCell>
-                {/* <TableCell size="small" align="right">
+                <TableCell size="medium" align="right"></TableCell>
+                <TableCell size="medium" align="right"></TableCell>
+                {/* <TableCell size="medium"
+    align="right">
                   Seguro
                 </TableCell> */}
               </TableRow>

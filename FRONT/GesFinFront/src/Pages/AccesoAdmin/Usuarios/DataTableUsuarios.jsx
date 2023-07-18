@@ -66,25 +66,32 @@ export default function DataTableUsuarios({ data }) {
             key={ele.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
-            <TableCell size="small" component="th" scope="ele">
+            <TableCell size="medium"
+    component="th" scope="ele">
               {ele.name}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.apellidos}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.tlf_usu}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.email}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.role}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.comunidad_id && ele.comunidad_id[0] && ele.comunidad_id[0].nombre}
             </TableCell>
-            {/* <TableCell size="small" align="right">
+            {/* <TableCell size="medium"
+    align="right">
               {ele.password}
             </TableCell> */}
             <TableCell>
@@ -100,25 +107,32 @@ export default function DataTableUsuarios({ data }) {
             key={ele.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
-            <TableCell component="th" scope="ele" size="small">
+            <TableCell component="th" scope="ele" size="medium"
+    >
               {ele.name}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.apellidos}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.tlf_usu}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.email}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.role}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.comunidad_id && ele.comunidad_id[0] && ele.comunidad_id[0].nombre}
             </TableCell>
-            {/* <TableCell size="small" align="right">
+            {/* <TableCell size="medium"
+    align="right">
               {ele.password}
             </TableCell> */}
             <TableCell>
@@ -133,9 +147,14 @@ export default function DataTableUsuarios({ data }) {
   return (
     <>
       <div>
-        <Grid container justifyContent="space-between" alignItems="center">
-          <Grid item>
-            <Typography variant="h6" gutterBottom>
+        <Grid
+          container
+          justifyContent="space-between"
+          alignItems="center"
+          width="100%"
+        >
+          <Grid item padding={2}>
+            <Typography  variant="h5" gutterBottom>
               {user && `Bienvenido, ${user.name}`}
             </Typography>
           </Grid>
@@ -146,30 +165,29 @@ export default function DataTableUsuarios({ data }) {
             />
           </Grid>
         </Grid>
-        <TableContainer component={Paper} style={{ height: 400 }}>
-          <Table size="small">
+        <TableContainer component={Paper} style={{ height: 500 }}>
+          <Table size="medium">
             <TableHead>
               <TableRow>
-                <TableCell size="small">Nombre</TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium">Nombre</TableCell>
+                <TableCell size="medium" align="right">
                   Apellidos
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium" align="right">
                   Telefono
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium" align="right">
                   Email
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium" align="right">
                   Role
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium" align="right">
                   Comunidad
                 </TableCell>
-                <TableCell size="small" align="right">
-                  
-                </TableCell>
-                {/* <TableCell size="small" align="right">
+                <TableCell size="medium" align="right"></TableCell>
+                {/* <TableCell size="medium"
+    align="right">
                   Contraseña
                 </TableCell> */}
               </TableRow>

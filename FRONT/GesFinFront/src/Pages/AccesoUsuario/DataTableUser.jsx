@@ -87,19 +87,24 @@ export default function DataTableUser({ data }) {
             key={ele.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
-            <TableCell size="small" component="th" scope="ele">
+            <TableCell size="medium"
+    > component="th" scope="ele">
               {ele.num_incidencia}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.comunidad_id.nombre}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               <span style={{ color: estadoColor }}>{ele.estado}</span>
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.descripcion}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.proveedor_id.nombre}
             </TableCell>
             <TableCell>
@@ -137,19 +142,24 @@ export default function DataTableUser({ data }) {
               key={ele.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              <TableCell component="th" scope="ele" size="small">
+              <TableCell component="th" scope="ele" size="medium"
+    >
                 {ele.num_incidencia}
               </TableCell>
-              <TableCell size="small" align="right">
+              <TableCell size="medium"
+    align="right">
                 {ele.comunidad_id.nombre}
               </TableCell>
-              <TableCell size="small" align="right">
+              <TableCell size="medium"
+    align="right">
                 <span style={{ color: estadoColor }}>{ele.estado}</span>
               </TableCell>
-              <TableCell size="small" align="right">
+              <TableCell size="medium"
+    align="right">
                 {ele.descripcion}
               </TableCell>
-              <TableCell size="small" align="right">
+              <TableCell size="medium"
+    align="right">
                 {ele.proveedor_id.nombre}
               </TableCell>
               <TableCell>
@@ -183,7 +193,7 @@ export default function DataTableUser({ data }) {
                 <Typography variant="h5" gutterBottom>
                   Bienvenido, {user.name}
                 </Typography>
-                <Typography variant="h6" gutterBottom>
+                <Typography  variant="h5" gutterBottom>
                   Comunidades: {}
                   {comunidades.map((comunidad) => (
                     <span key={comunidad._id}>{comunidad.nombre} </span>
@@ -200,20 +210,24 @@ export default function DataTableUser({ data }) {
             <Table stickyHeader>
               <TableHead>
                 <TableRow>
-                  <TableCell size="small">
-                    Num incidencia
-                    </TableCell>
-                  <TableCell size="small" align="right">
+                  <TableCell size="medium"
+    >Num incidencia</TableCell>
+                  <TableCell size="medium"
+    align="right">
                     Comunidad
                   </TableCell>
-                  <TableCell size="small" align="right">
+                  <TableCell size="medium"
+    align="right">
                     Estado
                   </TableCell>
-                  <TableCell size="small" align="right">
+                  <TableCell size="medium"
+    align="right">
                     Descripcion
                   </TableCell>
-                  <TableCell size="small" align="right"></TableCell>
-                  <TableCell size="small" align="right"></TableCell>
+                  <TableCell size="medium"
+    align="right"></TableCell>
+                  <TableCell size="medium"
+    align="right"></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>{filteredData()}</TableBody>
@@ -226,10 +240,13 @@ export default function DataTableUser({ data }) {
            <Button variant="contained" fullWidth>              Volver
             </Button>
           </Link> */}
-            <Button>
-              <ModalCrearIncidencia handleCreate={handleCreate} />
-            </Button>
           </TableContainer>
+          <Button>
+            <ModalCrearIncidencia
+              comunidades={comunidades}
+              handleCreate={handleCreate}
+            />
+          </Button>
         </Card>
       </Grid>
     </>

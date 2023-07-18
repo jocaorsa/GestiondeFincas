@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import DataTableProveedores from "./DataTableProveedores";
+import logo from "../../../../public/GF.png";
 
 function Proveedores() {
       const [data, setData] = useState([]);
@@ -19,7 +20,15 @@ function Proveedores() {
 
 
       return (
-        <Box sx={{ display: "flex", height: "70%" }}>
+        <Box
+          sx={{
+            margin: "0 auto",
+            display: "flex",
+            backgroundColor: "#F5F5F5",
+            width: "75vw",
+            height: "100%",
+          }}
+        >
           <Card
             sx={{
               flex: "0 0 20%",
@@ -37,88 +46,148 @@ function Proveedores() {
                 left: 0,
                 width: "100%",
                 height: "100%",
-                backgroundImage: "url(https://source.unsplash.com/random?buildings)",
+                backgroundImage:
+                  "url(https://source.unsplash.com/random?buildings)",
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 filter: "brightness(70%)",
               }}
             />
+            <div
+              style={{
+                position: "absolute",
+                top: "10%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                color: "#fff",
+                textAlign: "center",
+              }}
+            >
+              <img src={logo} width={200}></img>
+              {/*      <h1>#GesFin</h1>
+          <p>Gestor de Incidencias</p> */}
+            </div>
           </Card>
-    
-          <Box sx={{ flexGrow: 1, p: 4 }}>
-            <Grid container spacing={2} justifyContent="center" alignItems="center">
-              <Grid item xs={12} sm={6} md={4} lg={3}>
+          <Box sx={{ flexGrow: 0, p: 1 }}>
+            {/* First row of buttons */}
+            <Grid
+              container
+              spacing={1}
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Grid item xs={12} sm={4}>
                 <Box width="100%">
-                  <Link to="/login/admin/incidencias" style={{ textDecoration: "none" }}>
+                  <Link
+                    to="/login/admin/incidencias"
+                    style={{ textDecoration: "none" }}
+                  >
                     <Button variant="contained" fullWidth>
                       Incidencias
                     </Button>
                   </Link>
                 </Box>
               </Grid>
-              <Grid item xs={12} sm={6} md={4} lg={3}>
+              <Grid item xs={12} sm={4}>
                 <Box width="100%">
-                  <Link to="/login/admin/comunidades" style={{ textDecoration: "none" }}>
+                  <Link
+                    to="/login/admin/comunidades"
+                    style={{ textDecoration: "none" }}
+                  >
                     <Button variant="contained" fullWidth>
                       Comunidades
                     </Button>
                   </Link>
                 </Box>
               </Grid>
-              <Grid item xs={12} sm={6} md={4} lg={3}>
+              <Grid item xs={12} sm={4}>
                 <Box width="100%">
-                  <Link to="/login/admin/usuarios" style={{ textDecoration: "none" }}>
+                  <Link
+                    to="/login/admin/usuarios"
+                    style={{ textDecoration: "none" }}
+                  >
                     <Button variant="contained" fullWidth>
                       Usuarios
                     </Button>
                   </Link>
                 </Box>
               </Grid>
-              <Grid item xs={12} sm={6} md={4} lg={3}>
+            </Grid>
+
+            {/* Second row of buttons */}
+            <Grid
+              container
+              spacing={1}
+              mt={0}
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Grid item xs={12} sm={4}>
                 <Box width="100%">
-                  <Link to="/login/admin/seguros" style={{ textDecoration: "none" }}>
+                  <Link
+                    to="/login/admin/seguros"
+                    style={{ textDecoration: "none" }}
+                  >
                     <Button variant="contained" fullWidth>
                       Seguros
                     </Button>
                   </Link>
                 </Box>
               </Grid>
-              <Grid item xs={12} sm={6} md={4} lg={3}>
+              <Grid item xs={12} sm={4}>
                 <Box width="100%">
-                  <Link to="/login/admin/proveedores" style={{ textDecoration: "none" }}>
+                  <Link
+                    to="/login/admin/proveedores"
+                    style={{ textDecoration: "none" }}
+                  >
                     <Button variant="contained" fullWidth>
                       Proveedores
                     </Button>
                   </Link>
                 </Box>
               </Grid>
-              <Grid item xs={12} sm={6} md={4} lg={3}>
+              <Grid item xs={12} sm={4}>
                 <Box width="100%">
-                  <Link to="/login/admin/propiedades" style={{ textDecoration: "none" }}>
+                  <Link
+                    to="/login/admin/propiedades"
+                    style={{ textDecoration: "none" }}
+                  >
                     <Button variant="contained" fullWidth>
                       Propiedades
+                    </Button>
+                  </Link>
+                </Box>
+              </Grid>
+            </Grid>
+            <Box>
+              <Grid
+                container
+                spacing={3}
+                justifyContent="right"
+                alignItems="right"
+              >
+                <Grid item xs={12} sm={4}>
+                  <Box
+                    sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}
+                  >
+                    <Link to="/" style={{ textDecoration: "none" }}>
+                      <Button variant="contained" DisableElevation>
+                        Cerrar sesión
                       </Button>
-              </Link>
+                    </Link>
+                  </Box>
+                </Grid>
+              </Grid>
             </Box>
-          </Grid>
-        </Grid>
-        <Box sx={{ flexGrow: 1, p: 4 }}>
-        <Card sx={{ mt: 4, minHeight: "60vh" }}>
-          <DataTableProveedores data={data} />
-        </Card>
-        <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
-          <Link to="/" style={{ textDecoration: "none" }}>
-            <Button variant="contained" DisableElevation>
-              Cerrar sesión
-            </Button>
-          </Link>
+            <Box sx={{ flexGrow: 1, p: 4 }}>
+              <Card sx={{ mt: 4, minHeight: "60vh" }}>
+                <DataTableProveedores data={data} />
+              </Card>
+            </Box>
+          </Box>
         </Box>
-        </Box>
-
-      </Box>
-    </Box>
-  );
+      );
 }
 
 export default Proveedores;

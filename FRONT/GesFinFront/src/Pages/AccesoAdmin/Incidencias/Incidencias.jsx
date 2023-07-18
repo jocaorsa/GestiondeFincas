@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import DataTableIncidencias from "./DataTableIncidencias";
+import logo from "../../../../public/GF.png"
 
 function Incidencias() {
   const [data, setData] = useState([]);
@@ -20,9 +21,10 @@ function Incidencias() {
   return (
     <Box
       sx={{
+        margin: "0 auto",
         display: "flex",
-        backgroundColor: "white",
-        width: "100%",
+        backgroundColor: "#F5F5F5",
+        width: "75vw",
         height: "100%",
       }}
     >
@@ -51,11 +53,25 @@ function Incidencias() {
             filter: "brightness(70%)",
           }}
         />
+        <div
+          style={{
+            position: "absolute",
+            top: "10%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            color: "#fff",
+            textAlign: "center",
+          }}
+        >
+          <img src={logo} width={200} ></img>
+     {/*      <h1>#GesFin</h1>
+          <p>Gestor de Incidencias</p> */}
+        </div>
       </Card>
-
-      <Box sx={{ flexGrow: 1, p: 4 }}>
-        <Grid container spacing={2} justifyContent="center" alignItems="center">
-          <Grid item xs={12} sm={6} md={4} lg={3}>
+      <Box sx={{ flexGrow: 0, p: 1 }}>
+        {/* First row of buttons */}
+        <Grid container spacing={1} justifyContent="center" alignItems="center">
+          <Grid item xs={12} sm={4}>
             <Box width="100%">
               <Link
                 to="/login/admin/incidencias"
@@ -67,7 +83,7 @@ function Incidencias() {
               </Link>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={3}>
+          <Grid item xs={12} sm={4}>
             <Box width="100%">
               <Link
                 to="/login/admin/comunidades"
@@ -79,7 +95,7 @@ function Incidencias() {
               </Link>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={3}>
+          <Grid item xs={12} sm={4}>
             <Box width="100%">
               <Link
                 to="/login/admin/usuarios"
@@ -91,7 +107,17 @@ function Incidencias() {
               </Link>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={3}>
+        </Grid>
+
+        {/* Second row of buttons */}
+        <Grid
+          container
+          spacing={1}
+          mt={0}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Grid item xs={12} sm={4}>
             <Box width="100%">
               <Link
                 to="/login/admin/seguros"
@@ -103,7 +129,7 @@ function Incidencias() {
               </Link>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={3}>
+          <Grid item xs={12} sm={4}>
             <Box width="100%">
               <Link
                 to="/login/admin/proveedores"
@@ -115,7 +141,7 @@ function Incidencias() {
               </Link>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={3}>
+          <Grid item xs={12} sm={4}>
             <Box width="100%">
               <Link
                 to="/login/admin/propiedades"
@@ -128,17 +154,23 @@ function Incidencias() {
             </Box>
           </Grid>
         </Grid>
-        <Box sx={{ flexGrow: 1, p: 4 }}>
+        <Box>
+          <Grid container spacing={3} justifyContent="right" alignItems="right">
+            <Grid item xs={12} sm={4}>
+              <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
+                <Link to="/" style={{ textDecoration: "none" }}>
+                  <Button variant="contained" DisableElevation>
+                    Cerrar sesión
+                  </Button>
+                </Link>
+              </Box>
+            </Grid>
+          </Grid>
+        </Box>
+        <Box sx={{ flexGrow: 1, p: 1 }}>
           <Card sx={{ mt: 4, minHeight: "60vh" }}>
             <DataTableIncidencias data={data} />
           </Card>
-          <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
-            <Link to="/" style={{ textDecoration: "none" }}>
-              <Button variant="contained" DisableElevation>
-                Cerrar sesión
-              </Button>
-            </Link>
-          </Box>
         </Box>
       </Box>
     </Box>

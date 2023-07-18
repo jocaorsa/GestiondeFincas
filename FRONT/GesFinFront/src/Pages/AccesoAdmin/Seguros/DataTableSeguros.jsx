@@ -66,25 +66,32 @@ export default function DataTableSeguros({ data }) {
             key={ele.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
-            <TableCell size="small" component="th" scope="ele">
+            <TableCell size="medium"
+     component="th" scope="ele">
               {ele.compania}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.poliza}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.tlf_seg}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.fecha_contrato}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.fecha_fin_contrato}
             </TableCell>
-            {/* <TableCell size="small" align="right">
+            {/* <TableCell size="medium"
+    align="right">
               {ele.mediador_id}
             </TableCell> */}
-            {/* <TableCell size="small" align="right">
+            {/* <TableCell size="medium"
+    align="right">
               {ele.password}
             </TableCell> */}
             <TableCell>
@@ -100,25 +107,32 @@ export default function DataTableSeguros({ data }) {
             key={ele.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
-            <TableCell component="th" scope="ele" size="small">
+            <TableCell component="th" scope="ele" size="medium"
+    >
               {ele.compania}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.poliza}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.tlf_seg}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.fecha_contrato}
             </TableCell>
-            <TableCell size="small" align="right">
+            <TableCell size="medium"
+    align="right">
               {ele.fecha_fin_contrato}
             </TableCell>
-            {/* <TableCell size="small" align="right">
+            {/* <TableCell size="medium"
+    align="right">
               {ele.mediador_id}
             </TableCell> */}
-            {/* <TableCell size="small" align="right">
+            {/* <TableCell size="medium"
+    align="right">
               {ele.password}
             </TableCell> */}
             <TableCell>
@@ -133,9 +147,14 @@ export default function DataTableSeguros({ data }) {
   return (
     <>
       <div>
-        <Grid container justifyContent="space-between" alignItems="center">
-          <Grid item>
-            <Typography variant="h6" gutterBottom>
+        <Grid
+          container
+          justifyContent="space-between"
+          alignItems="center"
+          width="100%"
+        >
+          <Grid item padding={2}>
+            <Typography variant="h5" gutterBottom>
               {user && `Bienvenido, ${user.name}`}
             </Typography>
           </Grid>
@@ -146,30 +165,30 @@ export default function DataTableSeguros({ data }) {
             />
           </Grid>
         </Grid>
-        <TableContainer component={Paper} style={{ height: 400 }}>
-          <Table size="small">
+        <TableContainer component={Paper} style={{ height: 500 }}>
+          <Table stickyHeader>
             <TableHead>
               <TableRow>
-                <TableCell size="small">Compañia</TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium">Compañia</TableCell>
+                <TableCell size="medium" align="right">
                   Poliza
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium" align="right">
                   Telefono Seguro
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium" align="right">
                   Fecha Contrato
                 </TableCell>
-                <TableCell size="small" align="right">
+                <TableCell size="medium" align="right">
                   Fecha Fin
                 </TableCell>
-                <TableCell size="small" align="right">
-                  
-                </TableCell>
-                {/*  <TableCell size="small" align="right">
+                <TableCell size="medium" align="right"></TableCell>
+                {/*  <TableCell size="medium"
+    align="right">
                   Mediador
                 </TableCell> */}
-                {/* <TableCell size="small" align="right">
+                {/* <TableCell size="medium"
+    align="right">
                   Contraseña
                 </TableCell> */}
               </TableRow>

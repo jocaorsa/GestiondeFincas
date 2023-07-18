@@ -26,7 +26,14 @@ function AccesoAdmin() {
   }, []);
 
   return (
-    <Box sx={{ display: "flex", backgroundColor:"white",width:"100%", height: "100%" }}>
+    <Box
+      sx={{
+        display: "flex",
+        backgroundColor: "#F5F5F5",
+        width: "100%",
+        height: "100%",
+      }}
+    >
       <Card
         sx={{
           flex: "0 0 20%",

@@ -15,6 +15,8 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { getAllComunidades } from "../../../services/comunidad.service";
 import { useEffect } from "react";
+import ImageUploader from "./Upload";
+
 
 const Fade = React.forwardRef(function Fade(props, ref) {
   const { children, in: open, onClick, onEnter, onExited, ownerState, ...other } = props;
@@ -60,21 +62,20 @@ const style = {
   p: 4,
 };
 
-export default function ModalCrearIncidencia({ handleCreate }) {
+export default function ModalCrearIncidencia({ comunidades, handleCreate }) {
   const [open, setOpen] = React.useState(false);
   const [newIncidencia, setNewIncidencia] = useState({
     estado: "Nueva", // Establecer el valor predeterminado del estado
   });
-  const [comunidades, setComunidades] = useState([]);
   const [selectedComunidadId, setSelectedComunidadId] = useState("");
 
-  useEffect(() => {
+  /* useEffect(() => {
     const fetchComunidades = async () => {
       const comunidadesData = await getAllComunidades();
       setComunidades(comunidadesData);
     };
     fetchComunidades();
-  }, []);
+  }, []); */
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -140,7 +141,12 @@ export default function ModalCrearIncidencia({ handleCreate }) {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <Typography color="black" id="spring-modal-title" variant="h5" component="h5">
+            <Typography
+              color="black"
+              id="spring-modal-title"
+              variant="h5"
+              component="h5"
+            >
               Nueva Incidencia:
             </Typography>
             <Box sx={{ minWidth: 120 }}>
@@ -161,7 +167,11 @@ export default function ModalCrearIncidencia({ handleCreate }) {
                 </Select>
               </FormControl>
             </Box>
-            <Typography color="black" id="spring-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              color="black"
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
               Estado
             </Typography>
             <FormControl sx={{ mt: 3, minWidth: 120 }}>
@@ -177,12 +187,27 @@ export default function ModalCrearIncidencia({ handleCreate }) {
                 {/* Otros estados */}
               </Select>
             </FormControl>
-            <Typography color="black" id="spring-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              color="black"
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
               Descripcion
             </Typography>
-            <TextField name="descripcion" value={newIncidencia.descripcion || ""} onChange={handleInputChange} />
-            
-            <Typography></Typography>
+            <TextField
+              name="descripcion"
+              value={newIncidencia.descripcion || ""}
+              onChange={handleInputChange}
+            />
+
+            {/* <Typography
+              color="black"
+              id="spring-modal-description"
+              sx={{ mt: 2 }}
+            >
+              dfgdsfgdfg
+              <ImageUploader />
+            </Typography> */}
             <Button
               variant="contained"
               DisableElevation
