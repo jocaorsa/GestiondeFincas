@@ -149,7 +149,7 @@ export default function ModalCrearIncidencia({ comunidades, handleCreate }) {
             >
               Nueva Incidencia:
             </Typography>
-            <Box sx={{ minWidth: 120 }}>
+            <Box sx={{ minWidth: 20 }}>
               <FormControl sx={{ minWidth: 220 }}>
                 <InputLabel id="comunidad-label">Comunidad</InputLabel>
                 <Select
@@ -172,9 +172,9 @@ export default function ModalCrearIncidencia({ comunidades, handleCreate }) {
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Estado
+              Estado: {newIncidencia.estado || ""}
             </Typography>
-            <FormControl sx={{ mt: 3, minWidth: 120 }}>
+            {/* <FormControl sx={{ mt: 3, minWidth: 120 }}>
               <InputLabel id="estado-label">Estado</InputLabel>
               <Select
                 labelId="estado-label"
@@ -184,9 +184,9 @@ export default function ModalCrearIncidencia({ comunidades, handleCreate }) {
                 onChange={handleInputChange}
               >
                 <MenuItem value="Nueva">Nueva</MenuItem>
-                {/* Otros estados */}
+              
               </Select>
-            </FormControl>
+            </FormControl> */}
             <Typography
               color="black"
               id="spring-modal-description"
@@ -195,6 +195,10 @@ export default function ModalCrearIncidencia({ comunidades, handleCreate }) {
               Descripcion
             </Typography>
             <TextField
+              placeholder="Descripcion"
+              multiline
+              rows={10}
+              maxRows={9}
               name="descripcion"
               value={newIncidencia.descripcion || ""}
               onChange={handleInputChange}
@@ -208,6 +212,8 @@ export default function ModalCrearIncidencia({ comunidades, handleCreate }) {
               dfgdsfgdfg
               <ImageUploader />
             </Typography> */}
+            <Typography></Typography>
+
             <Button
               variant="contained"
               DisableElevation

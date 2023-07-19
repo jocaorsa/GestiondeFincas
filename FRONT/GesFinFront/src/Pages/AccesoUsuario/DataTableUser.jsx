@@ -187,7 +187,7 @@ export default function DataTableUser({ data }) {
             {user && (
               <div>
                 <Typography variant="h5" gutterBottom>
-                  Bienvenido, {user.name}
+                  Bienvenido, {user.name} {user.apellidos}
                 </Typography>
                 <Typography  variant="h5" gutterBottom>
                   Comunidades: {}
@@ -206,18 +206,16 @@ export default function DataTableUser({ data }) {
             <Table stickyHeader>
               <TableHead>
                 <TableRow>
-                  <TableCell size="medium"
-    ><Typography fontSize={20}>Num incidencia</Typography></TableCell>
-                  <TableCell size="medium"
-    align="right">
+                  <TableCell size="medium">
+                    <Typography fontSize={20}>Num incidencia</Typography>
+                    </TableCell>
+                  <TableCell size="medium"align="right">
                     <Typography fontSize={20}>Comunidad</Typography>
                   </TableCell>
-                  <TableCell size="medium"
-    align="right">
+                  <TableCell size="medium"align="right">
                     <Typography fontSize={20}>Estado</Typography>
                   </TableCell>
-                  <TableCell size="medium"
-    align="right">
+                  <TableCell size="medium" align="right" >
                     <Typography fontSize={20}>Descripcion</Typography>
                   </TableCell>
                   <TableCell size="medium"

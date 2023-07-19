@@ -130,9 +130,9 @@ export default function SpringModal({ incidencia, hadleUpdate }) {
   return (
     <div>
       <Button variant="contained" DisableElevation onClick={handleOpen}>
-        Ver 
+        Ver
       </Button>
-     {/*  <Button variant="contained" DisableElevation onClick={handleDelete}>
+      {/*  <Button variant="contained" DisableElevation onClick={handleDelete}>
         Eliminar
       </Button> */}
       <Modal
@@ -165,7 +165,8 @@ export default function SpringModal({ incidencia, hadleUpdate }) {
             >
               Num Incidencia
             </Typography>
-           <TextField
+            <TextField
+              disabled={true}
               name="num_incidencia"
               value={editedData.num_incidencia || ""}
             />
@@ -177,8 +178,11 @@ export default function SpringModal({ incidencia, hadleUpdate }) {
               Comunidad
             </Typography>
             <TextField
-             name="comunidad_id"
-             value={editedData.comunidad_id ? editedData.comunidad_id.nombre : ""}
+              disabled={true}
+              name="comunidad_id"
+              value={
+                editedData.comunidad_id ? editedData.comunidad_id.nombre : ""
+              }
             />
             {/* <Typography
               color={"black"}
@@ -204,15 +208,16 @@ export default function SpringModal({ incidencia, hadleUpdate }) {
               value={editedData.fecha_creacion || ""}
               onChange={handleInputChange}
             /> */}
-           
+
             <Typography
               color={"black"}
               id="spring-modal-description"
               sx={{ mt: 2 }}
             >
-              Estado
+              Estado:
             </Typography>
             <TextField
+              disabled={true}
               name="estado"
               value={editedData.estado || ""}
             />
@@ -224,11 +229,15 @@ export default function SpringModal({ incidencia, hadleUpdate }) {
               Descripcion
             </Typography>
             <TextField
+              placeholder="MultiLine with rows: 2 and rowsMax: 4"
+              multiline
+              rows={10}
+              maxRows={9}
               name="descripcion"
               value={editedData.descripcion || ""}
               onChange={handleInputChange}
             />
-          {/*  <Typography
+            {/*  <Typography
               color={"black"}
               id="spring-modal-description"
               sx={{ mt: 2 }}
@@ -260,6 +269,7 @@ export default function SpringModal({ incidencia, hadleUpdate }) {
                 color: "inherit",
                 padding: "5px",
                 textDecoration: "none",
+                margin: "5px",
               }}
               onClick={handleModify}
             >

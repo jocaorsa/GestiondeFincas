@@ -180,6 +180,7 @@ const handleDelete = async () => {
               Num Incidencia
             </Typography>
             <TextField
+              disabled={true}
               name="num_incidencia"
               value={editedData.num_incidencia || ""}
               onChange={handleInputChange}
@@ -192,6 +193,7 @@ const handleDelete = async () => {
               Comunidad
             </Typography>
             <TextField
+              disabled={true}
               name="comunidad_id"
               value={
                 editedData.comunidad_id ? editedData.comunidad_id.nombre : ""
@@ -268,6 +270,10 @@ const handleDelete = async () => {
               Descripcion
             </Typography>
             <TextField
+              placeholder="Descripcion"
+              multiline
+              rows={10}
+              maxRows={9}
               name="descripcion"
               value={editedData.descripcion || ""}
               onChange={handleInputChange}
